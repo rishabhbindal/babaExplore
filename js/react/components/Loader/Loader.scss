@@ -1,0 +1,52 @@
+@import '../../../../scss/_settings.scss';
+
+@keyframes loader-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(359deg);
+  }
+}
+
+.Loader {
+  display: inline-block;
+  vertical-align: middle;       // Help aligning with button text etc.
+}
+
+.Loader__svg {
+  width: $loader--size-medium;
+  height: $loader--size-medium;
+
+  color: $primary-color;
+  animation: loader-spin ($base-transition-in-duration * 2) infinite linear;
+  stroke: currentColor;
+}
+
+.Loader--tiny {
+  .Loader__svg {
+    width: $loader--size-tiny;
+    height: $loader--size-tiny;
+  }
+}
+
+.Loader--small {
+  .Loader__svg {
+    width: $loader--size-small;
+    height: $loader--size-small;
+  }
+}
+
+.Loader--large {
+  .Loader__svg {
+    width: $loader--size-large;
+    height: $loader--size-large;
+  }
+}
+
+.Loader--light {
+  .Loader__svg {
+    stroke: $white;
+  }
+}

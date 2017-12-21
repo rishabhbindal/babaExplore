@@ -1,0 +1,12 @@
+@import './../../../../scss/_settings.scss';
+
+.PropertyTag {
+    top: -.5em;
+    right: $global-margin;
+    display: block;
+    background: $white;
+    padding: .4rem .6666666667rem;
+    color: $body-font-color;
+    position: absolute;
+    line-height: 1;
+}

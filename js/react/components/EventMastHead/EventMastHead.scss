@@ -1,0 +1,105 @@
+@import '../../../../scss/_settings.scss';
+
+.EventMastHead {
+    background: no-repeat center center / cover;
+    position: relative;
+
+    h1, h2, h3, h4, h5, h6, p, div {
+        color: $white;
+    }
+}
+
+.EventMastHead__img {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    z-index: zIndex(hero);
+
+    position: absolute;
+    top: 0; right: 0; bottom: 0; left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.EventMastHead__info {
+    background: rgba(darken($body-font-color, 5), 0.5);
+    padding: $global-padding/2;
+    color: $white;
+    min-height: 238px;
+
+    @include breakpoint(medium) {
+        padding: $global-padding*2;
+        text-align: center;
+        min-height: 500px;
+    }
+    @include breakpoint(large) {
+        padding: $global-padding*3;
+    }
+}
+
+.EventMastHead__UserInfo {
+    @include grid-col(12);
+    @include breakpoint(medium) {
+        @include grid-column(
+            $columns: 4,
+            $gutters: 0
+        );
+    }
+}
+
+.EventMastHead__info__intro {
+    text-shadow: 1px 2px 16px $black;
+}
+
+
+.EventMastHead__info__intro_h1 {
+    @include breakpoint(medium) {
+        font-weight: $global-weight-medium;
+    }
+    @include breakpoint(large) {
+        font-weight: $global-weight-light;
+        font-size: 4.2rem;
+    }
+}
+
+.EventMastHead__heading {
+    text-transform: none;
+    font-variant: normal;
+}
+
+.EventMastHead__heading_span {
+    display: inline-block;
+    margin: 0 1rem;
+    @include breakpoint(small only) {
+        display: block;
+        margin: 0 0 0.5rem;
+    }
+}
+
+.EventMastHead__info__desc {
+    max-width: 32rem;
+    margin: 0 auto;
+}
+
+.EventMastHead__info__guests {
+    max-width: 42rem;
+    margin: $global-margin auto 0;
+}
+
+.EventMastHead__see_all {
+    @include grid-col(12, 0);
+    margin-top: $global-margin;
+    @include breakpoint(medium) {
+        display: none;
+    }
+}
+
+.EventMastHead__button.button.hollow {
+    border: 1px solid #fff;
+    color: #fff;
+    &:hover, &:focus {
+        border-color: gray;
+        color: gray;
+    }
+}

@@ -1,0 +1,11 @@
+.ToolTip {
+    &:hover .ToolTip__child {
+        visibility: visible;
+    }
+
+    .ToolTip__child {
+        visibility: hidden;
+        position: absolute;
+        cursor: help;
+    }
+}

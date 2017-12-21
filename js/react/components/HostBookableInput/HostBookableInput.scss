@@ -1,0 +1,29 @@
+@import '../../../../scss/_settings.scss';
+
+.HostBookableInput__input {
+    margin-bottom: 0.5rem;
+    height: 100%;
+}
+
+.HostBookableInput__input--error {
+    font-size: 10px;
+    color: red;
+    text-align: right;
+    margin-bottom: 0;
+}
+
+.HostBookableInput__panel--size--small {
+    @include grid-col(6)
+    float: left;
+}
+
+.HostBookableInput__panel--size--big {
+    @include grid-col(12)
+    float: left;
+}
+
+.HostBookableInput_input--big {
+    @include grid-col(12)
+    float: left;
+    padding: 0 15px;
+}

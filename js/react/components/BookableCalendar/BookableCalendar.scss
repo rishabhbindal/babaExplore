@@ -1,0 +1,36 @@
+.bookable-calendar-container {
+    .DayPicker__focus-region {
+        width: 470px !important;
+    }
+}
+
+.DayPickerNavigation--horizontal .DayPickerNavigation__next {
+    right: 20px;
+}
+
+.CalendarMonthGrid--horizontal{
+    width: 100%;
+    border-right: 1px solid lightgray;
+}
+.transition-container {
+    width: 470px !important;
+}
+
+.CalendarDay__button {
+  	height: 60px;
+  	width: 60px;
+}
+
+.DayPicker__week-header {
+    ul > li {
+        width: 60px !important;
+    }
+}
+
+.full-width-Cal{
+    width:100%;
+    .DayPicker--horizontal{
+        width: 470px!important;
+        position: relative!important;
+    }
+}

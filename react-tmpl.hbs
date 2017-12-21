@@ -1,0 +1,125 @@
+<!doctype html>
+<html class="no-js" lang="en" ng-app="explore">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <meta name="author" content="" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@Explrlifetrvlng" />
+        <meta property="fb:app_id" content="411531465722273" />
+        <meta property="og:site_name" content="Explore" />
+        <meta property="article:author" content="https://www.facebook.com/explorelifetraveling" />
+        <meta property="article:publisher" content="https://www.facebook.com/explorelifetraveling" />
+        <meta property="og:type" content="WEBSITE" />
+        \{{{headers.meta}}}
+        \{{{headers.title}}}
+        <link rel="icon" href="/public/images/explore-favicon.png" type="image/png" sizes="16x16">
+
+        \{{#if enableAnalytics}}
+        <script>
+            /// for google analytics
+            (function(i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r;
+                i[r] = i[r] || function() {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date();
+                a = s.createElement(o), m = s.getElementsByTagName(o)[0];
+                a.async = 1;
+                a.src = g;
+                m.parentNode.insertBefore(a, m)
+            })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+            ga('create', 'UA-64285813-4', 'auto');
+            var ua = navigator.userAgent || navigator.vendor || window.opera;
+            ga('set', 'dimension1', (ua.indexOf("FBAN") > -1) || (ua.indexOf("FBAV") > -1) ? 'Facebook' : 'None');
+            ga('send', 'pageview')
+        </script>
+        \{{/if}}
+
+        {{#each htmlWebpackPlugin.files.css}}
+            <link href="{{this}}" rel="stylesheet">
+        {{/each}}
+
+        <base href="/">
+    </head>
+
+    <body>
+        {{!-- The template is used twice. Once to fill assets with the
+             webpack config. Later to fill body, state, title etc (which
+             changes based on the route, etc). --}}
+        <div id="root">
+            \{{{body}}}
+        </div>
+        <script>
+            \{{{initialState}}}
+        </script>
+
+        <!-- Facebook Pixel Code -->
+        \{{#if enableAnalytics}}
+        <script>
+            !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+                n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+                n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+                t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+                    document,'script','https://connect.facebook.net/en_US/fbevents.js');
+            fbq('init', '1742631382656163');
+            setTimeout(function () {
+                fbq('track', "PageView");
+            }, 30000);
+        </script>
+        <noscript><img height="1" width="1" style="display:none"
+                    src="https://www.facebook.com/tr?id=1742631382656163&ev=PageView&noscript=1"
+                  /></noscript>
+        \{{/if}}
+        <!-- End Facebook Pixel Code -->
+
+        <!-- Raven -->
+        <script src="https://cdn.ravenjs.com/3.9.1/raven.min.js" crossorigin="anonymous"></script>
+        <script>
+            Raven.config('https://5f091c8dadbc4784957ea44d60dc2289@sentry.io/121396', {
+                autoBreadcrumbs: {
+                    'xhr': true,      // XMLHttpRequest
+                    'console': true,  // console logging
+                    'dom': true,       // DOM interactions, i.e. clicks/typing
+                    'location': true  // url changes, including pushState/popState
+                },
+                tags: { git_commit: '<%= appGitVer %>' },
+                environment: '<%= appEnv %>'
+            }).install();
+        </script>
+        <!-- End Raven -->
+
+        <!-- FB sdk, for FB login -->
+        <script>
+            window.fbAsyncInit = function() {
+                FB.init({
+                    appId      : '411531465722273',
+                    xfbml      : true,
+                    version    : 'v2.8'
+                });
+                \{{#if enableAnalytics}}
+                FB.AppEvents.logPageView();
+                \{{/if}}
+            };
+
+            (function(d, s, id){
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) {return;}
+                js = d.createElement(s); js.id = id;
+                js.src = "//connect.facebook.net/en_US/sdk.js";
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));
+        </script>
+
+        {{#each htmlWebpackPlugin.files.js}}
+            <script type="text/javascript" src="{{this}}"></script>
+        {{/each}}
+
+        {{!-- Some scripts need to be include dynamically, based on
+        the path. So we take control of injecting scripts.  --}}
+        \{{#each dynamicScripts}}
+            <script src="/public/\{{this}}"></script>
+        \{{/each}}
+    </body>
+</html>

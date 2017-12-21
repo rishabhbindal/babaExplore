@@ -1,0 +1,72 @@
+@import './../../../../scss/_settings.scss';
+
+.CommunityHeader {
+    position: relative;
+    background: #cacaca no-repeat 0/cover;
+    padding-top: 18rem;
+    padding-bottom: 2rem;
+
+    @include breakpoint(small only) {
+        padding: 4rem 0 1rem;
+    }
+}
+
+.CommunityHeader:before {
+    content: '';
+    position: absolute;
+    top: 30%;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(62,82,65,.75);
+    background: -webkit-linear-gradient(top,rgba(62,82,65,0),hsla(0,0%,4%,.75));
+    background: linear-gradient(180deg,rgba(62,82,65,0),hsla(0,0%,4%,.75));
+}
+
+.CommunityHeader-title {
+    @include grid-col(12);
+    @include grid-col-end();
+    padding-top: 4rem;
+    color: #fefefe;
+    text-shadow: 2px 3px hsla(0,0%,4%,.4);
+    h1 {
+        margin: 0;
+    }
+}
+
+.CommunityInfo-summary, .CommunityInfo-TopMembers, .CommunityInfo-owners {
+    @include grid-col(4);
+    @include grid-col-end();
+    margin: 3rem 0 2rem;
+    @include breakpoint(small only) {
+        @include grid-col(12);
+        margin: .75rem 0;
+    }
+}
+
+.CommunityInfo--TopMember {
+    @include grid-col(3, 0);
+    @include grid-col-end();
+    margin-bottom: .5rem;
+}
+
+.CommunityInfo-owners a span {
+    color: $body-font-color !important;
+}
+
+.JoinCommunityRequest--Button {
+    @include grid-col(6);
+    @include grid-col-end();
+    @include breakpoint(small only) {
+        @include grid-col(12);
+        padding: 0 !important;
+        margin-bottom: 1rem;
+    }
+}
+
+.JoinCommunityRequest--error {
+    color: red;
+    margin-bottom: 1rem;
+    font-size: .75rem;
+    text-align: right;
+}

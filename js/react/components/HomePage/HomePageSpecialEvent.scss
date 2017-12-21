@@ -1,0 +1,86 @@
+@import '../../../../scss/_settings.scss';
+@import '../../../../scss/_base.scss';
+@import '../../../../scss/_layout.scss';
+@import '../../../../scss/_type.scss';
+
+.event-banner
+{
+  .banner-link
+  {
+    display: block;
+    position: relative;
+    box-shadow: $big-shadow;
+    z-index: 10;
+    transition: transform 0.3s;
+
+    &:hover
+    {
+      transform: scale(1.05);
+    }
+  }
+
+  img
+  {
+  }
+
+  .more-link
+  {
+    display: block;
+    position: relative;
+    background: $dark-gray;
+    background-image: linear-gradient(to bottom right, rgba($black, 0.4), rgba($black, 0));
+    overflow: hidden;
+    border: 3px solid $body-background;
+    transition: background-color 0.2s;
+
+    .text
+    {
+      display: block;
+      color: $white;
+      width: 100%;
+      text-align: center;
+      font-weight: $global-weight-semi;
+      padding: 0.5rem $global-padding;
+    }
+
+    &:hover
+    {
+      background: $primary-color;
+    }
+  }
+
+  @include breakpoint(small only)
+  {
+    .more-link
+    {
+      border-top: none;
+    }
+  }
+
+  @include breakpoint(medium)
+  {
+    position: relative;
+
+    .banner-link
+    {
+      width: 80%;
+    }
+
+    .more-link
+    {
+      position: absolute;
+      width: 20%;
+      right: 0;
+      top: 0;
+      height: 100%;
+      border-left: none;
+
+      .text
+      {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+    }
+  }
+}

@@ -1,0 +1,155 @@
+@import '../../../../scss/_settings.scss';
+
+.Modal__action-link {
+    display: inline-block;
+    margin-right: 1rem;
+    &:last-child {
+        margin-right: 0;
+    }
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+.LoginModal__header {
+    background: $primary-color repeat center;
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1NiIgaGVpZ2h0PSIxMDAiPgo8cmVjdCB3aWR0aD0iNTYiIGhlaWdodD0iMTAwIiBmaWxsPSIjZmU1NDU5Ij48L3JlY3Q+CjxwYXRoIGQ9Ik0yOCA2NkwwIDUwTDAgMTZMMjggMEw1NiAxNkw1NiA1MEwyOCA2NkwyOCAxMDAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZhNDg3OSIgc3Ryb2tlLXdpZHRoPSIyIj48L3BhdGg+CjxwYXRoIGQ9Ik0yOCAwTDI4IDM0TDAgNTBMMCA4NEwyOCAxMDBMNTYgODRMNTYgNTBMMjggMzQiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZhNDg3MyIgc3Ryb2tlLXdpZHRoPSIyIj48L3BhdGg+Cjwvc3ZnPg==");
+    // url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1NiIgaGVpZ2h0PSIxMDAiPgo8cmVjdCB3aWR0aD0iNTYiIGhlaWdodD0iMTAwIiBmaWxsPSIjZmU1NDU5Ij48L3JlY3Q+CjxwYXRoIGQ9Ik0yOCA2NkwwIDUwTDAgMTZMMjggMEw1NiAxNkw1NiA1MEwyOCA2NkwyOCAxMDAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZlMzQyOSIgc3Ryb2tlLXdpZHRoPSIyIj48L3BhdGg+CjxwYXRoIGQ9Ik0yOCAwTDI4IDM0TDAgNTBMMCA4NEwyOCAxMDBMNTYgODRMNTYgNTBMMjggMzQiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZlMzQwMyIgc3Ryb2tlLXdpZHRoPSIyIj48L3BhdGg+Cjwvc3ZnPg==");
+    padding: 4rem 2rem 1rem;
+    color: $white;
+    display: table-cell;
+    width: 35%;
+    vertical-align: top;
+    padding-top: 1rem;
+}
+
+.LoginModal__title {
+    line-height: 1;
+}
+
+.button.facebook {
+  display: block;
+  width: 100%;
+  padding-top: 0.8em;
+  padding-bottom: 0.75rem;
+}
+
+.input-group {
+    display: table;
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.input-group>:first-child {
+    border-radius: 2px 0 0 2px;
+}
+
+.input-group-label {
+    text-align: center;
+    padding: 0 1rem;
+    background: $white;
+    color: $black;
+    border: 1px solid $medium-gray;
+    white-space: nowrap;
+    width: 1%;
+    height: 100%;
+}
+.input-group-label, .input-group-field, .input-group-button {
+    margin: 0;
+    white-space: nowrap;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.errormsg {
+    display: block;
+    font-weight: 700;
+}
+
+.Login__submit--submitting,
+.Login__submit--disabled {
+opacity: 0.6;
+}
+
+.Login__submit-loader {
+padding-left: 1rem;
+}
+
+.LoginModal__links {
+    font-size: 1rem;
+    margin-top: 1rem;
+    display: flex;
+    justify-content: space-around
+}
+
+.Login-modal-separator {
+    background-color: $white;
+    position: absolute;
+    top: -1.1rem;
+    left: 45.5%;
+    color: $logo-color;
+    padding: 0.34rem 0rem;
+    width: 9%;
+}
+
+.SignUp--modal--forgotpass {
+    color: $primary-color;
+}
+
+.SignUp--modal {
+    color: $body-font-color;
+    .Modal__window {
+        @include breakpoint(small only) {
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+        }
+        @include breakpoint(medium) {
+            max-width: 50vw;
+            min-height: 60vh;
+        }
+        @include breakpoint(large) {
+            max-width: 30vw;
+        }
+    }
+
+    .Modal__body {
+        overflow-y: scroll;
+        color: #91908f;
+        padding: 0rem;
+        @include breakpoint(medium) {
+            max-height: 95vh;
+            min-height: 95vh;
+        }
+    }
+
+    .Modal__close-button {
+        color: #d04c4e;
+        margin: 0.5rem;
+        font-weight: lighter;
+        font-size: 2em;
+        display: block;
+        top: -5px;
+        padding: 0.25rem;
+    }
+}
+
+.LoginForm--selection {
+    color: #91908f;
+    border-color: #91908f;
+    outline: none;
+    cursor: pointer;
+    font-size: 0.7rem;
+}
+
+.LoginForm--activeSelection {
+    color: $logo-color;
+    border-color: $logo-color;
+}
+
+.ArtworkContainer {
+    svg {
+        min-height: 15rem;
+    }
+}

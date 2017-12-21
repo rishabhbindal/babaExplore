@@ -1,0 +1,41 @@
+@import '../../../../scss/_settings.scss';
+
+.ChangeBookable-label, .ChangePropertyStatus-label {
+    @include breakpoint(small) {
+        @include grid-col(12);
+        padding: 0;
+    }
+    @include breakpoint(medium) {
+        @include grid-col(3);
+        margin-top: 7px;
+    }
+    float: left !important;
+}
+
+.ChangeBookable-select, .ChangePropertyStatus-select {
+    @include breakpoint(small) {
+        @include grid-col(12);
+    }
+    @include breakpoint(medium) {
+        @include grid-col(8);
+    }
+
+    float: left !important;
+    option {
+        text-transform: capitalize;
+    }
+}
+
+.ChangeBookable, .ChangePropertyStatus {
+    .Loader {
+        @include grid-col(2);
+        float: left;
+        padding: 10px;
+    }
+}
+
+.bookable-calendar-container {
+  .DayPicker {
+      position: absolute;
+  }
+}

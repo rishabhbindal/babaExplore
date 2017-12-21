@@ -1,0 +1,34 @@
+@import '../../../../scss/_settings.scss';
+
+.SocialShare {
+    background: $warning-color;
+    // background-image: linear-gradient(to bottom, $warning-color, darken($warning-color, 5), $warning-color);
+    padding: $global-padding/3 0;
+    text-align: center;
+    display: flex;
+
+    .a2a_svg {
+        width: 1.8rem;
+        height: 1.8rem;
+        -webkit-filter: none;
+        filter: none;
+    }
+    .a2a_label {
+        display: none;
+    }
+
+    @include breakpoint(medium) {
+        justify-content: center;
+    }
+
+    @include breakpoint(small only) {
+        justify-content: space-around;
+    }
+}
+
+.SocialShare__button {
+    margin: 0 1rem;
+    @include breakpoint(small only) {
+        margin: 0 auto;
+    }
+}

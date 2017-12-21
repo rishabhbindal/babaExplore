@@ -1,0 +1,21 @@
+{
+    // https://github.com/yannickcr/eslint-plugin-react/issues/43
+    "parser": "babel-eslint",
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true,
+            "classes": true
+        }
+    },
+    "extends": "airbnb",
+    "rules": {
+        "indent": ["error", 4],
+        "max-len": [2, 120, 4],
+        "generator-star-spacing": [2, {"before": true, "after": false}],
+        "comma-dangle": [2, "never"],
+        "no-confusing-arrow": 0,
+        "import/extensions": 0,
+        "react/jsx-indent": [2, 4],
+        "react/no-unused-prop-types": [1, { skipShapeProps: true }]
+    }
+}

@@ -1,0 +1,7 @@
+@import '../../../../scss/_settings.scss';
+
+.Listing__CaptionLocation {
+    @media (min-width: 30rem) {
+        min-height: 3rem;
+    }
+}

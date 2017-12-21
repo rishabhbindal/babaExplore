@@ -1,0 +1,442 @@
+<footer>
+    <div class="row">
+        <div class="f-logo">
+            <img src="images/explore-logo.png" alt="Explore Life Traveling" ng-click='goToHome()'>
+        </div>
+        <div class="f-content">
+            <div class="f-main-menu">
+                <nav>
+                    <a href="/about" target="_self">About Us</a>
+                    <!--<a href="#">How it works</a>
+                    <a href="#">History</a>-->
+                    <a ng-click='showContactMessage()'>Contact Us</a>
+                    <a href="/privacy" target="_self">Privacy Policy</a>
+                </nav>
+            </div>
+            <div class="footer-menu">
+                <div class="label">Cities</div>
+                <nav>
+                    <a ng-repeat='city in footerCities' ng-click='goToSearch(city)'>{{city.city || city.state}}</a>
+                </nav>
+            </div>
+            <div class="footer-menu">
+                <div class="label">Communities</div>
+                <nav>
+                    <a ng-repeat='group in footerGroups | limitTo:8' ng-click='goToCommunity(group.name)'>{{group.name}}</a>
+                </nav>
+            </div>
+        </div>
+        <div class="social-menu">
+            <a href="https://www.facebook.com/explorelifetraveling" target="_blank"></a>
+            <a href="https://www.twitter.com/Explrlifetrvlng" target="_blank"></a>
+            <a href="#" style="display:none"></a>
+            <a href="#" style="display:none"></a>
+            <a href="https://play.google.com/store/apps/details?id=com.explorelife" target="_blank" style="display:none"></a>
+        </div>
+    </div>
+</footer>
+<div class="modal" id="login-modal">
+    <div class="window">
+        <div class="title">
+            <h1 ng-if='!loginView.showForgot'>Login</h1>
+            <h1 ng-if='loginView.showForgot'>Forgot Password</h1>
+        </div>
+        <div class="body" ng-if='!loginView.showForgot'>
+            <form action="">
+                <fieldset>
+                    <div class="input-group">
+                        <span class="input-group-label"><i class="icon-user"></i></span>
+                        <input type="email" class="input-group-field" placeholder="Email address" ng-model='username'>
+                    </div>
+                    <div class="input-group">
+                        <span class="input-group-label"><i class="icon-key"></i></span>
+                        <input type="password" class="input-group-field" placeholder="Password" ng-model='password'>
+                    </div>
+                    <div class="input-group" ng-if='errorMessage'>
+                        <span ng-if='errorMessage' class="errormsg">{{errorMessage}}</span>
+                    </div>
+                    <div class="input-group" ng-if='errorMessage &&
+                    errorMessage.indexOf("verified") !== -1'>
+                        <span class="button resendLink" ng-click="resendVerifyLink(username)">
+                            Resend Verification Link
+                        </span>
+                    </div>
+                </fieldset>
+                <div class="button-group">
+                    <button id="submit-login" type="button" class="button" ng-click='login(username,password)'>Log in</button>
+                    <a class="secondary facebook button" ng-click="loginToggle()"><i class="icon-facebook"></i> Log in with Facebook</a>
+                </div>
+            </form>
+            <div class="actions">
+                <a ng-click='goToSignup()'>Create an account</a>
+                <a ng-click='loginView.showForgot = true'>Forgot password</a>
+            </div>
+        </div>
+        <div class="body" ng-if='loginView.showForgot'>
+            <form action="">
+                <fieldset>
+                    <div class="input-group">
+                        <span class="input-group-label"><i class="icon-user"></i></span>
+                        <input type="email" class="input-group-field" placeholder="Email address" ng-model='email'>
+                    </div>
+                    <div class="input-group">
+                        <span ng-show='errorMessage1' class="errormsg">{{errorMessage1}}</span>
+                        <span ng-show='successMessage' class="successmsg">{{successMessage}}</span>
+                    </div>
+                </fieldset>
+                <div class="button-group">
+                    <button type="button" class="button" ng-click='loginView.showForgot = false'>Cancel</button>
+                    <button type="button" class="button" ng-click='forgotPassword(email)'>Reset Password</button>
+                </div>
+            </form>
+        </div>
+        <button class="close-button show-for-small-only" ng-click='closePopUp()'>&times;</button>
+    </div>
+</div>
+<div class="modal" id="profile-modal">
+    <div class="window">
+        <div class="title">
+            <h1>Profile</h1>
+        </div>
+        <div class="body">
+            <form action="">
+                <fieldset>
+                    <div class="input-group">
+                        <span class="input-group-label"><i class="icon-user"></i></span>
+                        <input type="email" class="input-group-field" placeholder="Email address" ng-model='userDetails.email'>
+                    </div>
+                    <span ng-if='errorMessage' class="errormsg">{{errorMessage}}</span>
+                </fieldset>
+                <div class="button-group">
+                    <button type="button" class="button" ng-click='preProfile()'>Click Here To Continue</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="modal" id="extrainfo-modal">
+    <div class="window">
+        <div class="title">
+            <h1 style="text-align:center;">Profile</h1>
+            <img class='user_profile_img' ng-src='{{userDetails.social_profile_picture+"?width=200&height=200"}}' ng-if='userDetails.social_profile_picture && userDetails.social_profile_picture.indexOf("profile_images/default-user.jpg") == -1 && !userDetails.picture' />
+            <img class='user_profile_img' ng-src='{{userDetails.picture}}' ng-if='userDetails.picture' />
+            <img class='user_profile_img' ng-if="!userDetails.picture && (!userDetails.social_profile_picture || userDetails.social_profile_picture.indexOf('profile_images/default-user.jpg') !== -1)" src='images/user.jpg' />
+
+
+            <div class="add-image-content">
+                <div class="add-image">
+                    <div class="image" ng-class="{'error-block':!userDetails.picture && (!userDetails.social_profile_picture || userDetails.social_profile_picture.indexOf('profile_images/default-user.jpg') !== -1)}">
+                        <input type="file" id='picture' class='picture' onchange="readImgFromFile(this, '#user_profile_img')" accept="image/*">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="body sign-up-form">
+            <form action="">
+                <fieldset ng-if="extrainfoCalledFromWhoami">
+                    <div ng-show="extrainfoCalledFromWhoami" class="fieldrow">
+                        <div class="field">
+                            <label for="first-name">First Name</label>
+                            <input ng-class="{'error-block':!userDetails.first_name}" type="text" name="first-name" id="first-name" ng-model='userDetails.first_name' placeholder="First Name">
+                        </div>
+                        <div class="field">
+                            <label for="last-name">Last Name</label>
+                            <input ng-class="{'error-block':!userDetails.last_name}"type="text" name="last-name" id="last-name" ng-model='userDetails.last_name' placeholder="Last Name">
+                        </div>
+                    </div>
+                    <label class="left-label">Email</label>
+                    <div class="input-group" ng-class="{'error-block':!userDetails.email}">
+                        <input type="email" id="email" name="email" ng-model='userDetails.email' class="input-group-field email" focus="scrollModel()" placeholder="Enter email address">
+                    </div>
+                    <div class="field">
+                        <label for="phone">Phone Number <img src="images/info-icon.png" title="Phone number is used for sending booking confirmation" ></label>
+                        <input value="+91" type="tel" international-phone-number id="extrainfo_phone_number" class="input-group-field phone" name="extrainfo_phone_number" ng-model='userDetails.details.phone_number' placeholder='Phone Number' ng-class="{'error-block':!userDetails.details.phone_number}">
+                    </div>
+                    <label class="left-label">Please highlight all the wonderful aspects of yourself, so host/guest would love your company :)</label>
+                    <label class="left-label" ng-if="extrainfoCalledFromWhoami">[ optional ]</label>
+                    <div class="input-group" ng-class="{'error-block':!userDetails.details.about || userDetails.details.about.length < MinimumLengthOfAbout}">
+                        <textarea ng-focus="scrollModel()" class="input-group-field" rows="3" ng-model='userDetails.details.about' placeholder="Character"></textarea>
+                        <label class="right-label">{{userDetails.details.about.length}} Characters</label>
+                    </div>
+                    <span ng-if='errorMessage' class="errormsg" style="margin-bottom:5px;">{{errorMessage}}</span>
+                </fieldset>
+                <div class="alert callout" ng-show='extrainfoCalledFromWhoami'>
+                    <h5>Please continue with the your desired actions after providing required info.
+                    </h5>
+                </div>
+                <div class="button-group">
+                    <button ng-hide="extrainfoCalledFromWhoami" type="button" class="button" ng-click='closePopUp()'>Cancel</button>
+                    <button ng-show="extrainfoCalledFromWhoami" type="button" class="button" ng-click='closePopUp()'>Cancel & Logout</button>
+                    <button type="button" class="button" ng-click='extraUserInfo()'>Click Here To Continue</button>
+                </div>
+            </form>
+        </div>
+        <button class="close-button show-for-small-only" ng-click='closePopUp()'>&times;</button>
+    </div>
+</div>
+<div class="modal" id="message-modal">
+    <div class="window">
+        <div class="title">
+            <h1>Message</h1>
+        </div>
+        <div class="body">
+            <form action="">
+                <fieldset>
+                    <label class="input-group" ng-bind-html="showMessageValue"></label>
+                </fieldset>
+                <fieldset ng-if='showCancleButton'>
+                    <div class="input-group">
+                        <textarea class="input-group-field" rows="3" ng-model='showMsg.input' style="border: 1px solid #cacaca;" placeholder="Message"></textarea>
+                    </div>
+                    <span ng-if='showMsg.showError' class="errormsg" style="margin-bottom:5px;">Kindly enter message.</span>
+                </fieldset>
+                <fieldset ng-if='showCancleButton && showSocialLink'>
+                    <div class="field">
+                        <input type="url" ng-model='showMsg.linkedIn' placeholder="LinkedIn (optional)">
+                    </div>
+                    <div class="field">
+                        <input type="url" ng-model='showMsg.facebook' placeholder="Facebook (optional)">
+                    </div>
+                </fieldset>
+                <div class="button-group">
+                    <button type="button" class="button" ng-click='closePopUp()' ng-if='showCancleButton'>Cancel</button>
+                    <button type="button" class="button" ng-click='showSocialLink ? onOkClickFunction(showMsg.input,showMsg.linkedIn, showMsg.facebook) :onOkClickFunction(showMsg.input); closePopUp()' ng-if='showCancleButton && showMsg.input.length'>Ok</button>
+                    <button type="button" class="button" ng-click='showMsg.showError = true' ng-if='showCancleButton && !showMsg.input.length'>Ok</button>
+                    <button type="button" class="button" ng-click='closePopUp()' ng-if='!showCancleButton && !showOkButton'>Ok</button>
+                    <button type="button" class="button" ng-click='onOkClickFunction(showMsg.input);closePopUp()' ng-if='!showCancleButton && showOkButton'>Ok</button>
+                </div>
+            </form>
+        </div>
+        <button class="close-button show-for-small-only" ng-click='closePopUp()'>&times;</button>
+    </div>
+</div>
+<div class="overlay-loader" id="loading">
+    <div class="loader">
+        Saving please wait ...
+    </div>
+</div>
+
+<div class="modal" id="payment-success-modal">
+    <div class="window">
+        <div class="title">
+            <h1>Payment Successful</h1>
+            <br><br><br><br>
+            Please check your email inbox and spam for the confirmation mail.
+        </div>
+        <div class="body">
+            <div class="input-group" ng-if='filter.PaymentId'>
+                <label>Booking Id :</label>
+                <label>{{paymentDetails.paymentId}}</label>
+            </div>
+            <div class="input-group">
+                <label>Check In :</label>
+                <label>{{paymentDetails.date_from}}</label>
+            </div>
+            <div class="input-group">
+                <label>Check Out :</label>
+                <label>{{paymentDetails.date_until}}</label>
+            </div>
+            <div class="input-group">
+                <label>Booking for :</label>
+                <label>{{paymentDetails.caption}}</label>
+            </div>
+            <div class="input-group">
+                <label>Spaces selected :</label>
+                <table class="request">
+                    <thead>
+                        <th>Spaces</th>
+                        <th>Quantity</th>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="orderedBookable in paymentDetails.paymentItem">
+                            <td>{{orderedBookable.caption}}</td>
+                            <td>{{orderedBookable.requested}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="input-group">
+                <div>
+                    <label>Total Price :</label>
+                    <label>{{paymentDetails.totalPrice | number:2}} INR</label>
+                </div>
+            </div>
+            <div class="button-group">
+                <button type="button" class="button" ng-click='closePopUp()'>Ok</button>
+            </div>
+        </div>
+        <button class="close-button show-for-small-only">&times;</button>
+    </div>
+</div>
+
+<div class="modal" id="modify-request-modal">
+    <div class="window">
+        <div class="title">
+            <h1>Update Request</h1>
+            <br><br><br><br>
+            <p>
+                You have an existing request for this property.
+                Press 'Ok' if you want to update existing request.
+                Press 'Cancel' if you don't want to modify existing request.
+            </p>
+        </div>
+        <div class="body modify-request-body">
+
+            <div class="input-group">
+                <h6>Details of your existing request</h6>
+            </div>
+
+            <div class="input=group" ng-if="rootLoveData.date_from === rootLoveData.date_until">
+                <label>
+                    Booking for: <span class="bolder">{{rootLoveData.date_from}}</span>
+                </label>
+            </div>
+
+            <div ng-if="rootLoveData.date_from !== rootLoveData.date_until">
+            <div class="input-group">
+                <label>
+                    Check In : <span class="bolder">{{rootLoveData.date_from}}</span>
+                </label>
+            </div>
+
+            <div class="input-group">
+                <label>
+                    Check out : <span class="bolder">{{rootLoveData.date_until}}</span>
+                </label>
+            </div>
+            </div>
+
+            <div class="input-group">
+                <label>Spaces selected :</label>
+                <table class="request">
+                    <thead>
+                        <th>Spaces</th>
+                        <th>Quantity</th>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="bookable in lovedBookables">
+                            <td>{{bookable.caption}}</td>
+                            <td>{{bookable.requested}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <hr />
+            <div class="input-group">
+                <h6>Details of your new request</h6>
+            </div>
+
+            <div class="input=group" ng-if="rootRequestData.date_from === rootRequestData.date_until">
+                <label>
+                    Booking for: <span class="bolder">{{rootRequestData.date_from}}</span>
+                </label>
+            </div>
+
+            <div ng-if="rootRequestData.date_from !== rootRequestData.date_until">
+            <div class="input-group">
+                <label>
+                    Check In : <span class="bolder">{{rootRequestData.date_from}}</span>
+                </label>
+            </div>
+
+            <div class="input-group">
+                <label>
+                    Check out : <span class="bolder">{{rootRequestData.date_until}}</span>
+                </label>
+            </div>
+            </div>
+
+            <div class="input-group">
+                <label>Spaces selected :</label>
+                <table class="request">
+                    <thead>
+                        <th>Spaces</th>
+                        <th>Quantity</th>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="bookable in requestedBookables">
+                            <td>{{bookable.caption}}</td>
+                            <td>{{bookable.requested}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="button-group">
+            <button type="button" class="button" ng-click='modifyRequest()'>Ok</button>
+                <button type="button" class="button" ng-click='closePopUp()'>Cancel</button>
+            </div>
+        </div>
+        <button class="close-button show-for-small-only" ng-click="closePopUp()">&times;</button>
+    </div>
+</div>
+
+<div class="modal" id="checkAvailPayment-success-modal">
+    <div class="window">
+        <div class="title">
+            <h1>Success</h1>
+        </div>
+        <div class="body">
+            <form action="">
+                <fieldset>
+                    <label class="input-group">
+                        <h5>Please go ahead with your Check Availability.</h5> <br />
+                        Your payment information has been validated. Thanks for your
+                        cooperation.
+                    </label>
+                </fieldset>
+                <div class="button-group">
+                    <button type="button" class="button" ng-click='closePopUp()'>Ok</button>
+                </div>
+            </form>
+        </div>
+        <button class="close-button show-for-small-only" ng-click='closePopUp()'>&times;</button>
+    </div>
+</div>
+
+<div class="modal" id="pano">
+    <div class="window">
+        <iframe allowfullscreen style="border-style:none;"></iframe>
+        <button class="pano__close-button" ng-click='closePannellum()'>&times;</button>
+    </div>
+</div>
+
+<div class="modal" id="hostOrderSuccess-modal">
+    <div class="window">
+        <div class="title">
+            <h1>Success</h1>
+        </div>
+        <div class="body modify-request-body">
+
+            <div class="input-group">
+                <h6>Order Successfuly created for Guest</h6>
+            </div>
+
+            <div class="button-group">
+                <button type="button" class="button" ng-click='closePopUp()'>Ok</button>
+            </div>
+        </div>
+        <button class="close-button show-for-small-only" ng-click="closePopUp()">&times;</button>
+    </div>
+</div>
+
+<div class="modal" id="order-failed-modal">
+    <div class="window">
+        <div class="title">
+            <h1>Order Unsuccessful</h1>
+        </div>
+        <div class="body">
+            <form action="">
+                <fieldset>
+                    <label class="input-group orderFail">
+                        There was a error in conforming your order, Please contact support@explorelifetraveling.com for details. The Order Id for this transaction is {{orderId}}
+                    </label>
+                </fieldset>
+                <div class="button-group">
+                    <button type="button" class="button" ng-click='closePopUp()'>Ok</button>
+                </div>
+            </form>
+        </div>
+        <button class="close-button show-for-small-only" ng-click='closePopUp()'>&times;</button>
+    </div>
+</div>

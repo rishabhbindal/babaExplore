@@ -1,0 +1,23 @@
+@import '../../../../../scss/_settings.scss';
+
+.ProfilePicField__image__container {
+    position: relative;
+}
+
+.ProfilePicField__fileInput {
+    width: 20rem !important;
+    margin: auto !important;
+}
+
+.ProfilePicField__overlay {
+    position: relative;
+    pointer-events: none;
+    color: $white;
+    top: -4rem;
+    font-size: 1.2rem;
+    color: $black;
+}
+
+.FileInput__error {
+    width: avatarSize(large);
+}

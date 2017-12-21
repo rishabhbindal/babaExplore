@@ -1,0 +1,77 @@
+@import '../../../../scss/_settings.scss';
+@import '../../../../scss/_base.scss';
+@import '../../../../scss/_layout.scss';
+@import '../../../../scss/_type.scss';
+
+$link-highlight-color: lighten(desaturate($body-font-color, 50%), 20);
+
+.HomepageVideo-updates
+{
+
+  .section-title
+  {
+    padding: $global-padding 0;
+  }
+
+  .event-update-item
+  {
+    .embed iframe
+    {
+      box-shadow: $big-shadow;
+      transition: transform 0.2s;
+
+      &:hover
+      {
+        transform: scale(1.05);
+      }
+    }
+
+    h4
+    {
+      font-weight: $global-weight-semi;
+      line-height: 1.2;
+      min-height: 2.5em;
+    }
+  }
+
+  @include breakpoint(small only)
+  {
+    .event-update-item
+    {
+      .text
+      {
+        padding: 0 0.5rem;
+      }
+    }
+  }
+
+  @include breakpoint(medium)
+  {
+    .section-title
+    {
+      padding: $global-padding*1.5 0;
+    }
+
+    .event-update-item
+    {
+      margin-bottom: $global-padding*1.5;
+    }
+  }
+}
+
+.home-page .HomepageVideo-updates:nth-child(2n+1) {
+    background-color: #d9cfc0;
+}
+
+.HomePageVideos__pageurl {
+    word-break: break-all;
+    text-decoration: underline;
+    line-height: 1;
+    color: $body-font-color;
+    display: block;
+    text-align: center;
+
+    &:hover {
+        color: darken($body-font-color, 20);
+    }
+}

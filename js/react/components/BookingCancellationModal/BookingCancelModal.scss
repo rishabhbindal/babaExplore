@@ -1,0 +1,8 @@
+@import '../../../../scss/_settings.scss';
+
+.BookingCancelModal__cancelbtn {
+    margin: 0.5rem;
+    @include breakpoint(medium) {
+        width: 45%;
+    }
+}

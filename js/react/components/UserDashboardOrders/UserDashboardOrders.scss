@@ -1,0 +1,72 @@
+@import './../../../../scss/_settings.scss';
+
+.UserDashboardOrders {
+    margin-top: 1rem;
+}
+
+.UserDashboardOrders--Header {
+    font-size: 1.25rem;
+    font-weight: 900;
+}
+
+.UserDashboardOrders--title {
+    font-size: 2.375rem;
+    font-weight: 900;
+}
+.UserDashboardOrders--Header-item {
+    color: $body-font-color;
+}
+
+.UserDashboardOrders--Header-item:hover, .UserDashboardOrders--Header-activeItem {
+    color: $primary-color;
+}
+
+.UserDashboardOrderItem {
+    margin-top: 1rem;
+}
+
+.UserDashboardOrderItem-collage, .UserDashboardOrderItem-summary {
+    @include grid-col(6);
+    @include grid-col-end();
+    @include breakpoint(small only) {
+        @include grid-col(12);
+    }
+}
+
+.UserDashboardOrderItem-summary {
+    @include breakpoint(medium only) {
+        padding: 0 !important;
+    }
+}
+
+.UserDashboardOrderItem--title {
+    padding: 0;
+    font-weight: 300;
+    line-height: 1.1;
+    margin: 0 0 0.3em;
+    color: $body-font-color;
+}
+
+.UserDashboardOrderItem--location {
+    color: #979797;
+    line-height: 1.1;
+}
+
+.UserDashboardOrderItem--PaymentDetails {
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #6c6c6c;
+}
+
+.UserDashboardOrderItem--details {
+    font-size: 0.8rem;
+    color: #6c6c6c;
+    margin-bottom: 0.2rem;
+    font-weight: 700;
+    line-height: 1.4rem;
+}
+
+.UserDashboardOrderItem {
+    margin-bottom: 4rem;
+}

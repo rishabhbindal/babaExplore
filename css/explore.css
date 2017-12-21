@@ -1,0 +1,1201 @@
+.move-right-city {
+    float: right !important;
+}
+
+.features>li img {
+    height: 50px;
+    width: 50px;
+    margin: 6px;
+}
+
+.feature-bullets>li img {
+    display: inline-block;
+    margin-right: 0.5rem;
+    margin-top: 0.5rem;
+    width: 25px;
+    height: 25px;
+    vertical-align: middle;
+}
+
+.avatar-holder .avatar .image img {
+    height: 5rem;
+    width: 5rem;
+}
+
+.person .avatar .image img {
+    height: 6rem;
+    width: 6rem;
+}
+
+.show:checked ~ .summary {
+    height: auto;
+}
+
+.show ~ .summary {
+    height: 75px;
+    overflow: hidden;
+}
+
+.show:checked ~ .minimumData {
+    display: none!important;
+}
+
+.loading-search {
+    text-align: center;
+}
+
+.folded-div p {
+    max-height: 250px;
+    overflow: hidden;
+}
+
+.sh-content>label {
+    display: none;
+}
+
+.folded-div>label {
+    display: block !important;
+    text-transform: uppercase;
+    color: #fe5459;
+    text-decoration: none;
+    line-height: inherit;
+    cursor: pointer;
+    text-align: center;
+    cursor: pointer;
+}
+
+.intl-tel-input {
+    width: 100%;
+}
+
+.errormsg {
+    /* background-color: red;
+    width: 100%;
+    padding: 0 10px;*/
+}
+
+.successmsg {
+    background-color: green;
+    width: 100%;
+    padding: 0 10px;
+}
+
+.top-members-div {
+    cursor: pointer;
+}
+
+.property-list .images img,
+.carousel-holder img,
+.single-gallery img {
+    cursor: pointer;
+}
+
+.owl-carousel {
+    background-color: gainsboro;
+}
+
+.panorama__icon {
+    display: block;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(10, 10, 10, 0.6);
+    padding: 2rem;
+    border-radius: 100%;
+}
+
+.panorama__svg {
+    fill: #fefefe;
+}
+
+.panorama__title {
+    color: #fefefe;
+}
+
+.panorama__icon:hover .panorama__svg {
+    fill: #fe252b;
+}
+
+.panorama__icon:hover .panorama__title {
+    color: #fe252b;
+}
+
+.owl-carousel .owl-stage {
+    display: flex;
+    align-items: center;
+}
+
+.pano__close-button {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    color: white;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.2);
+    font-weight: bold;
+    font-size: 2.5em;
+}
+
+.owl-carousel .owl-item img {
+    transform-style: flat;
+}
+
+.homepage-communities .owl-theme {
+    background: #ececec;
+}
+
+.testimonial-full .owl-theme .owl-nav[class*='owl-']:hover,
+.testimonial-full .owl-theme .owl-nav[class*='owl-'] {
+    background: transparent;
+}
+
+.owl-carousel.owl-theme .owl-nav [class*='owl-'] {
+    background: transparent;
+}
+.owl-carousel.owl-theme .owl-nav [class*='owl-'].disabled::after {
+    background: transparent;
+}
+
+.owl-theme .owl-nav div {
+    position: absolute;
+}
+
+.testimonial-full .owl-nav .owl-prev {
+    left: -45px;
+    top: 55px;
+}
+
+.owl-theme .owl-nav img {
+    max-width: 60px;
+}
+
+.testimonial-full .owl-nav .owl-next {
+    right: -45px;
+    top: 55px;
+}
+
+.testimonial-full .owl-carousel {
+    background: #f6f6f6
+}
+
+.usp-content>label {
+    cursor: pointer;
+    display: block;
+    text-transform: uppercase;
+    font-weight: 900;
+    color: #fe5459;
+    text-decoration: none;
+    line-height: inherit;
+    cursor: pointer;
+}
+
+.people .person .p-info p,
+q p {
+    display: inline;
+}
+
+.search-filter input[readonly] {
+    background-color: #fefefe;
+}
+
+/*Hack to style check-in check-out dates correctly*/
+/*Styles were bound to fieldset>div*/
+.search-filter .date-range div {
+    width: 33.33%;
+    float: left;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.login-modal .form .form-group label {
+    width: 49%;
+    display: inline-block;
+}
+
+.login-modal .form .form-group button {
+    display: block;
+    background-color: #fe5459;
+    color: #fff;
+    width: 100%;
+    font-weight: 700;
+    margin: 0;
+    text-align: center;
+    line-height: 1;
+    cursor: pointer;
+    height: 40px;
+}
+
+.notarrow:after {
+    display: none !important;
+}
+
+.sweet-alert label {
+    font-size: 1.2rem;
+}
+
+.side .person,
+.side h6 {
+    cursor: pointer;
+}
+
+@media(max-width: 480px) {
+    .side-bar.booking-panel {
+        z-index: 100;
+    }
+}
+
+.coupon.successmsg {
+    padding: 0 !important;
+    color: #ffffff;
+    font-weight: 700;
+    text-align: center !important;
+    font-size: 1.25rem;
+}
+
+.picture {
+    height: auto;
+}
+
+.quantity-price .addValue {
+    border-radius: 50%;
+    background: #ECECEC;
+    color: #000;
+    width: 24px;
+    height: 24px;
+    line-height: 24px;
+    padding: 0;
+    font-weight: 600;
+    font-size: 16px;
+    border-style: none;
+    float: right;
+}
+
+.quantity-price .subValue {
+    border-radius: 50%;
+    background: #ECECEC;
+    color: #000;
+    width: 24px;
+    height: 24px;
+    line-height: 24px;
+    display: inline;
+    padding: 0;
+    font-weight: 600;
+    font-size: 16px;
+    border-style: none;
+    float: right;
+}
+
+.quantity-price .value {
+    width: 100%;
+    max-width: 45px;
+    height: 24px;
+    text-align: center;
+    margin: 0 10px;
+    border: 0;
+    display: inline-block;
+    border-bottom: 1px solid #2F2929;
+    background: transparent;
+    float: right;
+}
+
+.property-state {
+    float: right;
+    font-weight: 600;
+}
+
+.no-property-list {
+    text-align: center;
+    font-weight: 600;
+    font-size: 1.50rem;
+}
+
+.description .errormsg {
+    margin-bottom: 5px;
+}
+
+.intl-tel-input .country-list .divider {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.intl-tel-input .country-list {
+    text-align: left;
+}
+
+.removeMargin {
+    margin: 0 !important;
+    max-width: 100% !important;
+}
+
+.rating {
+    display: inline-block;
+}
+
+.search-filter .big-city-selector {
+    z-index: 21;
+}
+
+.facebook {
+    background-color: #3B5998 !important;
+}
+
+#extrainfo-modal .radio-group {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+    border: 1px solid #cacaca;
+    border-radius: 2px;
+}
+
+#extrainfo-modal .radio-group label {
+    display: table-cell;
+    font-variant: normal;
+    text-transform: none;
+    font-weight: 300;
+    font-size: 1rem;
+    line-height: 1.7;
+    border-right: 1px solid #cacaca;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    padding: 0.5rem;
+    color: #6c6c6c;
+}
+
+#extrainfo-modal .radio-group input {
+    display: none;
+}
+
+#extrainfo-modal .radio-group input[type=radio]:checked+label {
+    font-weight: 700;
+    color: #fe5459;
+}
+
+.widget-heading a {
+    cursor: auto;
+}
+
+.widget-heading span {
+    cursor: pointer;
+}
+
+.clearfix:after {
+    clear: both;
+    content: ".";
+    display: block;
+    font-size: 1px;
+    height: 0;
+    line-height: 0;
+    visibility: hidden;
+}
+
+.error-block {
+    border: 1px #fe5459 solid;
+}
+
+#extrainfo-modal .title img {
+    border-radius: 50%;
+}
+
+#how-we-are-modal .window .body .item-block {
+    width: 33%;
+    padding: 1rem;
+    margin: 0;
+    display: inline-block;
+    vertical-align: top;
+}
+
+#how-we-are-modal .window {
+    max-width: 80%;
+    border: 1px solid #fe5459;
+    border-radius: 15px;
+}
+
+#payment-success-modal label {
+    width: 49%;
+    display: inline-block;
+}
+
+.details .street input {
+    width: 100%;
+    margin-top: 10px;
+    padding: 9px;
+}
+
+.linkedin-icon img {
+    width: 20px;
+}
+
+.search-filter button {
+    background-color: #fe2228;
+}
+
+.user-profile-widget>.image {
+    cursor: pointer;
+}
+
+.user-profile-widget>.image>svg {
+    position: absolute;
+    top: 30%;
+    left: 30%;
+}
+
+.about-field textarea {
+    margin: 0px;
+}
+
+.about-field label:last-child {
+    margin-bottom: 10px;
+    text-transform: none !important;
+    font-variant: normal;
+}
+
+.about-field span {
+    font-size: 20px;
+    color: red;
+    vertical-align: baseline;
+}
+
+.right-label {
+    float: right;
+}
+
+.left-label {
+    float: left;
+}
+
+.more-review {
+    text-align: center;
+}
+
+.more-review label {
+    color: #fe5459;
+    cursor: pointer;
+}
+
+.main-body .callout.alert {
+    margin: 0;
+}
+
+input:disabled,
+input[readonly],
+textarea:disabled,
+textarea[readonly] {
+    background-color: #ffffff;
+}
+
+.relative-box {
+    position: relative;
+}
+
+.cross-on-city {
+    position: absolute;
+    top: 15px;
+    left: 45%;
+    font-size: 1rem;
+    color: #cccccc;
+    line-height: 1.3;
+    z-index: 9;
+    cursor: pointer;
+}
+
+.relative-box span {
+    position: absolute;
+    right: 0;
+    top: 15px;
+    font-size: 1rem;
+    color: #cccccc;
+    line-height: 1.3;
+    z-index: 9;
+    cursor: pointer;
+}
+
+.modal {
+    overflow-y: auto;
+}
+
+.modal .body {
+    background-color: #fff;
+}
+
+#how-we-are-modal.modal .body {
+    background-color: transparent;
+}
+
+.no-hand-sign {
+    cursor: default;
+}
+
+@media(max-width: 768px) {
+    #how-we-are-modal .window .body {
+        overflow: scroll;
+        height: 100%;
+    }
+    #how-we-are-modal .window .body .item-block {
+        width: 100%;
+    }
+    #how-we-are-modal .window {
+        max-width: 100%;
+    }
+    .map-view-button {
+        display: none;
+    }
+    .embed.thin {
+        height: auto;
+        padding-bottom: 0%;
+    }
+    .cross-on-city {
+        left: 90%;
+    }
+}
+
+@media screen and (min-width: 64.0625em) {
+    .main-body .widget h2 {
+        font-size: 2.2rem;
+    }
+}
+
+input.picture {
+    overflow: hidden;
+    padding: 0 0 0 80px;
+    background: url(/images/icon-add-image-gray.png) center center no-repeat transparent;
+    height: 3rem;
+    width: 3rem;
+}
+
+.add-image-content .add-image .image input#picture {
+    height: 3rem;
+    width: 3rem;
+}
+
+.add-image-content {
+    position: relative;
+}
+
+.add-image-content .add-image {
+    position: absolute;
+    right: 1rem;
+    top: -2rem;
+}
+
+.dob {
+    width: 80px;
+    text-align: center;
+    display: inline-block;
+}
+
+.dob-yyyy {
+    width: 90px;
+    margin-left: -3px;
+}
+
+.email, .dob-yyyy {
+    border-left: 1px solid #cacaca;
+}
+
+.email.error-block, .dob-yyyy.error-block {
+    border-left: 1px #fe5459 solid;
+}
+
+/*Hide spinner in input number*/
+.sign-up-form input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/*https://jwatt.org/2013/12/11/input-type-number-coming-to-mozilla*/
+.sign-up-form input[type=number] {
+    -moz-appearance: textfield;
+}
+
+.modal .window .title img.user_profile_img {
+    border-radius: 50%;
+    height: 200px;
+    width: 200px;
+}
+
+.fieldrow .field img.user_profile_img {
+    border-radius: 50%;
+    height: 200px;
+    width: 200px;
+}
+
+.fieldrow .field input.picture{
+    position: relative;
+    right: 5rem;
+    top: 6rem;
+}
+
+@media(max-width: 768px)
+    and (min-width:481px){
+    .fieldrow .field input.picture {
+        position: relative;
+        top: -3rem;
+        right: -7rem;
+    }
+}
+
+@media(max-width:480px){
+    .fieldrow .field input.picture {
+        position: relative;
+        top: 6rem;
+    }
+}
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+    cursor: help;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 220px;
+    background-color: white;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    color: #3e5241;
+    border-style: solid;
+    border-color: #3e5241;
+    font-family:sans-serif;
+    border-width: 0.5px;
+    font-size: 10px;
+
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+}
+
+.tooltiptext.right-edge {
+    right: 0px;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+
+/*
+    this rule was added to properly style links in the
+    startuptour listing page
+*/
+.l-content .content-columns p {
+    word-wrap: break-word;
+}
+
+.overlay-loader {
+    position: fixed;
+    display: none;
+    width: 400px;
+    left: 45%;
+    top: 45%;
+    background-color: #fff;
+    border: solid 1px #ccc;
+    padding: 10px;
+    z-index: 1000;
+}
+
+@media(max-width: 768px)
+    and (min-width:481px){
+    .overlay-loader {
+    width: 300px;
+    left: 35%;
+    }
+}
+
+@media(max-width: 480px){
+    .overlay-loader {
+    width: 300px;
+    left: 15%;
+    }
+}
+
+.loader {
+    width: 100%;
+    text-align: center;
+    color: #EA8D10;
+    font-size: 20px;
+}
+.loader::before {
+    background: url('/img/loading.gif') no-repeat;
+    content: "";
+    display: block;
+    width: 32px;
+    height: 32px;
+    margin: 10px auto;
+}
+
+.experience-image {
+    cursor: pointer;
+    background-size: 100% 100%;
+}
+
+@media screen and (min-width: 40em) {
+    .experience-image {
+        background-size: 65% 100%;
+    }
+}
+
+/* hack to remove padding in lazy loaded image to prevent visual glitches */
+.afkl-img-ratio-1-1 {
+    padding-bottom: 0 !important;
+}
+
+/*override hide left border for phone number on extrainfo dialog*/
+#extrainfo-modal #phone_number {
+    border-left: 1px solid rgb(202, 202, 202);
+}
+
+#extrainfo-modal #phone_number.error-block:focus {
+    border-left: 1px solid black;
+}
+
+#extrainfo-modal #phone_number.error-block {
+    border-left: 1px #fe5459 solid;
+}
+
+@media screen and (min-width: 0em) and (max-width: 39.9375em) {
+    aside .bp-content {
+        height: 100%;
+        overflow-y: scroll;
+    }
+
+    .modal .window {
+        overflow-y: scroll;
+        pointer-events: all;
+    }
+}
+
+.event-carousel div.image-panel {
+    height: 400px;
+}
+
+.event-carousel .owl-nav .owl-next {
+    right: -20px;
+    top: 160px;
+}
+
+.event-carousel .owl-nav .owl-prev {
+    left: -20px;
+    top: 160px;
+}
+
+.request {
+    margin: .5rem auto;
+}
+
+.request, .request td, .request th {
+    padding: .2rem;
+    border: 1px solid;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+.modify-request-body {
+    text-align: center;
+}
+
+.bolder {
+    font-weight: 600;
+}
+
+header {
+    height: 482px;
+    transition: background-image 1s linear;
+}
+
+@media screen and (min-width: 0em) and (max-width: 39.9375em) {
+    header {
+        height: 425px;
+    }
+}
+
+header.header-bar {
+    height: auto;
+}
+
+.carousel-controls {
+    height: 170px;
+}
+
+.arrow {
+    display: none;
+
+    position: relative;
+    top: 280px;
+
+    height: 50px;
+    width: 50px;
+
+    z-index: 11;
+
+    cursor: pointer;
+}
+
+@media screen and (min-width: 0em) and (max-width: 39.9375em) {
+    .arrow {
+        top: 150px;
+    }
+}
+
+header:hover .arrow {
+    display: inline-block;
+}
+
+.arrow-right {
+    float: right;
+}
+
+.arrow-left {
+    float: left;
+}
+
+@media screen and (min-width: 40rem) {
+    .single-listing .owl-nav {
+        display: block;
+    }
+}
+
+.single-listing .owl-nav img {
+    height: 50px;
+    width: 50px;
+}
+
+.single-listing .owl-nav .owl-prev {
+    bottom: 100px;
+    left: -5px;
+}
+
+.single-listing .owl-nav .owl-next {
+    bottom: 100px;
+    right: -5px;
+}
+
+.single-listing .owl-dots {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    padding: 0.125rem 0.5rem;
+}
+
+.opening {
+    position: absolute;
+    padding: 0;
+    margin-top: -58px;
+    width: 100%;
+}
+
+.opening:last-child:not(:first-child) {
+    float: none;
+}
+
+.panorama {
+    vertical-align: -webkit-baseline-middle;
+
+}
+
+@media screen and (max-width: 40rem) {
+    .panorama {
+        margin-top: 10px;
+    }
+}
+
+#pano {
+    z-index: 1001;
+}
+
+#pano .window {
+    height: 100%;
+    width: 100%;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+
+    transform: none;
+
+    max-width: none;
+
+    background: #2b2b2b;
+
+    overflow-y: scroll;
+}
+
+#pano iframe {
+    height: 100%;
+    width: 100%;
+}
+
+#pano .close-button {
+    position: fixed;
+
+    right: 0;
+    top: 0;
+
+    color: white;
+    background: rgba(0, 0, 0, 0.2);
+}
+
+#pano-grid .grid {
+    padding-top: 1rem;
+
+    position: absolute;
+
+    top: 1rem;
+    bottom: 1rem;
+    left: 1rem;
+    right: 1rem;
+
+    background: #ececec;
+
+    overflow-y: scroll;
+}
+
+#pano-grid .close-button {
+    position: fixed;
+
+    top: 1rem;
+    right: 1rem;
+
+    color: white;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+@media screen and (min-width: 40rem) {
+    #pano-grid .grid {
+        box-sizing: border-box;
+        padding: 1rem;
+    }
+}
+
+#pano-grid .cl-item img {
+    cursor: pointer;
+}
+
+#pano-grid hr {
+    margin: 2rem auto;
+}
+
+@media screen and (max-width: 40rem) {
+    #pano-grid hr {
+        margin: 1rem auto;
+    }
+}
+
+#pano-grid .row:first-child {
+    margin-top: 0;
+}
+.orderFail {
+    text-align: center;
+}
+
+.orderFail h5 {
+    color: #393939;
+}
+
+.strikethrough {
+    text-decoration: line-through;
+}
+
+.information .price .strikethrough {
+    display: inline-block;
+}
+
+.information .price .free {
+    display: inline-block;
+    font-size: 1rem;
+    margin-right: 1rem;
+    max-width: 100px;
+}
+
+.sortContainer {
+    float: right;
+    margin-top: 1rem;
+    text-align: center;
+    width: 50%;
+}
+
+@media screen and (max-width: 40rem) {
+    .sortContainer {
+        width: 100%;
+    }
+}
+
+.sortContainer select {
+    width: 20%;
+    vertical-align: baseline;
+    font-size: .8rem;
+    height: 2.3rem;
+    padding-left: 12px;
+}
+
+@media screen and (max-width: 40rem) {
+    .sortContainer select {
+        width: 35%;
+        text-align-last: center;
+        padding-left: 0;
+    }
+}
+
+.hostSelection {
+    margin-bottom: .5rem;
+    clear: both;
+}
+
+.hostSelection .caption {
+    float: left;
+
+    font-size: 1rem;
+    margin-left: 1rem;
+
+    width: 57%;
+
+    text-align: left;
+}
+
+.hostSelection .requested {
+    float: right;
+    width: 50px;
+    margin: 0;
+}
+
+.bookables--disabled input,
+.bookables--disabled select {
+    pointer-events: none;
+}
+
+.check-in-out--disabled input,
+.check-in-out--disabled select {
+    pointer-events: none;
+}
+
+.images .elt-image:first-of-type {
+    width: 66.6666666667%;
+    float: left;
+}
+
+.images .elt-image {
+    width: 33.3333333333%;
+    float: right;
+}
+
+@media screen and (max-width: 40rem) {
+    .property-list .images > .elt-image {
+        width: 33.3333333333%;
+        float: left;
+    }
+}
+
+/**
+ * NOTE: Hack to override .images img style, which sets the width for
+ * the img.
+ */
+.elt-image img {
+    width: 100% !important;
+}
+
+.resendLink {
+    width: 48%
+}
+
+@media screen and (max-width: 40rem) {
+    .resendLink {
+        width: 100%;
+    }
+}
+
+a span {
+    color: #ececec;
+}
+
+.special-header h1 .first-name {
+    float: right;
+}
+
+/*the max-width is a hack to get word breaks on iphone 5*/
+@media screen and (max-width: 20rem) {
+    .special-header h1 .first-name {
+        word-break: break-all;
+    }
+}
+
+.share-listing, .share-community, .share-results {
+    margin-top: 2rem;
+}
+
+.share-listing h5 {
+    margin-bottom: 1rem;
+}
+
+.share-community .a2a_kit, .share-results .a2a_kit {
+    float: right;
+    margin-right: 1rem;
+}
+
+@media screen and (max-width: 40rem) {
+    .share-community .a2a_kit, .share-results .a2a_kit {
+        float: none;
+        margin-left: 1rem;
+    }
+
+    .share-community, .share-results {
+        margin-top: 1rem;
+    }
+}
+
+a .a2a_svg { -webkit-filter: invert(70%); filter: invert(70%); }
+
+.bp-content .check-in-out input::-webkit-input-placeholder {
+    color: black;
+    font-weight: bold;
+}
+
+.bp-content .check-in-out input::-ms-input-placeholder {
+    color: black;
+    font-weight: bold;
+}
+.bp-content .check-in-out input:-ms-input-placeholder {
+    color: black;
+    font-weight: bold;
+}
+
+.bp-content .check-in-out input::placeholder {
+    color: black;
+    font-weight: bold;
+}
+
+body {
+    -webkit-font-smoothing: antialiased;
+}
+
+.text-align--center {
+    text-align: center;
+}
+
+.text-align--right {
+    text-align: right;
+}
+
+.text-align--left {
+    text-align: left;
+}
+
+.margin-vertical-1rem {
+    margin: 1rem 0;
+};
+
+.padding-left-1rem {
+    margin-left: 1rem;
+}
+
+.row {
+    @include grid-row;
+    //padding: 0 $global-margin;
+    .row {
+        @include grid-row-nest;
+    }
+}

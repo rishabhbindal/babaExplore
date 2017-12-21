@@ -1,0 +1,55 @@
+@import '../../../../scss/_settings.scss';
+
+.EventReview__wrapper {
+    @include breakpoint(medium) {
+        display: flex;
+    }
+}
+
+.EventReview__main {
+    border-bottom: 1px solid $light-gray;
+}
+
+.EventReview__main--last {
+    border-bottom: none;
+}
+
+.EventReview__name {
+    font-weight: $global-weight-semi;
+    font-size: 1.2rem;
+}
+
+.EventReview__stayDate {
+    font-style: italic;
+    color: $icon-color;
+    margin-left: .5rem;
+}
+
+.EventReview__reviewer {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    @include breakpoint(medium) {
+        margin-bottom: 0;
+    }
+}
+
+.EventReview__avatar--mobile {
+    display: inline-block;
+    margin-right: .5rem;
+    @include breakpoint(medium) {
+        display: none;
+    }
+}
+.EventReview__avatar--medium {
+    display: none;
+    @include breakpoint(medium) {
+        margin-right: .5rem;
+        display: block;
+    }
+}
+
+.EventReview__content {
+    color: $icon-color;
+    padding: 0 0 $global-margin/2 0;
+}

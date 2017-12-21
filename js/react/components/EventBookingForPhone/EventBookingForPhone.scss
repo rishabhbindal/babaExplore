@@ -1,0 +1,38 @@
+@import '../../../../scss/_settings.scss';
+
+.EventBookingForPhone__floatingButton {
+    position: fixed;
+    font-size: 1.1rem;
+    z-index: 900;
+    bottom: 0.5rem;
+    left: 50%;
+    transform: translateX(-50%) scaleZ(1);
+    display: inline-block;
+    text-align: center;
+    cursor: pointer;
+    -webkit-appearance: none;
+    -webkit-transition: background-color 0.25s ease-out, color 0.25s ease-out;
+    transition: background-color 0.25s ease-out, color 0.25s ease-out;
+    vertical-align: middle;
+    border: 1px solid transparent;
+    border-radius: 2px;
+    padding: $button-padding;
+    margin: 0 0 $global-margin 0;
+    background-color: $primary-color;
+    color: $white;
+    font-weight: $global-weight-bold;
+
+    @include breakpoint(medium) {
+        display: none;
+    }
+}
+
+.EventBookingForPhone__header {
+    background: $primary-color repeat center;
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1NiIgaGVpZ2h0PSIxMDAiPgo8cmVjdCB3aWR0aD0iNTYiIGhlaWdodD0iMTAwIiBmaWxsPSIjZmU1NDU5Ij48L3JlY3Q+CjxwYXRoIGQ9Ik0yOCA2NkwwIDUwTDAgMTZMMjggMEw1NiAxNkw1NiA1MEwyOCA2NkwyOCAxMDAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZhNDg3OSIgc3Ryb2tlLXdpZHRoPSIyIj48L3BhdGg+CjxwYXRoIGQ9Ik0yOCAwTDI4IDM0TDAgNTBMMCA4NEwyOCAxMDBMNTYgODRMNTYgNTBMMjggMzQiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZhNDg3MyIgc3Ryb2tlLXdpZHRoPSIyIj48L3BhdGg+Cjwvc3ZnPg==");
+    padding: 4rem 2rem 1rem;
+    color: $white;
+    display: flex;
+    vertical-align: top;
+    padding-top: 1rem;
+}

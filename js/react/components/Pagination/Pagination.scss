@@ -1,0 +1,42 @@
+@import '../../../../scss/_settings.scss';
+.Pagination {
+    text-align: center;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin: 1rem 0;
+    clear: both;
+    li {
+        display: inline-block;
+        padding: 10px;
+        a {
+            color: $body-font-color;
+            outline: none;
+        }
+    }
+
+    li.disabled:after {
+        background: transparent;
+    }
+
+    li.disabled a {
+        color: $medium-gray;
+        background: transparent;
+    }
+
+    li.previous, li.next {
+        border: 1px solid $body-font-color;
+    }
+
+    li.previous.disabled, li.next.disabled {
+        border: 1px solid $medium-gray;
+    }
+
+    .Pagiantion-Break {
+        cursor: default;
+    }
+
+    li.Pagination-Active a{
+        color: $primary-color;
+        font-weight: 700;
+    }
+}

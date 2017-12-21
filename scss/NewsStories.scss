@@ -1,0 +1,31 @@
+@import './_settings.scss';
+
+.news-stories {
+    background-color: $news-stories-bg;
+}
+
+.news-stories__title {
+    padding: $global-padding 0;
+    text-align: center;
+    h2 {
+        font-size: 2em !important;
+    }
+}
+
+.news-item__content_wrapper {
+    @include grid-col(6);
+}
+
+.news-item__image {
+    border-radius: 6px 6px 0 0;
+    box-shadow: $big-shadow;
+}
+
+.news-item__title {
+    font-weight: $global-weight-semi;
+}
+
+.news-item__text {
+    font-size: 0.85rem;
+    margin-bottom: $header-margin-bottom;
+}

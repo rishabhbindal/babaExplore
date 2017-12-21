@@ -1,0 +1,47 @@
+<div>
+<header ng-class="{'header-bar':isHomePage == false}"
+        afkl-lazy-image="{{getFormattedSrcset(headerImage['image960x640'], headerImage['image1640x1100'], headerImage['image1640x1100'])}}"
+        afkl-lazy-image-options="{ 'background': true }"
+        >
+    <div class="topbar">
+        <a ng-click="goToHome()" class="logo">
+            <img src="images/explore-logo.png" alt="Explore Life Traveling">
+        </a>
+        <div class="back-link" ng-if="isShowBackButton">
+            <a ng-click="goToSearch({})">« back to search</a>
+        </div>
+        <nav>
+            <a href="/events">Experiences</a>
+        </nav>
+        <nav>
+            <a ng-click="showListYourPropertyMessage()">List your property</a>
+            <a ng-if="alreadyLogin == 0" data-open="login-modal" data-init="modal">Log In</a>
+            <a ng-if="alreadyLogin == 1" ng-click="goToUserDashboard();" class="user-button">
+                <span class="ub-image">
+                    <img
+                        ng-src="{{userDetails.thumbnail || userDetails.social_profile_picture || 'images/user.jpg'}}"
+                        onerror="this.onerror=null;this.src='images/user.jpg';"
+                        alt="{{userDetails.full_name}}"
+                        >
+                </span>
+                {{userDetails.full_name}}
+            </a>
+            <a ng-if="alreadyLogin == 1" ng-click="logout();" class="button">log out</a>
+        </nav>
+    </div>
+    <div class="carousel-controls" ng-show="isHomePage">
+        <img class="arrow arrow-left" src="images/angle-left.png" ng-click="prevHeaderImage()" />
+        <img class="arrow arrow-right" src="images/angle-right.png" ng-click="nextHeaderImage()" />
+    </div>
+</header>
+    <div ng-if="isHomePage" class="opening">
+        <a href=""
+           class="button"
+           data-open="how-we-are-modal"
+           data-init="modal"
+           ng-click="openHowWeAre()"
+           >
+            How are we different
+        </a>
+    </div>
+</div>

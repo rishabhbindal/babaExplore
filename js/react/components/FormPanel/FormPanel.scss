@@ -1,0 +1,16 @@
+@import '../../../../scss/_settings.scss';
+
+.FormPanel {
+    background: $white;
+    border: 1px solid $medium-gray;
+    box-shadow: $big-shadow;
+    text-align: center;
+
+    padding: $global-padding/2;
+    margin-bottom: $global-margin;
+
+    @include breakpoint(medium) {
+        padding: $global-padding;
+        margin-bottom: $global-padding;
+    }
+}

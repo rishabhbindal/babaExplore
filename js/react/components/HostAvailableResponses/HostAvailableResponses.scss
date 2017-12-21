@@ -1,0 +1,121 @@
+@import '../../../../scss/_settings.scss';
+
+.rc-collapse.booking__accordion {
+    border-color: rgba(254, 84, 89, 0.42);
+    .rc-collapse-header {
+        font-size: 14px;
+        font-weight: 500;
+        color: #3e5241;
+    }
+}
+
+.host__accordion {
+    .rc-collapse-item-active .rc-collapse-header {
+        border-bottom: 1px solid #d9d9d9 !important;
+    }
+
+    .rc-collapse-header {
+        background: #FFF;
+        i.arrow {
+            display: none !important;
+        }
+    }
+
+    .host_quantities {
+        @include grid-col(2);
+    }
+
+    .host__user__info, .host__property__info {
+        @include grid-col(3);
+        height: 38px;
+        overflow-y: hidden;
+        .UserAvatar {
+            width: 32px;
+            height: 32px;
+            float: left;
+            margin-top: 1px;
+            img {
+                width: 20px;
+                height: 20px;
+                border-radius: 50px;
+                float: left;
+                margin: 5px 3px;
+            }
+        }
+        .host__name {
+            margin-left: -15px;
+        }
+    }
+
+    @include breakpoint(small only) {
+        .host__property__info {
+            @include grid-col(6);
+        }
+    }
+
+    .host__date {
+        @include grid-col(4)
+    }
+
+    .host__user__info, .host__property__info, .host__quantities, .host__date {
+        float: left;
+        padding: 0 5px;
+        font-size: 14px;
+    }
+
+    .host__bookings, .host__message, .host__info, .host__form {
+        @include grid-col(6);
+    }
+
+    .host__info {
+        float: right;
+        padding: 0 10px;
+        .UserInfo {
+            margin: 0;
+        }
+    }
+
+    .host__message {
+        .title {
+            font-weight: 700;
+        }
+    }
+
+    @include breakpoint(small only) {
+        .host__bookings, .host__info, .host__message, .host__form {
+            @include grid-col(12);
+        }
+    }
+
+    hr {
+        padding: 10px;
+        margin: 15px;
+    }
+
+    .host__form {
+        text-align: center;
+    }
+
+    .host__communities, .host__message, .host__form {
+        font-size: 0.75rem;
+        .host__reject {
+            margin-left: 10px;
+        }
+        textarea, input {
+            font-size: 0.75rem;
+            border-color: #d9d9d9;
+            resize: none;
+        }
+        .error__message__active {
+            border-color: red;
+            display: block;
+            margin: 0;
+        }
+
+        div.error__message__active {
+            margin: 0 0 1rem;
+            color: red;
+        }
+    }
+
+}

@@ -1,0 +1,26 @@
+@import '../../../../scss/_settings.scss';
+
+.MapView__propertylist {
+    @include grid-col(12);
+
+    & .tag-type {
+        z-index: 0;
+    }
+
+    @include breakpoint(medium) {
+        @include grid-col-size(6);
+        @include grid-layout(2, '.fl-item');
+    }
+
+    @include breakpoint(xxlarge) {
+        @include grid-layout(3, '.fl-item');
+    }
+}
+
+.MapView__map__container {
+    z-index: 9;
+    margin: 0.75rem;
+    @include breakpoint(medium) {
+        margin-left: 1.5rem;
+    }
+}

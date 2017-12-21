@@ -1,0 +1,194 @@
+@import '../../../../scss/_settings.scss';
+@import '../../../../scss/_base.scss';
+@import '../../../../scss/_layout.scss';
+@import '../../../../scss/_type.scss';
+
+.carousel-panel
+{
+  padding: $global-padding/2;
+  overflow: hidden;
+
+  .section-title
+  {
+    padding-top: 0;
+  }
+
+  .panel-flush
+  {
+    margin-left: -$global-padding;
+    margin-right: -$global-padding;
+  }
+
+  .fl-item
+  {
+    padding-left: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+
+    a>.image
+    {
+      box-shadow: $big-shadow;
+    }
+
+    .fl-content
+    {
+      .title
+      {
+        color: $white;
+        font-weight: $global-weight-medium;
+      }
+
+      .location
+      {
+        color: rgba($white, 0.6);
+        font-weight: $global-weight-medium;
+      }
+    }
+  }
+
+  @include breakpoint(medium)
+  {
+    padding: $global-padding*1.5;
+
+    .panel-flush
+    {
+      margin-left: -$global-padding*1.5;
+      margin-right: -$global-padding*1.5;
+    }
+  }
+}
+
+.text-panel
+{
+  background: $white;
+  padding: $global-padding/2;
+
+  .icon
+  {
+    font-size: 3rem;
+  }
+
+  h4
+  {
+    font-weight: $global-weight-medium;
+  }
+
+  @include breakpoint(medium)
+  {
+    padding: $global-padding*1.5;
+  }
+}
+
+
+.featured-listings, .map-listings, .carousel-listings
+{
+  list-style: none;
+  margin: 0;
+}
+
+.fl-item
+{
+  position: relative;
+  padding: $global-margin;
+
+  .image
+  {
+    position: relative;
+  }
+}
+
+.map-listings
+{
+  .fl-item
+  {
+    padding-top: 0;
+    margin-bottom: $global-margin;
+  }
+}
+
+.fl-content
+{
+  position: relative;
+
+  .avatar-holder
+  {
+    position: absolute;
+    right: $global-margin;
+    top: (4rem + rem-calc($global-margin)) * -1;
+  }
+
+  .title
+  {
+    font-family: $body-font-family;
+    padding: $global-margin/2 0 0;
+    font-weight: $global-weight-normal;
+    line-height: 1.1;
+    margin: 0 0 0.3em;
+    color: $body-font-color;
+  }
+
+  .location
+  {
+    font-family: $header-font-family;
+    color: $header-small-font-color;
+    line-height: 1.1;
+    margin: 0 0 0.3em;
+  }
+
+  .price
+  {
+    color: $body-font-color;
+    font-weight: $global-weight-semi;
+  }
+}
+
+@include breakpoint(medium)
+{
+  .featured-listings
+  {
+    @include grid-layout(3, '.fl-item');
+  }
+
+  .map-listings
+  {
+    @include grid-layout(2, '.fl-item');
+  }
+
+  .fl-content
+  {
+    margin-top: $global-margin;
+  }
+}
+
+@include breakpoint(large)
+{
+  .fl-content
+  {
+    .title
+    {
+      //padding-right: 5rem + $global-margin*2;
+
+      &:before
+      {
+        content:'';
+        display: block;
+        height: 2em;
+        width: 5rem + $global-margin*2;
+        float: right;
+      }
+    }
+
+    .avatar-holder
+    {
+      top: -2.5rem;
+    }
+  }
+}
+
+@include breakpoint(xxlarge)
+{
+  .map-listings
+  {
+    @include grid-layout(3, '.fl-item');
+  }
+}

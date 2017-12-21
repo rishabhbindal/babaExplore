@@ -1,0 +1,42 @@
+<div class="modal" ng-class="{'open': $ctrl.open}">
+    <div class="window">
+        <div class="title">
+            <h1>Insufficient Availability</h1>
+            <br><br><br><br>
+            <p>
+                You have requested more instances of some spaces than are available
+            </p>
+        </div>
+        <div class="body">
+
+            <div class="input-group">
+                <h6>Details :</h6>
+            </div>
+
+            <div class="input-group">
+                <label>Spaces selected :</label>
+                <table class="request">
+                    <thead>
+                        <tr>
+                            <th>Spaces</th>
+                            <th>Requested</th>
+                            <th>Available</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="bookable in $ctrl.bookables">
+                            <td>{{bookable.caption}}</td>
+                            <td>{{bookable.requested}}</td>
+                            <td>{{bookable.available}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="button-group">
+                <button type="button" class="button" ng-click='$ctrl.closePopUp()'>Ok</button>
+            </div>
+        </div>
+        <button class="close-button show-for-small-only" ng-click="$ctrl.closePopUp()">&times;</button>
+    </div>
+</div>

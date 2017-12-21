@@ -1,0 +1,90 @@
+@import '../../../../scss/_settings.scss';
+
+.MultiCarousel__flex__container {
+    display: flex;
+    align-items: center;
+    height: 210px;
+    @include breakpoint(medium) {
+        height: 460px;
+    }
+}
+
+.MultiCarousel__carousel__container {
+    // https://github.com/kenwheeler/slick/issues/1195
+    min-width: 0;
+    max-height: 220px;
+    display: inline-block;
+    @include breakpoint(medium) {
+        max-height: 400px;
+    }
+}
+
+.MultiCarousel__icon {
+    width: 2.3rem;
+    padding: 0.3rem;
+    cursor: pointer;
+    margin: 0.3rem;
+    background: #d8d6d6;
+    border-radius: 3px;
+    box-shadow: 0 0 1px #5e5d5a;
+}
+
+.MultiCarousel__icon__selected {
+    box-shadow: inset 0px 0px 5px #333;
+    background-color: white;
+}
+
+.MultiCarousel__icon:first-child {
+    margin-left: 0;
+}
+
+.MultiCarousel__panorama__title {
+    color: #fefefe;
+}
+
+.MultiCarousel__panorama__icon {
+    display: block;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(10, 10, 10, 0.6);
+    padding: 2rem;
+    border-radius: 100%;
+
+    &:hover .MultiCarousel__panorama__title {
+        color: #fe252b;
+    }
+
+    &:hover .MultiCarousel__panorama__svg {
+        fill: #fe252b;
+    }
+}
+
+.MultiCarousel__panorama__title {
+    color: #fefefe;
+}
+
+.MultiCarousel__panorama__svg {
+    fill: #fefefe;
+}
+
+svg, svg * {
+    pointer-events: all;
+}
+
+svg .icon-main {
+    fill: white;
+}
+
+svg .icon-background {
+    fill: gray;
+}
+
+.SvgButtonIcon {
+    color: white;
+    &:hover {
+        color: red;
+    }
+}

@@ -1,0 +1,35 @@
+@import './../../../../scss/_settings.scss';
+
+.UserProfileBadge {
+    padding: 1rem;
+    text-align: center;
+    @include breakpoint(medium only) {
+        @include grid-col(10, 1);
+    }
+}
+
+.UserProfileBadge-ProfilePic {
+    margin: 0 auto 1rem;
+}
+
+.UserProfileBadge-content {
+    @include breakpoint(small only) {
+        @include grid-col(7, 0);
+        text-align: left;
+    }
+}
+
+.UserProfileBadge--name {
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+.UserProfileBadge--ownerIntro {
+    font-size: 12.8px;
+    line-height: 1.5;
+    padding: 0 25px;
+    clear: both;
+    @include breakpoint(small only) {
+        text-align: left;
+        padding: 0;
+    }
+}

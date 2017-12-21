@@ -1,0 +1,137 @@
+@import '../../../../scss/_settings.scss';
+
+.site__footer
+{
+  background: $dark-gray;
+  padding: $global-margin;
+  margin: 0;
+}
+
+.f-main-menu
+{
+  margin-bottom: $global-margin;
+}
+
+.footer-menu
+{
+  margin-bottom: $global-margin;
+
+  &:last-child
+  {
+    margin-bottom: 0;
+  }
+
+  .label
+  {
+    color: $light-gray;
+    font-weight: $global-weight-bold;
+    text-transform: lowercase;
+    font-variant: small-caps;
+  }
+
+  nav
+  {
+    a
+    {
+      display: inline-block;
+      color: $light-gray;
+
+      &:hover
+      {
+        color: $white;
+      }
+
+      &:after
+      {
+        content:'/';
+        display: inline-block;
+        margin: 0 0.6rem;
+        color: $medium-gray;
+      }
+
+      &:last-child:after
+      {
+        display: none;
+      }
+    }
+  }
+}
+
+.social-menu
+{
+  @include grid-col(12);
+  margin-top: $global-margin*2;
+  text-align: center;
+
+  a
+  {
+    $sz: 2rem;
+    display: inline-block;
+    // background: url('../images/icons-social.png');
+    width: $sz;
+    height: $sz;
+    margin-right: 1rem;
+    background-size: cover;
+    opacity: 0.6;
+
+    $i: 1;
+    @while $i < 6
+    {
+      &:nth-child(#{$i})
+      {
+        background-position: -1 * $sz * ($i - 1);
+      }
+      $i: $i + 1;
+    }
+
+    &:hover
+    {
+      opacity: 1;
+    }
+  }
+}
+
+@include breakpoint(medium)
+{
+  footer
+  {
+    padding: $global-padding;
+  }
+
+  .f-main-menu
+  {
+    nav
+    {
+      a
+      {
+        margin-right: 1rem;
+      }
+    }
+  }
+
+  .footer-menu
+  {
+    @include grid-row-nest;
+    @include clearfix;
+
+    .label
+    {
+      @include grid-col(2);
+    }
+
+    nav
+    {
+      @include grid-col(10);
+    }
+  }
+
+  .social-menu
+  {
+    margin-top: $global-padding*2;
+  }
+}
+
+.home-page+footer
+{
+  margin-top: 0;
+}

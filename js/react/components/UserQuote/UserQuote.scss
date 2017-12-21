@@ -1,0 +1,22 @@
+@import '../../../../scss/_settings.scss';
+
+.UserQuote {
+    font-size: 0.8rem;
+    text-align: left;
+    p, q {
+        margin-bottom: 0.2rem;
+    }
+
+}
+
+.UserQuote_name {
+    font-size: 1rem;
+    font-weight: $global-weight-semi;
+    margin-bottom: 0.2rem;
+    em {
+        font-size: 80%;
+        font-family: $header-font-family;
+        font-weight: $global-weight-normal;
+        color: $header-small-font-color;
+    }
+}

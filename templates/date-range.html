@@ -1,0 +1,10 @@
+<div class="date-range">
+    <div class="relative-box">
+        <input type="text" id="check-in" readonly name="check-in" ng-model='filter.show_check_in' placeholder="Check In">
+        <span ng-show='filter.show_check_in' ng-click="resetDate('check-in')">X</span>
+    </div>
+    <div class="relative-box">
+        <input type="text" id="check-out" readonly name="check-out" ng-model='filter.show_check_out' placeholder="Check Out" ng-change="changeValue()" />
+        <span ng-show='filter.show_check_out' ng-click="resetDate('check-out')">X</span>
+    </div>
+</div>

@@ -1,0 +1,12 @@
+.HostInputField--error {
+    color: red;
+    font-size: 0.75rem;
+    margin-bottom: 1rem;
+    input {
+        margin-bottom: 0;
+    }
+}
+
+.HostInputField--cc {
+    width: 25%;
+}

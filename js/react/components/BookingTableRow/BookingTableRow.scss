@@ -1,0 +1,25 @@
+@import '../../../../scss/_settings.scss';
+
+.booking-table-td {
+    vertical-align: text-top;
+    padding: 0.5rem 0.5rem;
+    font-size: 0.875rem;
+}
+
+.booking-table-td--whole {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.booking-table-td--right {
+    text-align: right;
+    padding-right: 0;
+}
+
+.booking-table-td--left {
+    padding-left: 0;
+}
+
+.booking-table-tr--bottom-border {
+    border-bottom: $hr-border;
+}

@@ -1,0 +1,29 @@
+@import '../../../../scss/_settings.scss';
+
+.SignupTopMessage {
+    display: none;
+    text-align: center;
+
+    @include breakpoint(medium) {
+        display: block;
+        margin-top: 2rem;
+        @include clearfix;
+        @include grid-col-size(10);
+        @include grid-column-position(center);
+    }
+
+    @include breakpoint(mediumlarge) {
+        @include clearfix;
+        @include grid-col-size(8);
+        @include grid-column-position(center);
+    }
+}
+
+.SignupTopMessage__bottom-line {
+    margin: $global-margin auto;
+    width: 50%;
+
+    @include breakpoint(medium) {
+        margin: $global-padding auto;
+    }
+}

@@ -1,0 +1,24 @@
+@import './../../../../scss/_settings.scss';
+
+.PropertyImagesCollage-image:first-of-type {
+    @include grid-col(8, 1);
+    @include grid-col-end();
+    @include breakpoint(small only) {
+        @include grid-col(4, 0);
+        padding: 0;
+    }
+}
+
+.PropertyImagesCollage-image {
+    border: 2px solid $body-background;
+    @include grid-col(4, 1);
+    @include breakpoint(small only) {
+        @include grid-col(4, 0);
+        padding: 0;
+        border: 2px solid $light-gray;
+
+        &:nth-of-type(n+3) {
+          display: inline-block !important;
+        }
+    }
+}

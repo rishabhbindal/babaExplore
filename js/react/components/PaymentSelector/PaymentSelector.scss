@@ -1,0 +1,12 @@
+@import '../../../../scss/_settings.scss';
+
+.PaymentSelector__header {
+    background: $primary-color repeat center;
+    background-image: $background-image;
+    padding: 4rem 2rem 1rem;
+    color: $white;
+    display: table-cell;
+    width: 35%;
+    vertical-align: top;
+    padding-top: 1rem;
+}

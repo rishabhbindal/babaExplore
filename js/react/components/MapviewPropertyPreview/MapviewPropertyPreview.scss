@@ -1,0 +1,54 @@
+@import '../../../../scss/_settings.scss';
+
+.MapView__property__preview {
+    position: relative;
+    height: 250px;
+    width: 230px;
+    display: block;
+    background-color: $white;
+    border: 1px solid $dark-gray;
+    padding: 0.5rem;
+    z-index: 11;
+}
+
+.MapView__property__preview--up {
+    top: -290px;
+}
+
+.MapView__property__preview--left {
+    left: -230px;
+}
+
+.MapView__property__preview__image {
+    height: 85%;
+    width: 100%;
+    display: block;
+}
+
+.MapView__property__preview__caption {
+    height: 15%;
+    font-family: $body-font-family;
+    font-size: .8rem;
+    overflow: scroll;
+}
+
+.MapView__property__price {
+    position: relative;
+    display: table;
+    background-color: $primary-color;
+    color: $white;
+    border: 1px solid $dark-gray;
+    font-size: 100%;
+    font-weight: $global-weight-semi;
+    padding: $global-padding / 8 $global-padding / 6;
+    z-index: 9;
+    &:hover, &:focus {
+        color: $white;
+    }
+}
+
+.MapView__property__price-hover {
+    font-size: 120%;
+    padding: $global-padding / 5;
+    z-index: 10;
+}

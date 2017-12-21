@@ -1,0 +1,443 @@
+<div app-header ng-class="{'header-bar':isHomePage == false}"></div>
+<div class="person-header" ng-if='posterImageAvailable' afkl-lazy-image="{{posterImageSrcSet}}" afkl-lazy-image-options='{ "background": true }'>
+    <div class="row">
+        <section class="special-header light">
+            <h1><span class="first-name">{{owner.first_name}}</span><span class="last-name">{{owner.last_name}}</span></h1>
+            <div class="sh-content" auto-folded about='{{owner.details.about | removeTags}}' role='{{owner.celebrity_role}}'>
+                <p ng-if='owner.celebrity_role'><small ng-bind-html='owner.celebrity_role| removeTags'></small>
+                </p>
+                <p ng-bind-html='owner.details.about | removeTags'></p>
+                <label>Read more</label>
+            </div>
+        </section>
+    </div>
+</div>
+<main class="single-listing">
+    <div class="row">
+        <article class="main-body">
+            <div class="carousel-holder">
+                <data-owl-carousel ng-if='propImages.length !== 0' class="owl-carousel owl-theme single-carousel"
+                    data-options="{items: 1,dots: !0, autoHeight: false, navigation: true, responsive: {1024: { nav: true, navText: ['<img src=\'images/angle-left.png\'>','<img src=\'images/angle-right.png\'>']} }
+                         {{ (propImages.length > 1 ? ', loop: !0': '') }} }">
+                    <figure owl-carousel-item="" ng-repeat='image in propImages track by $index' ng-dblclick='openGallery(listing.images,$index)' ng-if='image.ordering !== -1'>
+
+                        <div afkl-lazy-image="{{getFormattedSrcset(image.image, image['image1640x1100'] || image['image960x640'], image['image1640x1100'])}}" class="afkl-lazy-wrapper afkl-img-ratio-1-1" style="line-height: 0"></div>
+
+                        <a ng-if="image.panorama" ng-click="triggerPano(image)">
+                          <span class="panorama__icon">
+                            <svg class="panorama__svg" height="48" viewBox="0 0 48 48" width="48" xmlns="http://www.w3.org/2000/svg"><path d="M40 13.09v21.82c-5.19-1.54-10.56-2.32-16-2.32-5.44 0-10.8.78-16 2.32v-21.82c5.19 1.54 10.56 2.32 16 2.32 5.44 0 10.8-.78 16-2.32m2.86-5.09c-.19 0-.4.04-.62.12-5.88 2.19-12.06 3.29-18.24 3.29-6.18 0-12.36-1.1-18.24-3.29-.22-.08-.43-.12-.63-.12-.66 0-1.13.47-1.13 1.25v29.5c.01.78.47 1.25 1.13 1.25.19 0 .4-.04.62-.12 5.88-2.19 12.06-3.29 18.24-3.29 6.18 0 12.36 1.1 18.24 3.29.22.08.43.12.62.12.66 0 1.14-.47 1.13-1.25v-29.5c.02-.78-.46-1.25-1.12-1.25z"></path><path d="M0 0h48v48h-48z" fill="none"></path></svg>
+                            <h6 class="panorama__title">View 360˚</h6>
+                          </span>
+                        </a>
+
+                        <figcaption>
+                          {{image.caption}}
+                        </figcaption>
+                    </figure>
+                </data-owl-carousel>
+            </div>
+            <section class="l-title">
+                <h1>
+                    {{listing.caption}}
+                </h1>
+                <span class="location">{{listing.city}}, {{listing.state}}</span>
+                <p class="rating" ng-if='listing.number_of_reviews != "0"'>
+                    <a ng-click='goToReviews()' ng-if='listing.number_of_reviews != "0"'>({{listing.number_of_reviews}} reviews)</a>
+                </p>
+                <ul class="features" ng-if='listing.icons.length'>
+                    <li ng-repeat='icon in listing.icons' ng-if='icon.image || icon.class_name'>
+                        <i class='{{icon.class_name}}' ng-if="icon.class_name" />
+                        <img ng-src='{{icon.image}}' ng-if='!icon.class_name' />
+                        <span class="label">{{icon.name}}</span>
+                    </li>
+                </ul>
+
+            </section>
+            <section class="people l-columned">
+                <div class="row">
+                    <div class="person">
+                        <div class="avatar">
+                            <div class="image">
+                                <img ng-src="{{owner.thumbnail || owner.social_profile_picture+'?width=200&height=200' || 'images/user.jpg'}}" onerror="this.onerror=null;this.src='images/user.jpg';">
+                            </div>
+                        </div>
+                        <div class="p-info">
+                            <div class="name"><em>Hosted by</em> {{owner.first_name}}</div>
+                            <input type="checkbox" id="p1-more" class="show">
+                            <q ng-bind-html='owner.details.about  | trimText' class="minimumData"></q>
+                            <q class="extra" ng-bind-html='owner.details.about | removeTags'></q>
+                            <p ng-if='owner.groups.length'>Member of {{owner.groups}}</p>
+                            <label ng-if='owner.details.about && owner.details.about.length > 80' for="p1-more">+ more</label>
+                        </div>
+                    </div>
+                    <div class="person">
+                        <div class="avatar">
+                            <div class="image">
+                                <img ng-src="{{community_manager.thumbnail || community_manager.social_profile_picture+'?width=200&height=200' || 'images/user.jpg'}}" onerror="this.onerror=null;this.src='images/user.jpg';">
+                            </div>
+                        </div>
+                        <div class="p-info">
+                            <div class="name"><em>Managed by</em> {{community_manager.first_name}}</div>
+                            <input ng-if='community_manager.extraInfo' type="checkbox" id="p2-more" class="show">
+                            <q ng-bind-html='community_manager.extraInfo | trimText' class="minimumData"></q>
+                            <label ng-if='community_manager.extraInfo && community_manager.extraInfo.length > 80' for="p2-more">+ more</label>
+                            <q ng-if='community_manager.extraInfo' class="extra" ng-bind-html='community_manager.extraInfo | removeTags'></q>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="l-content">
+                <p ng-bind-html='listing.character | removeTags'></p>
+                <input type="checkbox" id="cc-show" class="show small-only" />
+                <label for="cc-show">+ read more</label>
+                <div class="content-columns extra">
+                    <div ng-repeat='map in listing.description_map'>
+                        <div ng-repeat='(key,val) in map' ng-if='key != "Quote"'>
+                            <h5>{{key}}</h5>
+                            <p ng-bind-html='val'>{{val}}</p>
+                        </div>
+                    </div>
+                    <div ng-if='listing.house_rules'>
+                        <h5>House Rules</h5>
+                        <p ng-bind-html='listing.house_rules'></p>
+                    </div>
+                    <div ng-if='cancellationPolicy'>
+                        <h5>Cancellation Policy</h5>
+                        <p ng-bind-html='cancellationPolicy'></p>
+                    </div>
+                </div>
+            </section>
+            <section class="l-columned" ng-if='allGroups.length || listing.amenities.length'>
+                <div class="row">
+                    <div class="available-to" ng-if='allGroups.length'>
+                        <h5>Available to</h5>
+                        <div class="avatar-set">
+                            <div class="avatar" ng-repeat='group in allGroups' ng-click='goToCommunity(group.name)'>
+                                <div class="image">
+                                    <elt-image hires="{{group.images[0].image}}" alt="{{group.images[0].caption}}" class="elt-image" />
+                                </div>
+                                <span class="name">{{group.name}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="amenities" ng-if='listing.amenities.length'>
+                        <h5>Amenities</h5>
+                        <ul>
+                            <li ng-repeat='amn in listing.amenities'>{{amn}}</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="share-listing" ng-if="listing.code">
+                    <h5>Share</h5>
+                    <share-buttons></share-buttons>
+                </div>
+            </section>
+            <section class="l-gallery" ng-repeat='bookable in listing.bookable_items' ng-if='bookable.images.length'>
+                <h5>{{bookable.caption}} <em><span>{{bookable.type}}</span><span>{{bookable.no_of_guests}} people</span></em></h5>
+                <data-owl-carousel ng-if='bookable.images' class="owl-carousel owl-theme single-gallery bookable-carousel" data-options="{margin: 8,autoWidth: true,items:1, responsive: {1024: { nav: true, navText: ['<img src=\'images/angle-left.png\'>','<img src=\'images/angle-right.png\'>']} }}">
+                    <figure owl-carousel-item="" style="width:445px;" ng-repeat='image in bookable.images track by $index' ng-dblclick='openGallery(bookable.images,$index)'>
+                        <div afkl-lazy-image="{{getFormattedSrcset(image.image, image['image960x640'], image['image1640x1100'])}}" class="afkl-lazy-wrapper afkl-img-ratio-1-1"></div>
+                    </figure>
+                </data-owl-carousel>
+                <div class="gallery-content">
+                    <div class="body" ng-repeat='map in bookable.description_map'>
+                        <p ng-repeat='(key,val) in map' ng-bind-html='val | removeTags'>
+                        </p>
+                    </div>
+                    <div class="side dot-list" ng-if='bookable.amenities.length'>
+                        <ul>
+                            <li ng-repeat='amn in bookable.amenities'>{{amn}}</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section class="reviews" id="reviews" ng-if='listing.number_of_reviews > 0'>
+                <div class="title">
+                    <h5>{{listing.number_of_reviews}} reviews from visitors</h5>
+                </div>
+                <ul class="review-list">
+                    <li ng-repeat='rev in review | reverse | limitTo:showReviews.value'>
+                        <div class="review-person">
+                            <div class="avatar">
+                                <div class="image">
+                                    <img ng-src="{{rev.author_profile_picture || rev.author_social_picture || 'images/user.jpg'}}" alt="{{rev.author_name}}" onerror="this.onerror=null;this.src='images/user.jpg';">
+                                </div>
+                            </div>
+                            <div class="about">
+                                <div class="name">{{rev.author_name | firstWords}}</div>
+                                <div class="stay-date">{{rev.last_updated | date : 'MMM yyyy' }}</div>
+                            </div>
+                        </div>
+                        <div class="review-content">
+                            <input type="checkbox" id="p{{rev.id}}-more" class="show">
+                            <p ng-bind-html='rev.review | trimReviewText' class="minimumData"></p>
+                            <p class="extra" ng-bind-html='rev.review | removeTags'></p>
+                            <label ng-if='rev.review && rev.review.length > 180' for="p{{rev.id}}-more">+ more</label>
+                        </div>
+                    </li>
+                </ul>
+                <div class="more-review">
+                    <label ng-if='review.length > showReviews.value' ng-click='showReviews.value = review.length'>MORE REVIEWS</label>
+                </div>
+            </section>
+        </article>
+        <aside class="side-bar side-images">
+            <div class="row two-grid">
+                <figure>
+                    <elt-image
+                        hires="{{listing.bookable_items[0].images[0].image ||
+                               (listing.images[0].ordering !== -1 ? listing.images[1].image :
+                               listing.images[2].image)}}"
+                        alt="Room in a place"
+                        class="elt-image"
+                    />
+                </figure>
+                <figure>
+                    <elt-image
+                        hires="{{listing.bookable_items[1].images[0].image ||
+                               listing.bookable_items[0].images[1].image ||
+                               (listing.images[0].ordering !== -1 ? listing.images[2].image :
+                               listing.images[3].image)}}"
+                        alt=""
+                        class="elt-image"
+                    />
+                </figure>
+            </div>
+            <div class="row">
+                <figure>
+                    <elt-image
+                        check-image
+                        ng-hide="listing.videos.length"
+                        hires="{{listing.bookable_items[2].images[0].image ||
+                               listing.bookable_items[1].images[2].image ||
+                               listing.bookable_items[0].images[2].image ||
+                               (listing.images[0].ordering !== -1 ? listing.images[3].image :
+                               listing.images[4].image)}}"
+                        alt=""
+                        class="elt-image"
+                    />
+                    <span ng-show="listing.videos.length" style="height: 100%; width: 100%" id="sidebar-video"></span>
+                    <figcaption ng-bind-html='quote' ng-if='quote'></figcaption>
+                </figure>
+            </div>
+        </aside>
+        <aside class="side-bar booking-panel" data-init="sticky">
+            <input type="checkbox" id="book-show" class="show small-only">
+            <label for="book-show" class="button">{{requestButtonText}}</label>
+            <section class="extra" ng-show="listing.code">
+                <div class="bp-content">
+                    <label class="close" for="book-show">&times;</label>
+                    <fieldset ng-hide="listing.code === 'startuptour'" class="check-in-out" ng-class="{ 'check-in-out--disabled': isHostOrder }">
+                        <div ng-class="{'notarrow':packeageType == 2}">
+                            <input type="text" name="check-in" placeholder="Check In" ng-model='requestedListingData.date_from' id="check-in" required readonly="true">
+                        </div>
+                        <div ng-if='packeageType == 1'>
+                            <input type="text" name="check-out" id="check-out" placeholder="Check Out" ng-model='requestedListingData.date_until' required readonly="true">
+                        </div>
+                    </fieldset>
+                    <fieldset class="bookables" ng-class="{ 'bookables--disabled': isHostOrder }">
+                        <table>
+                            <tbody ng-repeat='bookable in listing.bookable_items' ng-if='bookable.packeageType == packeageType'>
+                                <tr>
+                                    <td>
+                                        <input type="checkbox" id="bk-0{{bookable.url}}" ng-model='requestedListingData.bookables[bookable.url].requested' ng-change='requestedValueUpdated(bookable.url)' ng-show='bookable.no_of_instances == 1' ng-true-value="1" ng-false-value="0">
+
+                                        <select id="bk-01" class="numbers" ng-model='requestedListingData.bookables[bookable.url].requested' ng-if='bookable.no_of_instances > 1' ng-change='requestedValueUpdated(bookable.url)' ng-options="n as n for n in [] | range:0:bookable.no_of_instances+1 track by n">
+                                        </select>
+
+                                        <small ng-if='bookable.no_of_instances > 1 && bookable.type=="ROOM"'>room<span class="plural">s</span></small>
+
+                                        <small ng-if='bookable.no_of_instances > 1 && bookable.type=="PACKAGE"'>person<span class="plural">s</span></small>
+                                    </td>
+                                    <td>
+                                        <span class="name">{{bookable.caption}}</span>
+                                        <span class="description">{{bookable.no_of_guests}} {{bookable.no_of_guests>1?'Guests':'Guest'}}
+                                            <span ng-if='!bookable.showExtraPerson'>Max</span>
+                                            <span ng-if='bookable.minimum_stay > 1'>,Min  stay - {{bookable.minimum_stay}} nights
+                                            </span>
+                                        </span>
+                                    </td>
+                                    <td ng-hide="requestedListingData.bookables[bookable.url].surge">
+                                        <span class="price">₹{{bookable.daily_price}}</span>
+                                    </td>
+                                    <td ng-show="requestedListingData.bookables[bookable.url].surge">
+                                        <div class="tooltip">
+                                            <img src="images/info-icon.png">
+                                            <span class="tooltiptext right-edge">
+                                                (Surge pricing in effect for this listing, prices may be different on different days)
+                                            </span>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr ng-if='requestedListingData.bookables[bookable.url].max_extra_guest'>
+                                    <td>
+                                        <input type="checkbox" ng-show='(requestedListingData.bookables[bookable.url].max_extra_guest * requestedListingData.bookables[bookable.url].requested) == 0' ng-true-value="1" ng-false-value="0" disabled>
+
+                                        <input type="checkbox" id="additional-0-e{{bookable.url}}" ng-model='requestedListingData.bookables[bookable.url].extra_guests' ng-change='requestedValueUpdated(bookable.url)' ng-show='(requestedListingData.bookables[bookable.url].max_extra_guest * requestedListingData.bookables[bookable.url].requested) == 1' ng-true-value="1" ng-false-value="0">
+
+                                        <select id="bk-01" class="numbers" ng-model='requestedListingData.bookables[bookable.url].extra_guests' ng-if='requestedListingData.bookables[bookable.url].max_extra_guest * requestedListingData.bookables[bookable.url].requested > 1' ng-change='requestedValueUpdated(bookable.url)' ng-options="n as n for n in [] | range:0:(requestedListingData.bookables[bookable.url].max_extra_guest * requestedListingData.bookables[bookable.url].requested)+1 track by n">
+                                        </select>
+                                    </td>
+                                    <td>
+
+                                        <label ng-show='(bookable.max_number_of_extra_person*listing.bookable_items[$index].showPrice) == 0'>
+                                            <span class="additional">Additional guest</span>
+                                        </label>
+                                        <label for="additional-0-e{{bookable.url}}" ng-show='(bookable.max_number_of_extra_person*listing.bookable_items[$index].showPrice) != 0'>
+                                            <span class="additional">Additional guest</span>
+                                        </label>
+                                    </td>
+                                    <td>
+                                        <span class="a-price">₹{{bookable.guest_charge}}</span>
+                                    </td>
+                                </tr>
+                                <tr ng-show="requestedListingData.bookables[bookable.url].surge"
+                                    ng-repeat="data in requestedListingData.bookables[bookable.url].surgeData">
+                                    <td></td>
+                                    <td>
+                                        <span class="additional">{{data.dateRange}}</span>
+                                    </td>
+                                    <td>
+                                        <span class=" a-price">₹{{data.price | number:2}}</span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </fieldset>
+                    <fieldset class="totals">
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td ng-if='packeageType == 1'>{{surge ? 'Average ' : ''}} Price for 1 night
+                                        <div class="tooltip">
+                                            <img src="images/info-icon.png">
+                                            <span class="tooltiptext">
+                                                (Listing price per night x no. of units + extra person charge per night x no of additional people)
+                                            </span>
+                                        </div>
+                                    </td>
+                                    <td ng-if='packeageType == 2'>Price
+                                        <div class="tooltip">
+                                            <img src="images/info-icon.png">
+                                            <span class="tooltiptext">(Listing price x no. of units)</span>
+                                        </div>
+                                    </td>
+                                    <td>₹{{paymentDetail.oneDayPrice | number:2}}</td>
+                                </tr>
+                                <tr ng-if='packeageType == 1'>
+                                    <td>Total nights selected</td>
+                                    <td>{{paymentDetail.days}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Payment gateway fees</td>
+                                    <td>₹{{paymentDetail.tax | number:2}}</td>
+                                </tr>
+                                <tr ng-if="paymentDetail.exploreFee">
+                                    <td>Explore fees</td>
+                                    <td>₹{{paymentDetail.exploreFee | number:2}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Coupon code (<a id="add" ng-click='showCouponArea()'>add</a>)
+                                        <form ng-show="showCoupon" class="single-field">
+                                            <input type="text" name="coupon_code" placeholder="Enter code" ng-model='paymentDetail.code'>
+                                            <button type="button" class="button" ng-click='couponApply()'>Apply</button>
+                                        </form>
+                                    </td>
+                                    <td>{{paymentDetail.couponValue}}</td>
+                                </tr>
+                                <tr ng-if='paymentDetail.couponError'>
+                                    <td colspan='2' class="coupon errormsg" ng-if='paymentDetail.couponError'>{{paymentDetail.couponError}}
+                                    </td>
+                                </tr>
+                                <tr ng-if='paymentDetail.couponSuccess'>
+                                    <td colspan='2' class="coupon successmsg" ng-if='paymentDetail.couponSuccess'>{{paymentDetail.couponSuccess}}
+                                    </td>
+                                </tr>
+                            </tbody>
+                            <tbody class="total">
+                                <tr>
+                                    <td>Total
+                                        <div class="tooltip">
+                                            <img src="images/info-icon.png">
+                                            <span ng-if='packeageType == 1' class="tooltiptext">
+                                                (Price for 1 night x Total nights selected) + Payment gateway fees
+                                            </span>
+                                            <span ng-if='packeageType == 2' class="tooltiptext">(Price + Payment gateway fees)</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        ₹{{paymentDetail.totalPrice | number:2}}
+                                        <div class="tooltip" ng-show="isHostOrder">
+                                            <img src="images/info-icon.png">
+                                            <span class="tooltiptext right-edge">Total after all Discounts</span>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                            <tbody ng-if="downPaymentAvailable">
+                                <tr>
+                                    <td>Down Payment
+                                        <div class="tooltip">
+                                            <img src="images/info-icon.png">
+                                            <span class="tooltiptext">
+                                                You can opt in to pay only the down payment now and pay remaining amount later
+                                            </span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <input type="checkbox" ng-model='paymentDetail.useDownPayment' ng-true-value="true" ng-false-value="false">
+                                    </td>
+                                </tr>
+                                <tr ng-if="paymentDetail.useDownPayment">
+                                    <td>Down Payment Amount</td>
+                                    <td>₹{{paymentDetail.downPayment | number:2}}</td>
+                                </tr>
+                                <tr ng-if="paymentDetail.useDownPayment">
+                                    <td>Payment gateway fees</td>
+                                    <td>₹{{paymentDetail.downPaymentTax | number:2}}</td>
+                                </tr>
+                                <tr ng-if="paymentDetail.useDownPayment && paymentDetail.exploreFee">
+                                    <td>Explore Fee</td>
+                                    <td>₹{{paymentDetail.exploreFee | number:2}}</td>
+                                </tr>
+                            </tbody>
+                            <tbody class="total" ng-if="downPaymentAvailable && paymentDetail.useDownPayment">
+                                <tr>
+                                    <td>Total
+                                        <div class="tooltip">
+                                            <img src="images/info-icon.png">
+                                            <span ng-if='packeageType == 1' class="tooltiptext">
+                                                Down Payment + Payment Gateway fees + Explore Fee
+                                            </span>
+                                        </div>
+                                    </td>
+                                    <td>₹{{paymentDetail.totalDownPayment | number:2}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </fieldset>
+                    <fieldset>
+                        <button class="large expanded button" ng-click='clickOnrequestButton();' type="submit" ng-disabled="disableSubmit">{{requestButtonText}}</button>
+                    </fieldset>
+                </div>
+            </section>
+        </aside>
+    </div>
+    <div class="row">
+        <div class="full-panel">
+            <div class="embed thin">
+                <ng-map width="800" height="800" style="border:0;height:427px;" center="[{{listing.latitude}}, {{listing.longitude}}]" zoom='15' scrollwheel=false>
+                    <shape name="circle" stroke-color="#000" stroke-opacity="0.7" stroke-weight="1" fill-color="#666" fill-opacity="0.35" center="[{{listing.latitude}}, {{listing.longitude}}]" radius="300" ng-if='listing.latitude'>
+                    </shape>
+                </ng-map>
+            </div>
+        </div>
+    </div>
+</main>
+
+<unavailable-bookables open="showAvailabilityModal" bookables="unavailableBookables"></unavailable-bookables>
+
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+<div app-footer></div>

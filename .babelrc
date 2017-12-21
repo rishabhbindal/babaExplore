@@ -1,0 +1,53 @@
+{
+    "env": {
+        "node": {
+            "presets": [
+                ["env", {
+                    "targets": {
+                        "node": "current"
+                    }
+                }],
+                "react"
+            ],
+            "plugins": [
+                // For react-loadable. Note that webpackRequireWeakId
+                // would only be used if the files inside node_modules
+                // are not ignored. Ex,
+                // github.com/thejameskyle/is-webpack-bundle only
+                // returns true, if the module is compiled by webpack.
+                //
+                // Also, this doesn't work well with, lets say
+                // babel-plugin-dynamic-import-node.
+                ["import-inspector", {
+                    "serverSideRequirePath": true,
+                    "webpackRequireWeakId": true,
+                }],
+                ["babel-plugin-transform-require-ignore", {
+                    "extensions": [".scss", ".css"]
+                }],
+            ]
+        },
+        "browser": {
+            "plugins": [
+                "react-hot-loader/babel"
+            ]
+        }
+    },
+    "presets": [
+        ["env", {
+            "targets": {
+                "browsers": ["last 2 versions", "safari >= 7"]
+            },
+            // debug: true,
+            "modules": false,
+            "useBuiltIns": true,
+            "cacheDirectory": true
+        }],
+        "react"
+    ],
+    "plugins": [
+        "transform-class-properties",
+        "transform-object-rest-spread",
+        "syntax-dynamic-import",
+    ]
+}

@@ -1,0 +1,51 @@
+@import '../../../../scss/_settings.scss';
+
+.HostOrderVerifyEmailForm {
+    @include breakpoint(medium) {
+        @include grid-col(8);
+        float: inherit;
+    }
+    @include breakpoint(small) {
+        @include grid-col(12);
+    }
+    padding: 10px;
+    margin: 0px auto;
+}
+
+.HostOrderVerifyEmailForm-input {
+    @include grid-col(9);
+    padding: 0 !important;
+    input {
+        margin-bottom: 0;
+    }
+}
+
+.HostOrderVerifyEmailForm-button {
+    @include breakpoint(medium) {
+        padding-left: 0.5rem !important;
+        float: left;
+    }
+    @include breakpoint(small) {
+        padding-left: 0 !important;
+        .Button {
+            @include grid-col(12);
+        }
+    }
+    padding-right: 0 !important;
+
+    .Button {
+        padding: 0.55rem 1rem;
+    }
+
+    .Button--disabled {
+        padding: 0.3rem 1rem;
+    }
+}
+
+.CheckRegistrationStatus-message {
+    @include grid-col(12);
+    font-size: 0.7rem;
+    clear: both;
+    font-weight: bold;
+    padding: 0 !important;
+}

@@ -1,0 +1,58 @@
+@import './../../../../scss/_settings.scss';
+
+.PendingOrder {
+    @include grid-col(6);
+    @include grid-col-end()
+    @include breakpoint(small only) {
+        @include grid-col(12);
+    }
+}
+
+.PendingOrder-detail {
+    display: block;
+    position: relative;
+}
+
+.PendingOrder-detail:after {
+    content: '';
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-image: -webkit-linear-gradient(bottom, rgba(94,93,90,0.85), rgba(94,93,90,0) 75%);
+    background-image: linear-gradient(to top, rgba(94,93,90,0.85), rgba(94,93,90,0) 75%);
+}
+
+.PendingOrder--info {
+    position: absolute;
+    z-index: 10;
+    bottom: 0;
+    width: 100%;
+    padding: 0.5rem;
+    color: #fefefe;
+    line-height: 1.2;
+}
+
+.PendingOrder--info-date {
+    font-size: 0.85rem;
+}
+
+.PendingOrder--info-city {
+    font-size: 1.3rem;
+}
+.PendingOrder--info-state {
+    font-size: 1.3rem;
+    float: right;
+}
+
+.PendingOrder-summary {
+    display: block;
+    padding: 0.5rem;
+}
+
+.PendingOrder--title {
+    font-weight: 700;
+    padding-bottom: 0.5rem;
+}

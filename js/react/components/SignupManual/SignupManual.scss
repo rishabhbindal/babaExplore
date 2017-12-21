@@ -1,0 +1,116 @@
+@import '../../../../scss/_settings.scss';
+
+.Form__submit {
+    @include button();
+    font-size: 1.25rem;
+    display: block;
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.Form__submit--submitting,
+.Form__submit--disabled {
+    opacity: 0.6;
+}
+
+.Form__submit-loader {
+    padding-left: 1rem;
+}
+
+.Step {
+    list-style: none;
+    margin: 0;
+    padding: 0.5rem;
+}
+
+.input-set {
+    display: table;
+    width: 100%;
+    &>* {
+        display: table-cell;
+        vertical-align: top;
+        padding: 0 0.25rem;
+        text-align: center;
+        &:first-child {
+            padding-left: 0;
+        }
+        &:last-child {
+            padding-right: 0;
+        }
+        input {
+            text-align: center;
+        }
+    }
+}
+
+
+.FieldSet {
+    display: table;
+    width: 100%;
+    border: 1px solid #cacaca;
+    &>* {
+        display: table-cell;
+        vertical-align: top;
+        padding: 0 0.25rem;
+        text-align: center;
+        &:first-child {
+            padding-left: 0;
+        }
+        &:last-child {
+            padding-right: 0;
+        }
+    }
+}
+
+.DateSeparator {
+    font-size: 2rem;
+    @include breakpoint(medium) {
+        font-size: 1.5rem;
+    }
+}
+
+.Signup__error-message {
+    font-weight: 700;
+    text-align: center;
+    display: none;
+    margin-top: 7px;
+    margin-bottom: 4px;
+    color: #3e5241;
+    line-height: 1.5;
+}
+
+.Signup__error-message--active {
+  display: block;
+}
+
+.Signup__error-message--active:before {
+    content: '!';
+    width: 1.5em;
+    text-align: center;
+    display: inline-block;
+    margin-right: 0.5rem;
+    font-weight: 900;
+    color: #fefefe;
+    background: #ffae00;
+    border-radius: 100%;
+}
+
+.SignupManual__prevform__btn__container {
+    text-align: left;
+}
+
+.SignupManual__prevform__btn {
+    color: $primary-color;
+    text-decoration: none;
+    line-height: inherit;
+    cursor: pointer;
+    display: inline-block;
+    margin: $global-margin/4;
+}
+
+.ProfileIconContainer {
+    svg {
+        width: 100%;
+    }
+}

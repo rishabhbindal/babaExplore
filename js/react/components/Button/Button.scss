@@ -1,0 +1,83 @@
+@import '../../../../scss/_settings.scss';
+
+.Button {
+    @include button;
+    margin: 0;
+}
+
+.Button--plain {
+    background-color: initial !important;
+    color: $primary-color !important;
+    border: none;
+    padding: 0;
+    &:hover, &:focus {
+        background-color: initial !important;
+        color: $primary-color !important;
+    }
+}
+
+.Button--expand {
+    @include button-expand;
+}
+
+.Button--large {
+    font-size: map-get($button-sizes, large);
+}
+
+.Button--small {
+    font-size: map-get($button-sizes, small);
+    padding: 0.2em 0.6em;
+}
+
+.Button--tiny {
+    font-size: map-get($button-sizes, tiny);
+}
+
+.Button--disabled {
+    @include button-disabled();
+    opacity: 0.5;
+}
+
+.Button--rounded {
+    border-radius: 6rem !important;
+}
+
+.Button--rounded-small {
+    border-radius: 0.25rem !important;
+}
+
+.Button--larger-text {
+    font-size: 1.5rem;
+    padding: 0.5rem;
+}
+
+.Button--icon {
+    display: table;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 0 0;
+    transform: scale(1) rotateZ(360deg);
+    font-size: 1rem;
+    .icon,
+    .text {
+        display: table-cell;
+        vertical-align: middle;
+        padding: 0 0.125rem;
+    }
+    .icon {
+        svg {
+            fill: $white;
+            width: 1.25rem;
+            height: 1.25rem;
+            transform: translateX(-25%);
+        }
+    }
+    .text {
+        text-align: left;
+        line-height: 1.1;
+        transform: translateY(-0.1rem);
+    }
+    &:hover {
+        box-shadow: $big-shadow;
+        transform: scale(1.02) rotateZ(360deg);
+    }
+}

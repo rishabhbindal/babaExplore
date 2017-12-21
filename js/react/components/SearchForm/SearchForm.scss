@@ -1,0 +1,243 @@
+@import '../../../../scss/_settings.scss';
+
+$selector-padding: 0.125rem;
+$input-highlight-color: lighten($warning-color, 35);
+
+.react-datepicker__input-container {
+    width: 100% !important;
+}
+
+.SearchForm__top-row {
+    display: flex;
+
+    > div {
+        margin-left: 1px;
+        flex-grow: 2;
+
+        &:first-child {
+            flex-grow: 5;
+            margin-left: 0;
+        }
+    }
+}
+
+.SearchForm__city-option {
+    padding: 10px 20px !important;
+}
+
+
+.SearchForm__datepicker__container {
+    display: table;
+}
+
+.SearchForm__cancel__date {
+    color: $body-font-color;
+    background-color: white;
+    padding: 0.2rem;
+    display: table-cell;
+    &:hover {
+        background-color: $input-highlight-color;
+    }
+}
+
+.city__select
+{
+    @include grid-col(12, 0);
+    padding: 0 2px 4px;
+
+    &>div {
+        position: relative;
+        @include clearfix;
+    }
+
+    input:focus + .big-city-selector {
+        display: block;
+    }
+
+    .large {
+        padding-right: $selector-padding;
+        @include grid-col(6, 0);
+    }
+
+    .larger {
+        padding-right: $selector-padding;
+        @include grid-col(9, 0);
+    }
+
+    .small {
+        padding: 0 $selector-padding;
+        @include grid-col(3, 0);
+    }
+}
+
+.search__filter
+{
+  position: relative;
+  @include clearfix;
+  @include grid-col(12);
+  @include grid-column-position(center);
+  z-index: 9;
+  float: none;
+
+  .search-section
+  {
+    margin-bottom: $global-margin;
+  }
+
+  .button
+  {
+    font-weight: $global-weight-bold;
+  }
+
+
+  .big-city-selector
+  {
+    display: none;
+    position: absolute;
+    z-index: 100;
+    top: 100%;
+    left: 0;
+    right: 0;
+    margin-top: $global-margin/2;
+    box-shadow: 0 5px 10px $dark-gray;
+    color: $body-font-color;
+
+    &:active {
+      display: block;
+    }
+
+    &.upwards
+    {
+      bottom: 100%;
+      margin-bottom: $global-margin;
+      left: 0;
+      right: 0;
+      top: auto;
+    }
+  }
+
+  label
+  {
+    font-weight: $global-weight-semi;
+    margin-bottom: 0.25rem;
+  }
+
+  input, select, button, input[type=checkbox]+label
+  {
+    font-size: 1rem;
+    font-weight: $global-weight-normal;
+    line-height: 1.3;
+  }
+
+  input, select, button, input[readonly]
+  {
+    background-color: $input-background;
+    border: 0;
+    padding: 0.9rem 1.2rem;
+    height: auto;
+    margin-bottom: 0;
+    border-radius: 0;
+  }
+
+  input, select
+  {
+    &:focus
+    {
+      border: 0;
+      background-color: $input-highlight-color;
+    }
+  }
+
+  input[type=submit]
+  {
+    background: $primary-color;
+  }
+
+  select.guest-select
+  {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEwAACxMBAJqcGAAAAJdJREFUOI290jsKwkAUheFPm2QTrlV7bQSzAN2BbsPNJFoE0sQikcBkBjOCHrgwHO783Bc/UokKNR7ju8wBVOiDOOUA6gigiSWuEoA+4c/y1zllxZQCPCNetIUU4BLxzksqeqs0TL0xDPSIIgfwtTbY4Y7WtMJ29LZjzkwFDujM9x9Gh72gpduCj2FcmQ4jdTiflDrEP+oFPIY1hg+IHi4AAAAASUVORK5CYII=');
+    background-size: 14px 14px;
+
+    &:focus
+    {
+      outline: none;
+    }
+  }
+
+  button
+  {
+    font-size: 1.25rem;
+    line-height: 1;
+    padding: 0.9rem;
+    width: 100%;
+    background-color: $primary-color;
+  }
+
+  .options-select
+  {
+    @include grid-col(12, 0);
+
+    fieldset
+    {
+      @include grid-row;
+
+      &>div
+      {
+        @include grid-col(4, 4px);
+
+        &.half
+        {
+          @include grid-col-size(2);
+        }
+      }
+    }
+  }
+}
+.floating__label {
+  position: absolute;
+  pointer-events: none;
+  left: 20px;
+  top: 12px;
+  transition: 0.2s ease all;
+  opacity: 0.5;
+  font-family: 'Proxima Nova';
+  font-size: 11px;
+  text-align: left;
+  color: #37363c;
+}
+.floating__button {
+  height: 40px !important;
+  width: 120px !important;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  transition: 0.2s ease all;
+  font-family: 'Proxima Nova';
+  font-size: 16px !important;
+  border-radius: 2px !important;
+  line-height: 0 !important;
+  background-color: #e9486f !important;
+}
+.search__box {
+  width: 580px !important;
+  height: 60px !important;
+  border-radius: 2px !important;
+  background-color: #ffffff !important;
+  box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.5) !important;
+  font-family: 'Proxima Nova' !important;
+  color: #37363c !important;
+  font-size: 18px !important;
+  padding-top: 35px !important;
+}
+@media screen and (max-width: 400px) {
+  .mobile__search {
+    font-size: 14px !important;
+  }
+  .floating__button {
+    font-size: 14px !important;
+    width: 80px !important;
+  }
+  .floating__label {
+    font-size: 9px !important;
+  }
+}

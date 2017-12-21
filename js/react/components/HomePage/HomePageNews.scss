@@ -1,0 +1,49 @@
+@import '../../../../scss/_settings.scss';
+@import '../../../../scss/_base.scss';
+@import '../../../../scss/_layout.scss';
+@import '../../../../scss/_type.scss';
+
+.news__stories
+{
+  background-color: #bdbdbd;
+  overflow: hidden;
+
+  .section-title
+  {
+    padding: $global-padding 0;
+  }
+
+  @include breakpoint(medium)
+  {
+    .section-title
+    {
+      padding: $global-padding*1.5 0;
+    }
+  }
+}
+
+
+.news__item
+{
+    .image, .text {
+        @include grid-col(6);
+    }
+
+    .image img {
+        border-radius: 6px 6px 0 0;
+        box-shadow: $big-shadow;
+    }
+
+    h5 {
+        font-weight: $global-weight-semi;
+    }
+
+    p {
+        font-size: 0.85rem;
+        margin-bottom: $header-margin-bottom;
+    }
+
+    @include breakpoint(small only) {
+        margin-bottom: $global-margin*1.5;
+    }
+}

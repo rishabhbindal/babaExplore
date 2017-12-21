@@ -1,0 +1,25 @@
+@import '../../../../scss/_settings.scss';
+.BookableDetails {
+    @include grid-col(12);
+    border-bottom: 1px solid #cacaca;
+    padding-bottom: 25px;
+
+    h5 {
+        padding: 0 1rem;
+    }
+}
+
+.BookableDetails:last-child {
+    border: none;
+}
+
+.BookableDetailsForm {
+    @include breakpoint(medium) {
+        @include grid-col(6);
+    }
+    @include breakpoint(small) {
+        @include grid-col(12);
+    }
+    float: left;
+    padding: 0 !important;
+}

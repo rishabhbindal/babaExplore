@@ -1,0 +1,121 @@
+@import '../../../../scss/_settings.scss';
+
+.ELTSlider {
+    min-height: 250px;
+}
+
+.ELTSlider__arrow {
+    position: absolute;
+    display: block;
+    background: $white;
+    height: 2rem;
+    width: 2rem;
+    border-radius: 2rem;
+    top: initial;
+    left: initial;
+    cursor: pointer;
+    bottom: 4px;
+    z-index: zIndex(slick-nav);
+    &:before {
+        content: none;
+    }
+}
+
+.ELTSlider__arrow--prev {
+    box-shadow: 3px 0px 5px 4px rgba(0, 0, 0, 0.16);
+    right: 3.4rem;
+}
+
+.ELTSlider__arrow--next {
+    box-shadow: -3px 0px 5px 4px rgba(0, 0, 0, 0.16);
+    right: 1rem;
+}
+
+.ELTSlider__arrow--disabled {
+    background: $medium-gray;
+}
+
+.ELTSlider .slick-disabled {
+    display: none !important;
+}
+
+$slick-dot-color: $medium-gray !default;
+$slick-dot-color-active: $primary-color !default;
+$slick-dot-character: "\2022" !default;
+$slick-dot-size: 2.3rem !default;
+$slick-opacity-default: 1 !default;
+$slick-opacity-on-hover: 1 !default;
+$slick-opacity-not-active: 1 !default;
+
+.ELTSlider .slick-dotted.slick-slider {
+    margin-bottom: 30px;
+}
+
+.ELTSlider__dots--center .slick-dots {
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.ELTSlider .slick-dots {
+    position: absolute;
+    bottom: 2px;
+    list-style: none;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+    z-index: zIndex(slick-dots);
+
+    display: inline;
+    @include breakpoint(small only) {
+        display: none !important;
+    }
+
+    li {
+        position: relative;
+        display: inline-block;
+        margin: 0 6px;
+        padding: 0;
+        cursor: pointer;
+        button {
+            border: 0;
+            background: transparent;
+            display: block;
+            outline: none;
+            line-height: 0px;
+            font-size: 0px;
+            color: transparent;
+            // padding: 5px;
+            cursor: pointer;
+            &:hover, &:focus {
+                outline: none;
+                &:before {
+                    color: $slick-dot-color-active;
+                    opacity: $slick-opacity-on-hover;
+                }
+            }
+            &:before {
+                top: 0;
+                left: 0;
+                position: absolute;
+                content: $slick-dot-character;
+                // font-family: $slick-font-family;
+                font-size: $slick-dot-size;
+                text-align: center;
+                color: $slick-dot-color;
+                opacity: $slick-opacity-not-active;
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
+                text-shadow: 0 0 2px $black;
+                transition-duration: .3s;
+            }
+        }
+        &.slick-active button:before {
+            color: $slick-dot-color-active;
+            opacity: $slick-opacity-default;
+        }
+    }
+}
+
+.ELTSlider .slick-arrow {
+    z-index: zIndex(slick-nav);
+}

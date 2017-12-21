@@ -1,0 +1,8 @@
+@import '../../../../scss/_settings.scss';
+
+.JLink {
+    color: $primary-color;
+    text-decoration: none;
+    line-height: inherit;
+    cursor: pointer;
+}

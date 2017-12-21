@@ -1,0 +1,12 @@
+.DS_Store
+node_modules/
+dist/
+public/main.js
+public/vendor.js
+*.pyc
+sitemap/credentials.py
+test/utils/userDetails.js
+public/
+.importjs.js
+.env
+.csscomb.json

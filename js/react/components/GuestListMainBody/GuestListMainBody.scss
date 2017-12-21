@@ -1,0 +1,47 @@
+@import '../../../../scss/_settings.scss';
+
+.GuestListMainBody__title {
+    padding-top: 2rem;
+    padding-bottom: 1rem;
+    font-weight: $global-weight-bold;
+    text-align: center;
+    letter-spacing: -0.01em;
+    margin-top: 1rem;
+
+    @include breakpoint(medium) {
+        margin-top: 2rem;
+    }
+
+    @include breakpoint(large) {
+        margin-top: 3rem;
+    }
+}
+
+.GuestListMainBody__section {
+    @include clearfix;
+    max-width: 68.75rem;
+    margin-left: auto;
+    margin-right: auto;
+    @include breakpoint(medium) {
+        padding: $global-padding 0;
+    }
+}
+
+.GuestListMainBody__hr {
+    width: 80%;
+    padding: 0;
+    margin: 2rem auto;
+    @include breakpoint(medium) {
+        width: 50%;
+        margin: 4rem auto;
+    }
+}
+
+.GuestListMainBody__error {
+    text-align: center;
+    margin-top: $global-margin;
+
+    @include breakpoint(medium) {
+        margin-top: 2*$global-margin;
+    }
+}

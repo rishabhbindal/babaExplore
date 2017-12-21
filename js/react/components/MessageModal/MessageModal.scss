@@ -1,0 +1,42 @@
+@import '../../../../scss/_settings.scss';
+
+.MessageModal__header {
+    background: $primary-color repeat center;
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1NiIgaGVpZ2h0PSIxMDAiPgo8cmVjdCB3aWR0aD0iNTYiIGhlaWdodD0iMTAwIiBmaWxsPSIjZmU1NDU5Ij48L3JlY3Q+CjxwYXRoIGQ9Ik0yOCA2NkwwIDUwTDAgMTZMMjggMEw1NiAxNkw1NiA1MEwyOCA2NkwyOCAxMDAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZhNDg3OSIgc3Ryb2tlLXdpZHRoPSIyIj48L3BhdGg+CjxwYXRoIGQ9Ik0yOCAwTDI4IDM0TDAgNTBMMCA4NEwyOCAxMDBMNTYgODRMNTYgNTBMMjggMzQiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZhNDg3MyIgc3Ryb2tlLXdpZHRoPSIyIj48L3BhdGg+Cjwvc3ZnPg==");
+
+    padding: 4rem 2rem 1rem;
+    color: $white;
+    display: table-cell;
+    width: 35%;
+    vertical-align: top;
+    padding-top: 1rem;
+
+    @include breakpoint(small only) {
+        display: block;
+        width: 100%;
+    }
+}
+
+.MessageModal__message {
+    line-height: 1.5;
+    margin-bottom: 1rem;
+    text-rendering: optimizeLgegibility;
+    color: $black;
+}
+
+.MessageModal__button {
+    width: 100%;
+    display: inline-block;
+    text-align: center;
+    line-height: 1;
+    cursor: pointer;
+    vertical-align: middle;
+    border: 1px solid transparent;
+    margin: 0 0 1rem 0;
+    font-size: 0.9rem;
+    font-weight: 700;
+    background-color: #fe5459;
+    color: #fff;
+    padding-top: 0.8em;
+    padding-bottom: 0.75rem;
+}

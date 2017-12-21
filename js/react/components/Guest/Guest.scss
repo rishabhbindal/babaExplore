@@ -1,0 +1,60 @@
+@import '../../../../scss/_settings.scss';
+
+.Guest__item {
+    position: relative;
+    @include grid-col(6);
+    @include grid-col-end;
+    margin-bottom: $global-margin;
+    &:nth-child(odd) {
+        clear: both;
+    }
+
+    @include breakpoint(medium) {
+        @include grid-col-size(4);
+        margin-bottom: $global-margin*2;
+        &:nth-child(odd) {
+            clear: none;
+        }
+        &:nth-child(3n+1) {
+            clear: both;
+        }
+    }
+
+    @include breakpoint(large) {
+        @include grid-col-size(3);
+        padding: 0 $global-padding;
+        margin-bottom: $global-margin*2;
+        &:nth-child(odd) {
+            clear: none;
+        }
+        &:nth-child(3n+1) {
+            clear: none;
+        }
+        &:nth-child(4n+1) {
+            clear: both;
+        }
+    }
+}
+
+.Guest__name {
+    margin-bottom: 0.1rem;
+    line-height: 1;
+}
+
+.Guest__pic {
+    margin-bottom: 0.5rem;
+    line-height: 1;
+    width: 100%;
+}
+
+.Guest__bookingCount {
+    position: absolute;
+    top: -1rem;
+    left: 1rem;
+    font-weight: $global-weight-medium;
+    background: lighten($body-background, 20%);
+    border: 1px solid $body-font-color;
+    border-radius: 3*$global-radius;
+    padding: 0.1rem 0.3rem;
+    font-size: $label-font-size;
+}

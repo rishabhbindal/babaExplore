@@ -1,0 +1,21 @@
+@import '../../../../scss/_settings.scss';
+
+.ELTNumInput .rc-input-number {
+    margin: 0;
+    padding:  0;
+    border: 1px solid $light-gray;
+}
+
+.ELTNumInput .rc-input-number-input {
+    width: 100%;
+    text-align: center;
+    outline: 0;
+    -moz-appearance: textfield;
+    line-height: 26px;
+    height: 26px;
+    transition: all 0.3s ease;
+    color: #333;
+    border: 0;
+    border-radius: 5px;
+    padding: 0;
+}

@@ -1,0 +1,8 @@
+@import '../../../../scss/_settings.scss';
+
+.SignupPage__column {
+    @include grid-col(12);
+    @include breakpoint(medium) {
+        @include grid-col(6);
+    }
+}

@@ -1,0 +1,91 @@
+<div app-header ng-class="{'header-bar':isHomePage == false}"></div>
+
+<section class="divider">
+    <div class="list-views">
+        <a class="secondary button" ng-class="{ 'hollow': !showActive }" ng-click="showActive = true">
+            Active Experiences
+        </a>
+        <a class="secondary button" ng-class="{ 'hollow': showActive }" ng-click="showActive = false">
+            Archived Experiences
+        </a>
+    </div>
+</section>
+
+<section ng-show="showActive">
+    <div class="row">
+        <div class="property-list events-list">
+            <div class="row">
+                <div class="pl-item" ng-repeat='(k, event) in activeEvents'>
+                    <a href="{{event.clickable_url || 'listing/' + event.property_code}}" class="images">
+                      <elt-image hires="{{event.images[0].image}}" alt="{{event.caption}} image" class="elt-image" />
+                      <elt-image hires="{{event.images[1].image}}" alt="{{event.caption}} image" class="elt-image" />
+                      <elt-image ng-hide="event.videos.length" hires="{{event.images[2].image}}" alt="{{event.caption}} image" class="elt-image" />
+                      <span ng-if="event.videos.length" id="{{ 'id' + event.url.split('/')[event.url.split('/').length - 2]}}" ng-init="addIframe(event)"></span>
+                    </a>
+                    <div class="information">
+                        <a href="{{event.clickable_url || 'listing/' + event.property_code}}">
+                            <h4 class="title">{{event.caption}}</h4>
+                        </a>
+
+                        <hr />
+
+                        <small ng-if='event.description'>{{event.description | removeTags}}</small>
+                    </div>
+                </div>
+            </div>
+            <div class="row loading-search" ng-hide='activeEventsLoaded'>
+                <svg width="70px" height="70px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" class="uil-ring-alt">
+                    <rect x="0" y="0" width="100" height="100" fill="none" class="bk"></rect>
+                    <circle cx="50" cy="50" r="40" stroke="#afafb7" fill="none" stroke-width="10" stroke-linecap="round"></circle>
+                    <circle cx="50" cy="50" r="40" stroke="#fe5459" fill="none" stroke-width="6" stroke-linecap="round">
+                        <animate attributeName="stroke-dashoffset" dur="3s" repeatCount="indefinite" from="0" to="502"></animate>
+                        <animate attributeName="stroke-dasharray" dur="3s" repeatCount="indefinite" values="150.6 100.4;1 250;150.6 100.4"></animate>
+                    </circle>
+                </svg>
+            </div>
+        </div>
+        <div class="row center">
+            <h6 ng-if="noActiveEvents">No Active Experiences currently scheduled</h6>
+        </div>
+    </div>
+</section>
+
+<section ng-hide="showActive">
+    <div class="row">
+        <div class="property-list">
+            <div class="row">
+                <div class="pl-item" ng-repeat='(k, event) in archivedEvents'>
+                    <a href="{{event.clickable_url || 'listing/' + event.property_code}}" class="images">
+                      <elt-image hires="{{event.images[0].image}}" alt="{{event.caption}} image" class="elt-image" />
+                      <elt-image hires="{{event.images[1].image}}" alt="{{event.caption}} image" class="elt-image" />
+                      <elt-image ng-hide="event.videos.length" hires="{{event.images[2].image}}" alt="{{event.caption}} image" class="elt-image" />
+                      <span ng-if="event.videos.length" id="{{ 'id' + event.url.split('/')[event.url.split('/').length - 2]}}" ng-init="addIframe(event)"></span>
+                    </a>
+                    <div class="information">
+                        <a href="{{event.clickable_url || 'listing/' + event.property_code}}">
+                            <h4 class="title">{{event.caption}}</h4>
+                        </a>
+
+                        <hr />
+
+                        <small ng-if='event.description'>{{event.description | removeTags}}</small>
+                    </div>
+                </div>
+            </div>
+            <div class="row loading-search" ng-hide='archivedEventsLoaded'>
+                <svg width="70px" height="70px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" class="uil-ring-alt">
+                    <rect x="0" y="0" width="100" height="100" fill="none" class="bk"></rect>
+                    <circle cx="50" cy="50" r="40" stroke="#afafb7" fill="none" stroke-width="10" stroke-linecap="round"></circle>
+                    <circle cx="50" cy="50" r="40" stroke="#fe5459" fill="none" stroke-width="6" stroke-linecap="round">
+                        <animate attributeName="stroke-dashoffset" dur="3s" repeatCount="indefinite" from="0" to="502"></animate>
+                        <animate attributeName="stroke-dasharray" dur="3s" repeatCount="indefinite" values="150.6 100.4;1 250;150.6 100.4"></animate>
+                    </circle>
+                </svg>
+            </div>
+        </div>
+        <div class="row center">
+            <h6 ng-if="noArchivedEvents">No Archived Experiences to show</h6>
+        </div>
+    </div>
+</section>
+<div app-footer></div>

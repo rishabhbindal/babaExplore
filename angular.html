@@ -1,0 +1,139 @@
+<!doctype html>
+<html class="no-js" lang="en" ng-app="explore">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title ng-bind="title"></title>
+    <meta name="keywords" content="Explore Life Traveling | Book the Best Homestays in India | Top Homestays in India | Homestays, Farmhouses, B&Bs, Guesthouses, Jungle Retreats, Wildlife Resorts, Bungalows, Villas, Vacation & Holiday Rentals | Weekend Getaways & Homestays from Bangalore, Mumbai, Goa | Clean, Safe, Verified Homestays, Guesthouses & Bed & Breakfasts. Best homestays and other non-hotel accommodations like B&Bs, guesthouses, camps, forts, haveli's bungalows, villas, holiday rentals,serviced apartments and wildlife resorts across India" />
+
+    <meta name="description" content="A platform to book offbeat travel accommodation, experiences and services. Find and visit the best and most secure homestays in India." />
+
+    <script src="https://use.typekit.net/dpc6tzm.js"></script>
+
+    <script>
+        try {
+            Typekit.load({
+                async: true
+            });
+        } catch (e) {}
+    </script>
+
+    <!-- <link rel="stylesheet" href="/public/vendor.css"> -->
+    <!-- <link rel="stylesheet" href="/css/explore.css"> -->
+    <link rel="stylesheet" href="/public/main.css">
+    <link rel="stylesheet" href="/public/app-migrate.css">
+    <link rel="icon" href="/images/explore-logo.png" type="image/png" sizes="16x16">
+
+    <script content="text/plain" href="/img/flags.png"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCyFU0kw0GTGbvlPyws9Se2RYdVdKgGBUA"></script>
+
+    <!-- <script type="text/javascript" src="/public/vendor.js"></script> -->
+    <script src="/public/main.js"></script>
+
+    <script>
+        /// for google analytics
+        (function(i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function() {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o), m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+        ga('create', 'UA-64285813-4', 'auto');
+        var ua = navigator.userAgent || navigator.vendor || window.opera;
+        ga('set', 'dimension1', (ua.indexOf("FBAN") > -1) || (ua.indexOf("FBAV") > -1) ? 'Facebook' : 'None');
+        ga('send', 'pageview')
+    </script>
+
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <!-- This is for the HTML5 Push State -->
+    <base href="/">
+
+    <!--    <base href="https://dev.explorelifetraveling.com/testportal/user-portal/">-->
+
+</head>
+
+<body class="front-page" ng-controller='AppController'>
+    <div ng-view class="view-animate home-page" autoscroll="true"></div>
+    <script src="/js/app-min.js"></script>
+    <script src="/public/app-migrate.js"> </script>
+</body>
+
+<!-- Begin Inspectlet Embed Code -->
+
+<!-- Un comment below code on production server -->
+<script type="text/javascript" id="inspectletjs">
+    window.__insp = window.__insp || [];
+    __insp.push(['wid', 1701566947]);
+    (function() {
+        function ldinsp() {
+            if (typeof window.__inspld != "undefined") return;
+            window.__inspld = 1;
+            var insp = document.createElement('script');
+            insp.type = 'text/javascript';
+            insp.async = true;
+            insp.id = "inspsync";
+            insp.src = ('https:' == document.location.protocol ? 'https' : 'http') + '://cdn.inspectlet.com/inspectlet.js';
+            var x = document.getElementsByTagName('script')[0];
+            x.parentNode.insertBefore(insp, x);
+        };
+        setTimeout(ldinsp, 500);
+        document.readyState != "complete" ? (window.attachEvent ? window.attachEvent('onload', ldinsp) : window.addEventListener('load', ldinsp, false)) : ldinsp();
+    })();
+</script>
+<!-- End Inspectlet Embed Code -->
+
+<!-- Facebook Pixel Code -->
+<script>
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+    document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1742631382656163');
+    setTimeout(function () {
+      fbq('track', "PageView");
+    }, 30000);
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1742631382656163&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Facebook Pixel Code -->
+
+<script src="https://cdn.ravenjs.com/3.9.1/raven.min.js" crossorigin="anonymous"></script>
+<script>
+    Raven.config('https://5f091c8dadbc4784957ea44d60dc2289@sentry.io/121396', {
+        autoBreadcrumbs: {
+            'xhr': true,      // XMLHttpRequest
+            'console': true,  // console logging
+            'dom': true,       // DOM interactions, i.e. clicks/typing
+            'location': true  // url changes, including pushState/popState
+        },
+        tags: { git_commit: '<%= appGitVer %>' },
+        environment: '<%= appEnv %>'
+    }).install();
+</script>
+
+<script type="text/javascript">
+      (function(e,t){var n=e.amplitude||{_q:[],_iq:{}};var r=t.createElement("script");r.type="text/javascript";
+      r.async=true;r.src="https://d24n15hnbwhuhn.cloudfront.net/libs/amplitude-3.3.0-min.gz.js";
+      r.onload=function(){e.amplitude.runQueuedFunctions()};var i=t.getElementsByTagName("script")[0];
+      i.parentNode.insertBefore(r,i);function s(e,t){e.prototype[t]=function(){this._q.push([t].concat(Array.prototype.slice.call(arguments,0)));
+      return this}}var o=function(){this._q=[];return this};var a=["add","append","clearAll","prepend","set","setOnce","unset"];
+      for(var u=0;u<a.length;u++){s(o,a[u])}n.Identify=o;var c=function(){this._q=[];return this;
+      };var p=["setProductId","setQuantity","setPrice","setRevenueType","setEventProperties"];
+      for(var l=0;l<p.length;l++){s(c,p[l])}n.Revenue=c;var d=["init","logEvent","logRevenue","setUserId","setUserProperties","setOptOut","setVersionName","setDomain","setDeviceId","setGlobalUserProperties","identify","clearUserProperties","setGroup","logRevenueV2","regenerateDeviceId"];
+      function v(e){function t(t){e[t]=function(){e._q.push([t].concat(Array.prototype.slice.call(arguments,0)));
+      }}for(var n=0;n<d.length;n++){t(d[n])}}v(n);n.getInstance=function(e){e=(!e||e.length===0?"$default_instance":e).toLowerCase();
+      if(!n._iq.hasOwnProperty(e)){n._iq[e]={_q:[]};v(n._iq[e])}return n._iq[e]};e.amplitude=n;
+      })(window,document);
+
+      amplitude.getInstance().init("3787acbd748c84d042bdfe27ce1e7e27");
+    </script>
+
+</html>

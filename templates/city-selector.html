@@ -1,0 +1,19 @@
+<div class="city-select">
+    <input type="text" name="city-name" readonly id="city-name" ng-model='filter.city_state' placeholder="Where are we going?">
+    <div class="big-city-selector">
+        <ul>
+            <li ng-repeat='city in cities track by $index' ng-mousedown="setCity(city)">
+                <div class="media city-option">
+                    <div class="icon">
+                        <img ng-src="images/{{city.additional_info['location_icon']?city.additional_info['location_icon']:'location-icons/li-city.jpg'}}" alt="City">
+                    </div>
+                    <div class="info">
+                        <strong ng-bind="format(city)"></strong>
+                        <small ng-if="city.additional_info['sub_title']">{{city.additional_info['sub_title']}}</small>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <span class="cross-on-city" ng-if='filter.city_state' ng-click='resetCity()'>X</span>
+</div>

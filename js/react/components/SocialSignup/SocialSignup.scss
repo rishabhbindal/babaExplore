@@ -1,0 +1,45 @@
+@import '../../../../scss/_settings.scss';
+
+.SocialSignup_fb {
+    @include button;
+    @include button-expand;
+    background: #3b5998;
+    &:hover {
+        background: #3b5998;
+    }
+
+    display: table;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 0 0;
+    transform: scale(1) rotateZ(360deg);
+    font-size: 1rem;
+    &:hover {
+        box-shadow: $big-shadow;
+        transform: scale(1.02) rotateZ(360deg);
+    }
+}
+
+.SocialSignup__icon,
+.SocialSignup__text {
+    display: table-cell;
+    vertical-align: middle;
+    padding: 0 0.125rem;
+}
+.SocialSignup__icon svg {
+    fill: $white;
+    width: 1.25rem;
+    height: 1.25rem;
+    transform: translateX(-25%);
+}
+.SocialSignup__text {
+    text-align: left;
+    line-height: 1.1;
+    transform: translateY(-0.1rem);
+}
+
+.SocialSignup__subtext {
+    @include breakpoint(small only) {
+        font-size: 0.8em;
+        line-height: 1.3;
+    }
+}

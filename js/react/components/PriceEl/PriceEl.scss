@@ -1,0 +1,25 @@
+@import '../../../../scss/_settings.scss';
+
+.PriceEl__free {
+    color: $header-small-font-color;
+}
+
+.PriceEl__curr {
+    color: $header-small-font-color;
+}
+
+.PriceEl__curr--bold,
+.PriceEl__price--bold {
+    font-weight: $global-weight-semi;
+}
+
+.PriceEl--large {
+    font-size: 1.5625rem;
+    color: #6c6c6c;
+}
+
+.PriceEl__curr--top {
+    color: #6c6c6c;
+    vertical-align: top;
+    font-weight: $global-weight-normal;
+}

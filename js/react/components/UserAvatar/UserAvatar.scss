@@ -1,0 +1,36 @@
+@import '../../../../scss/_settings.scss';
+
+.UserAvatar {
+    border: 3px solid $white;
+    border-radius: 100%;
+    font-size: 0;
+    overflow: hidden;
+    margin: 0 auto;
+
+    width: avatarSize(medium);
+    height: avatarSize(medium);
+
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+}
+
+.UserAvatar__img {
+    width: 100%;
+    height: 100%;
+}
+
+.UserAvatar--small {
+    width: avatarSize(small);
+    height: avatarSize(small);
+}
+
+.UserAvatar--large {
+    width: avatarSize(large);
+    height: avatarSize(large);
+}
+
+.UserAvatar--extralarge {
+    width: avatarSize(extralarge);
+    height: avatarSize(extralarge);
+}

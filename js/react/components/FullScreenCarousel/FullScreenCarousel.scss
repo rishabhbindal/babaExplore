@@ -1,0 +1,24 @@
+@import '../../../../scss/_settings.scss';
+
+.FullScreenCarousel__image {
+    max-height: 90vh;
+    // make sure that image occupies full width on firefox
+    max-width: 100vw;
+    min-width: 50vw;
+    min-height: 50vh;
+    display: block;
+    @include breakpoint(small only) {
+        max-width: 90vw;
+        top: 25vh;
+        position: absolute;
+        right: 0;
+        left: 0;
+    }
+}
+
+.FullScreenCarousel__controls {
+    top: 75%;
+    @include breakpoint(medium) {
+        top: 50%;
+    }
+}

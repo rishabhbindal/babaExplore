@@ -1,0 +1,11 @@
+@import '../../../../scss/_settings.scss';
+
+$markWidth: 50px;
+$markHeight: 50px;
+
+.PropertyMap__circle {
+    position: absolute;
+
+    border: 2px solid $primary-color;
+    background-color: transparentize($primary-color, 0.7);
+};

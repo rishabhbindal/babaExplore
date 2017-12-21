@@ -1,0 +1,23 @@
+@import '../../../../scss/_settings.scss';
+
+.CouponControl {
+    text-align: left;
+}
+
+.CouponButton {
+    position: absolute;
+    top: 5px;
+    right: 3px;
+    font-weight: $global-weight-bold;
+}
+
+@warn "Clean up specificity in styling input.";
+.CouponField {
+    position: relative;
+    .InputField input {
+        margin-top: 0.5rem;
+        font-size: 0.85rem;
+        height: auto;
+        padding: 0.5em 4.5em 0.5em 0.5em;
+    }
+}

@@ -1,0 +1,147 @@
+@import '../../../../scss/_settings.scss';
+
+.SelectFilterProperty {
+    @include breakpoint(small only) {
+        @include grid-col(9);
+    }
+    @include grid-col(4);
+    padding-left: 0 !important;
+}
+
+.HostProperty__heading {
+    font-size: 1rem;
+    text-transform: uppercase;
+    font-family: $body-font-family;
+    font-weight: $global-weight-bold;
+    padding-bottom: 0.7rem;
+}
+
+.HostProperty__images {
+    display: block;
+    max-width: none;
+    margin-left: -0.625rem;
+    margin-right: -0.625rem;
+
+    @include breakpoint(small only) {
+        @include clearfix;
+        @include grid-row-nest;
+        @include grid-layout(2, 'img');
+    }
+
+    @include breakpoint(medium) {
+        @include grid-col(6);
+        padding-left: 0.9375rem;
+        padding-right: 0.9375rem;
+    }
+}
+
+.HostProperty__image {
+    @include grid-col(6, 0);
+    border: 2px solid $body-background;
+
+    @include breakpoint(medium) {
+        border: 2px solid #ececec;
+    }
+
+    @include breakpoint(mediumlarge) {
+         @include grid-col(4, 0);
+    }
+}
+
+.HostProperty__image:first-of-type {
+    @include breakpoint(medium) {
+        @include grid-col-size(12);
+    }
+
+    @include breakpoint(mediumlarge) {
+        @include grid-col-size(8);
+    }
+}
+
+@include breakpoint(small only) {
+    .HostProperty__image:nth-of-type(1n) {
+        clear: none;
+    }
+
+    .HostProperty__image:nth-of-type(2n+1) {
+        clear: both;
+    }
+
+    .HostProperty__image:nth-of-type(n+3) {
+        display: none;
+    }
+}
+
+.HostProperty__information {
+    padding-left: 0.9375rem;
+    padding-right: 0.9375rem;
+    @include breakpoint(small only) {
+        margin: 0.5rem 0;
+    }
+
+    @include breakpoint(medium) {
+        float: right;
+        width: 50%;
+    }
+}
+
+.HostProperty__information__hr {
+    width: 15%;
+    margin: 1rem 0;
+}
+
+.HostProperty__title {
+    font-family: $body-font-family;
+    font-weight: $global-weight-normal;
+    line-height: 1.1;
+    margin: 0 0 0.3em;
+    color: $body-font-color;
+    font-size: 1.5625rem;
+
+    &:hover {
+        color: $anchor-color-hover;
+    }
+}
+
+.HostProperty__price {
+    float: right;
+    margin-left: $global-margin*2;
+    margin-top: 0;
+    font-weight: $global-weight-normal;
+    font-size: 1.5625rem;
+    text-align: right;
+    line-height: 1;
+    letter-spacing: -0.1rem;
+    color: $icon-color;
+}
+
+.HostProperty__price__currency {
+    display: inline-block;
+    vertical-align: top;
+    font-weight: $global-weight-normal;
+    font-size: 1.5625rem;
+    text-align: right;
+    line-height: 1;
+    letter-spacing: -0.1rem;
+    color: $icon-color;
+}
+
+.HostProperty__price__detail {
+    display: block;
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    font-weight: $global-weight-semi;
+    letter-spacing: 0;
+}
+
+.HostProperty__location {
+    font-family: $header-font-family;
+    color: $dark-gray;
+    line-height: 1.1;
+    margin: 0 0 0.3em;
+}
+
+.HostProperty__owner__container {
+    float: left;
+    margin-bottom: 1rem;
+}

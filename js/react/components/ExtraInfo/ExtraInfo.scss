@@ -1,0 +1,157 @@
+@import '../../../../scss/_settings.scss';
+
+.ExtraInfo__container {
+    text-align: center;
+    background: $body-background;
+    border: none;
+    box-shadow: none;
+    margin: 0 auto;
+    min-height: 70vh;
+    color: #555;
+    & input[type=text] {
+      line-height: 1;
+      font-weight: 500;
+      text-align: center; }
+    & button[type=submit] {
+      margin-top: 1rem; }
+    @media screen and (max-width: 39.9375em) {
+      & > p {
+        font-size: 80%;
+        line-height: 1.3;
+      }
+    }
+
+    textarea {
+        color: #555;
+        font-weight: 500;
+    }
+
+    textarea::placeholder {
+        color: #d8d8d6;
+        font-weight: 300;
+    }
+
+    h4 {
+        color: maroon;
+    }
+}
+
+.ExtraInfo {
+    margin-top: $global-margin;
+    margin: 0 auto;
+    width: 100%;
+    background: $white;
+    min-height: 90vh;
+
+    @include breakpoint(medium) {
+        max-width: 30rem;
+    }
+}
+
+.ExtraInfo__fields {
+    background: $white;
+    margin: 0 auto;
+    margin-bottom: 2rem;
+}
+
+.ExtraInfo__narrow {
+    padding: 0 4rem;
+    @include breakpoint(medium) {
+        padding: 0 3rem;
+    }
+}
+
+.ExtraInfo__back__link {
+    color: $primary-color;
+    text-decoration: none;
+    line-height: inherit;
+    cursor: pointer;
+    display: inline-block;
+    margin: $global-margin/2;
+}
+
+.ExtraInfo__user-name {
+    display: none;
+    font-weight: bold;
+    margin: 0;
+
+    @include breakpoint(medium) {
+        text-align: left;
+        display: block;
+    }
+}
+.ExtraInfo__user-name__mobile {
+    text-align: center;
+    font-weight: bold;
+    margin: 0;
+
+    @include breakpoint(medium) {
+        display: none;
+    }
+}
+
+.ExtraInfo__avatar {
+    @include breakpoint(medium) {
+        float: left;
+    }
+    padding-bottom: 1rem;
+}
+.ExtraInfo__quote {
+    @include breakpoint(medium) {
+        padding-left: avatarSize(large) + $global-padding/3;
+    }
+}
+
+.ExtraInfo__text {
+    max-width: 31rem;
+    margin: 0 auto;
+    text-align: left;
+    margin-bottom: 1rem;
+}
+
+.Extrainfo--fieldset {
+    & > .InputField {
+        float: right;
+        display: inline-block;
+        width: 50%;
+        padding: 0.2rem;
+        font-size: 0.75rem;
+    }
+
+    & > .InputField:first-child {
+        float: left;
+    }
+}
+
+.ExtraInfo__heading {
+    font-size: 1.8rem;
+    @include breakpoint(medium) {
+        font-size: 2.25rem;
+    }
+}
+
+.ExtraInfo--desc-heading {
+    font-size: 1.8rem;
+    @include breakpoint(medium) {
+        font-size: 2rem;
+    }
+}
+
+.ExtraInfo--desktop-carousel {
+    display: none;
+    color: #555;
+    @media screen and (min-width: 65rem) {
+        width: calc((100vw - 30rem) / 2);
+        height: 4rem;
+        display: block;
+        top: 10vh;
+        left: 0;
+    }
+}
+
+.ExtraInfo--mobile-carousel {
+    display: block;
+    @media screen and (min-width: 65rem) {
+        display: none;
+    }
+}

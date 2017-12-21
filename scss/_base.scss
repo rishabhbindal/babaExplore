@@ -1,0 +1,288 @@
+.media
+{
+  display: table;
+
+  &>div
+  {
+    display: table-cell;
+    float: none;
+    vertical-align: top;
+  }
+}
+
+.avatar
+{
+  position: relative;
+
+  .image
+  {
+    border: 3px solid $white;
+    border-radius: 100%;
+    font-size: 0;
+    overflow: hidden;
+
+    .overlay
+    {
+      position: absolute;
+      top: 0; right: 0; bottom: 0; left: 0;
+      background: rgba(darken($body-background, 10), 0.8);
+      border-radius: 100%;
+      border: 3px solid $white;
+
+      span
+      {
+        display: block;
+        position: absolute;
+        line-height: 1;
+        top: 50%;
+        transform: translateY(-50%);
+        left: 0;
+        width: 100%;
+        text-align: center;
+        font-size: 1.1rem;
+        font-weight: $global-weight-bold;
+        color: $body-font-color;
+      }
+    }
+  }
+
+  width: $avatar-size;
+  height: $avatar-size;
+
+  .name
+  {
+    display: none;
+    position: absolute;
+    z-index: 10;
+    top: -1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background: $black;
+    color: $white;
+    border-radius: $global-radius;
+    font-size: 0.75rem;
+    white-space: nowrap;
+    padding: 0.3em 0.5em 0.4em;
+    line-height: 1;
+    letter-spacing: 0.05em;
+
+    &:after
+    {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      margin-left: -2px;
+      @include css-triangle(4px, $black, down);
+    }
+  }
+
+  &:hover
+  {
+    .name
+    {
+      display: block;
+    }
+  }
+}
+
+.square-image
+{
+  background: $medium-gray no-repeat center center / cover;
+  height: 0;
+  padding-bottom: 100%;
+}
+
+.disabled
+{
+  position: relative;
+
+  &:after
+  {
+    content: '';
+    position: absolute; z-index: 1;
+    top: 0; right: 0; bottom: 0; left: 0;
+
+    background: rgba($black, 0.55);
+  }
+}
+
+.show
+{
+  display: none;
+
+  & ~ .extra
+  {
+    display: none !important;
+  }
+
+  & ~ label
+  {
+    color: $primary-color;
+    margin: 0;
+    line-height: 1;
+    cursor: pointer;
+  }
+
+  &:checked
+  {
+    & ~ label
+    {
+      display: none;
+    }
+
+    & ~ .extra
+    {
+      display: block !important;
+    }
+  }
+}
+
+.embed
+{
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 56.25%;
+  margin-bottom: $global-margin;
+
+  &.thin
+  {
+    padding-bottom: 40%;
+  }
+
+  &.tall
+  {
+    padding-bottom: 200%;
+  }
+
+  &.square
+  {
+    padding-bottom: 100%;
+  }
+
+  iframe
+  {
+    border: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0; left: 0;
+  }
+}
+
+@include breakpoint(medium)
+{
+  .show.small-only
+  {
+    display: none;
+
+    & ~ label
+    {
+      display: none;
+    }
+
+    & ~ .extra
+    {
+      display: block !important;
+    }
+  }
+}
+
+@include breakpoint(small only)
+{
+  input[type="date"]
+  {
+    position: relative;
+
+    &:before
+    {
+      position: absolute;
+      display: block;
+      top: 0;
+      height: 100%;
+      padding: 0.5rem 0;
+      content: attr(placeholder) !important;
+      color: #aaa;
+      margin-right: 0.5em;
+    }
+
+    &:focus:before, &:valid:before
+    {
+      content: none !important;
+    }
+  }
+}
+
+hr
+{
+  &.half
+  {
+    width: 50%;
+  }
+}
+
+.hidden
+{
+  display: none;
+}
+
+textarea, input, button { outline: none; }
+
+.subheading {
+    font-weight: 900;
+    font-size: 0.8rem;
+    color: $medium-gray;
+}
+
+// Non tachyons
+.pe_none {
+    pointer-events: none;
+}
+
+.pe_all {
+    pointer-events: all;
+}
+
+.elt-green {
+    color: #3e5241;
+}
+
+.bg-elt-blue {
+    background-color: #5c6bc0;
+}
+
+.bg-fb-blue {
+    background-color: #3b5998;
+}
+
+.mw-inherit {
+    max-width: inherit;
+}
+
+.bb3 {
+    border-bottom-style: solid;
+    border-bottom-width: 3px;
+}
+
+@media screen and (max-width: 30em) {
+    .elt-flex-wrap-s {
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    }
+}
+
+// Z indexes
+.z-carousel-type-selector { z-index: 15; }
+.z-booking-panel-index { z-index: 20; }
+.z-pano-modal { z-index: 30; }
+.z-carousel-caption { z-index: 9; }
+.z-carousel-nav { z-index: 11; }
+
+.elt-max-width {
+    max-width: rem-calc(1100);
+}
+
+.elt-black-gradient {
+    background-image: linear-gradient(hsla(0, 100%, 0%, 0.2), hsla(0, 100%, 0%, 0.75));
+}

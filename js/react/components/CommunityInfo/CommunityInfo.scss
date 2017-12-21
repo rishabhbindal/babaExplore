@@ -1,0 +1,31 @@
+@import './../../../../scss/_settings.scss';
+
+.CommunityInfo-item {
+    @include grid-col(3);
+    @include grid-col-end();
+    padding: 0 2rem;
+    margin-bottom: 2rem;
+    @include breakpoint(small only) {
+        @include grid-col(12);
+    }
+}
+
+.CommunityInfo-item:nth-child(4n+1) {
+    clear: both;
+}
+
+.CommunityInfo-image {
+    margin: 0.5rem 0;
+    font-size: 1.25rem;
+}
+
+.CommunityInfo-title {
+    display: block;
+    transition: transform .15s ease-out,-webkit-transform .15s ease-out;
+    margin-bottom: 1.8rem;
+}
+
+.CommunityInfo-title:hover {
+    display: block;
+    transform: scale(1.1);
+}

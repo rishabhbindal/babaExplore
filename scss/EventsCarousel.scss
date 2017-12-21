@@ -1,0 +1,37 @@
+@import './_settings.scss';
+
+.EventsCarousel {
+    background-color: $events-carousel-bg;
+}
+
+$wrapper-max-height: 315px;
+$wrapper-desc-max-width: 315px;
+
+.EventsCarousel__content_wrapper {
+    margin-bottom: $global-margin;
+    max-height: $wrapper-max-height;
+}
+
+.EventsCarousel__content_wrapper--small {
+    max-width: $wrapper-desc-max-width;
+    margin: auto;
+}
+
+.EventsCarousel__section-title {
+    padding: $global-padding 0;
+    text-align: center;
+    h2 {
+        font-size: 2em !important;
+    }
+}
+
+.EventsCarousel__media {
+    box-shadow: $big-shadow;
+    max-height: $wrapper-max-height;
+    width: auto !important;
+    margin: auto;
+}
+
+.EventsCarousel__title {
+    font-weight: $global-weight-semi;
+}

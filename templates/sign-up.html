@@ -1,0 +1,98 @@
+<div class="overlay-loader" id="sign_up_loader">
+    <div class="loader">
+        Signing you up please wait ...
+    </div>
+</div>
+<div app-header ng-class="{'header-bar':isHomePage == false}"></div>
+<!--<div class="alert callout"><h5>This is an alert callout</h5></div>-->
+<main class="simple-content">
+    <div class="row">
+        <div class="title-bar">
+            <h1>Create an account</h1>
+            <hr>
+            <div class="content">
+                <p>
+                    Sorry!...We understand this is a painful step and we would have loved to skip this but without this information we wouldn't have a way to verify/communicate and provide a better experience for you. Also, all fields are mandatory.</p>
+            </div>
+        </div>
+        <div class="main-body sign-up-form">
+            <form action="">
+                <div class="fieldrow">
+                    <div class="field">
+                        <img id="user_profile_img" class="user_profile_img" src='images/bg-train.jpg' />
+                        <input type="file" id='picture' class="picture" accept="image/*">
+                    </div>
+                    <div class="field">
+                        <label for="first-name">First Name</label>
+                        <input type="text" name="first-name" id="first-name" ng-model='data.firstname' placeholder="First Name">
+
+                        <label for="last-name">Last Name</label>
+                        <input type="text" name="last-name" id="last-name" ng-model='data.lastname' placeholder="Last Name">
+                    </div>
+                </div>
+                <div class="field">
+                    <label for="email">Email Address</label>
+                    <input type="email" name="email" id="email" class="email" ng-model='data.username' placeholder="Email Address">
+                </div>
+                <div class="fieldrow">
+                    <fieldset class="field">
+                        <legend for="gender">Date of Birth</legend>
+                        <input id="dob-dd" class="input-group-field dob dob-dd" name="day" ng-model='data.dob_dd' type='number' min='1' placeholder='dd' ng-change="checkDate()" />
+                        <span>/</span>
+                        <input id="dob-mm" class="input-group-field dob dob-mm" name="month" ng-model='data.dob_mm' type='number' min='1' placeholder='mm' ng-change="checkMonth()" />
+                        <span>/</span>
+                        <input id="dob-yyyy" class="input-group-field dob dob-yyyy" name="year" ng-model='data.dob_yyyy' min='1' type='number' placeholder='yyyy' ng-change="checkYear()" />
+                    </fieldset>
+                </div>
+                <div class="fieldrow">
+                    <fieldset class="field">
+                        <legend for="gender">Gender</legend>
+                        <div class="radio-group">
+                            <input type="radio" name="gender" id="male" value="MALE" ng-model='data.gender'>
+                            <label for="male"><i class="icon-male"></i> Male</label>
+                            <input type="radio" name="gender" id="female" value="FEMALE" ng-model='data.gender'>
+                            <label for="female"><i class="icon-female"></i> Female</label>
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="fieldrow">
+                    <div class="field">
+                        <label for="phone">Phone Number <img src="images/info-icon.png" title="Phone number is used for sending booking confirmation"></label>
+                        <input value="+91" type="tel" international-phone-number id="phone_number" class="input-group-field phone" name="phone_number" ng-model='data.details.phone_number' placeholder='Phone Number'>
+                    </div>
+                    <div class="field">
+                        <label for="city">Current City</label>
+                        <input type="text" name="city" id="city" ng-model='data.city' placeholder="Current City">
+                    </div>
+                </div>
+                <div class="field about-field">
+                    <label class="left-label">About Yourself [ optional ]</label>
+                    <label class="right-label">{{data.about.length}} Characters</label>
+                    <textarea ng-model='data.about' rows="3" placeholder="About Yourself"></textarea>
+                    <label>We know you are awesome, please let others know that with a minimum of 80 characters<span>&#9786;</span></label>
+                </div>
+                <div class="field">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" ng-model='data.password' placeholder='Password' />
+                </div>
+                <div class="field">
+                    <label for="cpassword">Confirm Password</label>
+                    <input type="password" id="cpassword" name="cpassword" ng-model='data.conpassword' placeholder='Confirm Password' />
+                </div>
+                <div class="field">
+                    <input type="checkbox" id="terms" ng-model='data.terms'>
+                    <label for="terms">I accept the <a href="/terms" target="_blank">terms & conditions</a>
+                    </label>
+                </div>
+                <div class="alert callout" ng-if='errorMessage || successMessage'>
+                    <h5 ng-show="successMessage">{{successMessage}}</h5>
+                    <h5 ng-show="errorMessage">{{errorMessage}}</h5>
+                </div>
+                <button type="button" class="large button" ng-click='signup()'>Create your account</button>
+                <button type="button" class="large secondary facebook button" ng-click='loginToggle()'><i class="icon-facebook"></i> Sign up with Facebook</button>
+            </form>
+
+        </div>
+    </div>
+</main>
+<div app-footer></div>

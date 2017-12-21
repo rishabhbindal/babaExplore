@@ -1,0 +1,124 @@
+@import '../../../../scss/_settings.scss';
+
+.search__filter {
+  select {
+    padding-right: 1.5rem;
+    background-position: right 0rem center;
+  }
+}
+
+.search__header {
+  @include clearfix;
+  text-align: center;
+  position: relative;
+  padding: gridColumnGutter(medium)/2;
+  margin-top: 0;
+
+  select
+  {
+    padding-right: 1.5rem;
+    background-position: right 0rem center;
+  }
+
+  &:after
+  {
+    content: '';
+    display: block;
+    // position: absolute;
+    // top: 50%;
+    // bottom: 0;
+    width: 100%;
+    left: 0;
+    height: 0;
+    border-top: $hr-border;
+
+    @include breakpoint(medium)
+    {
+      // width: 40%;
+      // left: 30%;
+    }
+  }
+
+  .divider-left, .divider-right
+  {
+    position: relative;
+    z-index: 1;
+    padding: 0;
+  }
+
+  .divider-left
+  {
+    float: left;
+  }
+
+  .divider-right
+  {
+    float: right;
+    padding: 0 15px;
+    width: 100%
+  }
+
+  @include breakpoint(small only)
+  {
+    padding: 0 gridColumnGutter(small)/2;
+    .button, select
+    {
+      font-size: 0.75rem;
+      padding: 0.4rem;
+      line-height: 1;
+      height: auto;
+    }
+
+    select
+    {
+      padding-right: 1.5rem;
+    }
+  }
+}
+
+.SearchHeader__viewbutton__container {
+    display: inline-block;
+    float: left;
+    padding: 0 0 0.5rem 0.5rem;
+
+    @include breakpoint(medium) {
+        display: inline-block;
+    }
+}
+
+.SearchHeader__button, .SearchHeader__button__hollow {
+    @include button;
+    background-color: #988d69;
+    color: #fefefe;
+    margin: 2px;
+    font-weight: $global-weight-bold;
+    &:hover, &:focus {
+        background-color: #7a7154;
+        color: #fefefe;
+    }
+}
+
+.SearchHeader__button__hollow {
+    background-color: transparent;
+    color: #988d69;
+    border: 1px solid;
+}
+
+.SearchHeader__select {
+    float: right;
+    width: initial;
+}
+
+.MapViewHeader__type_selector {
+    @include breakpoint(medium) {
+        display: flex;
+        flex-grow: 3;
+    }
+}
+
+.MapViewHeader__searchform {
+    @include breakpoint(medium) {
+        display: flex;
+        flex-grow: 7;
+    }
+}

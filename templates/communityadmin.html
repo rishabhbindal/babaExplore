@@ -1,0 +1,33 @@
+<div app-header ng-class="{'header-bar':isHomePage == false}"></div>
+<section class="simple-header">
+    <div class="row">
+        <div class="section-title">
+            <h1>Admin of {{community.name}}</h1>
+        </div>
+    </div>
+</section>
+<hr>
+<div class="community-list" infinite-scroll='loadMoreMembers()' infinite-scroll-distance='2'>
+    <div class="row">
+        <div class="cl-item" ng-repeat='(k,member) in members'>
+            <span class="image"><img ng-src="{{allUsers[member].picture || allUsers[member].social_profile_picture+'?width=250&height=250' || 'images/user.jpg'}}" alt="{{allUsers[member].first_name}}" onerror="this.onerror=null;this.src='images/user.jpg';" ></span>
+            <h5>{{allUsers[member].first_name}}</h5>
+
+            <input type="checkbox" id="p{{k}}-more" class="show">
+            <small ng-if='allUsers[member].details.about.trim()' class="minimumData">{{allUsers[member].details.about | trimText}}</small>
+            <label ng-if='allUsers[member].details.about && allUsers[member].details.about.length > 80' for="p{{k}}-more">+ more</label>
+            <small ng-if='allUsers[member].details.about.trim()' class="extra">{{allUsers[member].details.about | removeTags}}</small>
+        </div>
+    </div>
+    <div class="row loading-search" ng-if='showLoadingIcon'>
+        <svg width="70px" height="70px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" class="uil-ring-alt">
+            <rect x="0" y="0" width="100" height="100" fill="none" class="bk"></rect>
+            <circle cx="50" cy="50" r="40" stroke="#afafb7" fill="none" stroke-width="10" stroke-linecap="round"></circle>
+            <circle cx="50" cy="50" r="40" stroke="#fe5459" fill="none" stroke-width="6" stroke-linecap="round">
+                <animate attributeName="stroke-dashoffset" dur="3s" repeatCount="indefinite" from="0" to="502"></animate>
+                <animate attributeName="stroke-dasharray" dur="3s" repeatCount="indefinite" values="150.6 100.4;1 250;150.6 100.4"></animate>
+            </circle>
+        </svg>
+    </div>
+</div>
+<div app-footer></div>

@@ -1,0 +1,48 @@
+@import './../../../../scss/_settings.scss';
+
+.CommunityItem {
+    display: table;
+    margin: 0 0 1rem;
+}
+
+.CommunityItem-text {
+    color: #6c6c6c;
+    margin: 20px 0 0 10px;
+    line-height: 1;
+    font-weight: 700;
+    position: absolute;
+}
+
+.CommunityItem-avatar {
+    float: left;
+}
+
+@mixin user-dashboard-panel {
+    margin-top: 3rem;
+    min-height: 250px;
+}
+
+.UserDashboard-LeftPanel {
+    @include user-dashboard-panel();
+    border-right: 1px solid #CCC;
+    @include grid-col(4);
+    @include breakpoint(small only) {
+        @include grid-col(12);
+    }
+}
+
+.UserDashboard-RightPanel {
+    @include user-dashboard-panel();
+    @include grid-col(8);
+    @include breakpoint(small only) {
+        @include grid-col(12);
+    }
+}
+
+.UserDashboard-noresults {
+    font-size: 16px;
+    font-weight: 700;
+    padding: 3rem 0;
+    text-align: center;
+    clear: both;
+}

@@ -1,0 +1,357 @@
+<div app-header ng-class="{'header-bar':isHomePage == false}"></div>
+<section class="user-dashboard">
+    <div class="row">
+        <div class="side-bar">
+            <div class="widget user-profile-widget">
+                <div class="image">
+                    <img ng-src="{{userDetails.picture || userDetails.social_profile_picture+'?width=200&height=200' || 'images/user.jpg'}}" onerror="this.onerror=null;this.src='images/user.jpg';" alt="{{userDetails.full_name}}" ng-click='changeImage()' id='userImage'>
+                    <input type="file" id='picture' style="display:none" class="form-control" placeholder="Picture" />
+                    <svg width="70px" height="70px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" class="uil-ring-alt" ng-show='loading.imageUploading'>
+                        <rect x="0" y="0" width="100" height="100" fill="none" class="bk"></rect>
+                        <circle cx="50" cy="50" r="40" stroke="#afafb7" fill="none" stroke-width="10" stroke-linecap="round"></circle>
+                        <circle cx="50" cy="50" r="40" stroke="#fe5459" fill="none" stroke-width="6" stroke-linecap="round">
+                            <animate attributeName="stroke-dashoffset" dur="3s" repeatCount="indefinite" from="0" to="502"></animate>
+                            <animate attributeName="stroke-dasharray" dur="3s" repeatCount="indefinite" values="150.6 100.4;1 250;150.6 100.4"></animate>
+                        </circle>
+                    </svg>
+                </div>
+                <div class="">
+
+                </div>
+                <div class="details">
+                    <div class="name">{{userDetails.full_name}}</div>
+                    <div class="email">
+                        <span ng-if='!editTrue && !changePasswordTrue'>{{userDetails.email}}</span>
+                        <input ng-if='editTrue && !changePasswordTrue' type="email" name="email" id="email" ng-model='userDetails.email' placeholder="Email">
+                    </div>
+                    <div class="phone">
+                        <span ng-if='!editTrue && userDetails.details.phone_number && !changePasswordTrue'>{{userDetails.details.phone_number.indexOf('+')==-1?'+':''}}{{userDetails.details.phone_number}}</span>
+                        <input ng-if='editTrue && !changePasswordTrue' value="{{userDetails.details.phone_number}}" type="tel" international-phone-number id="phone_number" class="input-group-field phone" name="phone_number" ng-model='userDetails.details.phone_number'>
+
+                    </div>
+                    <div class="street">
+                        <span ng-if='!editTrue && !changePasswordTrue'>
+                        {{userDetails.details.city}}{{userDetails.details.city && userDetails.details.state?" , ":""}}
+                        {{userDetails.details.state}}{{userDetails.details.country && userDetails.details.state?" , ":""}}
+                        {{userDetails.details.country}}
+                        </span>
+                        <input ng-if='editTrue && !changePasswordTrue' type="input" name="city" id="city" ng-model='userDetails.details.city' placeholder="City">
+                        <input ng-if='editTrue && !changePasswordTrue' type="input" name="state" id="state" ng-model='userDetails.details.state' placeholder="State">
+                        <input ng-if='editTrue && !changePasswordTrue' type="input" name="country" id="country" ng-model='userDetails.details.country' placeholder="Country">
+                    </div>
+
+                    <div class="field">
+                        <input ng-if='changePasswordTrue' type="password" name="oldPassword" id="oldPassword" ng-model='password.old' placeholder="Old Password">
+                        <input ng-if='changePasswordTrue' type="password" name="newPassword" id="newPassword" ng-model='password.new' placeholder="New Passowrd">
+                        <input ng-if='changePasswordTrue' type="password" name="confirmPassword" id="confirmPassword" ng-model='password.confirm' placeholder="Confirm Passowrd">
+                    </div>
+                    <div class="description" ng-class="{'removeMargin':editTrue && !changePasswordTrue}">
+                        <p ng-if='!editTrue && !changePasswordTrue' ng-bind-html='userDetails.details.about | removeTags'></p>
+                        <label class="right-label" ng-if='editTrue && !changePasswordTrue'>{{userDetails.details.about.length}} Characters</label>
+                        <textarea ng-if='editTrue && !changePasswordTrue' ng-model='userDetails.details.about' rows='5'></textarea>
+                        <label ng-if='errorMessage' class="errormsg">{{errorMessage}}</label>
+
+                        <div class="createGuestOrder" ng-if="createOrder">
+                            <hr />
+                            <div class="name">
+                                <span>Guest Details</span>
+                            </div>
+                            <div>
+                                <input type="email" name="email" id="email" ng-model='guest.username' placeholder="Guest Email">
+                                <button class="small secondary hollow button"
+                                        ng-click="promptDetails()">
+                                    Check Registration Status
+                                </button>
+                            </div>
+                            <div ng-show="detailsRequired">
+                                <div>
+                                    <input type="email" name="email" id="confirmEmail" ng-model='guest.confirmEmail' placeholder="Re-enter Guest Email">
+                                </div>
+                                <div>
+                                    <input type="password" name="password" id="password" ng-model='guest.password' placeholder="Guest Password">
+                                    <input type="password" name="password" id="confirmPassword" ng-model='guest.conpassword' placeholder="Re-enter Guest Password">
+                                </div>
+                                <div>
+                                    <input type="text" name="firstName" id="firstName" ng-model='guest.firstname' placeholder="First Name">
+                                </div>
+                                <div>
+                                    <input type="text" name="lastName" id="lastName" ng-model='guest.lastname' placeholder="Last Name">
+                                </div>
+                                <div>
+                                <input type="text" id="guestDOB" placeholder="Date Of Birth(Click/Tap)"
+                                            ng-model='guest.date_of_birth_valid' id="check-in"
+                                            readonly="true" data-start-view="decade">
+                                </div>
+                                <div>
+                                    <p><strong>Gender</strong></p>
+                                    <input type="radio" name="gender" id="male" value="MALE" ng-model='guest.gender'>
+                                    <label>Male</label>
+                                    <input type="radio" name="gender" id="female" value="FEMALE" ng-model='guest.gender'>
+                                    <label>Female</label>
+                                </div>
+                                <div>
+                                    <input type="tel" international-phone-number id="guestPhoneNum"
+                                        class="input-group-field guestPhone" name="guestPhoneNum"
+                                        ng-model='guest.phone_number' placeholder="Guest Phone Number">
+                                </div>
+                                <div>
+                                    <button class="small hollow secondary button"
+                                            ng-click="createUser()">
+                                        Create Account
+                                    </button>
+                                </div>
+                            </div>
+                            <hr />
+                            <div ng-show="guestRegistered">
+                                <div>
+                                    <span class="name">Order Details</span>
+                                </div>
+                                <div>
+                                    <select ng-model="selectedProp.url">
+                                        <option value="" selected>Select Property</option>
+                                        <option ng-repeat="property in hostProps| filter:{status: 'published', type: 'ACCOMMODATION'} | orderBy: 'caption'"
+                                                value="{{property.url}}">
+                                            {{property.caption}}
+                                        </option>
+                                    </select>
+                                </div>
+
+                                <div ng-show="selectedProp.url">
+                                    <div>
+                                        <span><strong>Select Bookables</strong></span>
+                                    </div>
+                                    <div>
+                                        <div ng-repeat="bookable in prop.bookable_items" class="hostSelection">
+                                            <span class="caption">
+                                                <strong>{{bookable.caption}}</strong>
+                                            </span>
+                                            <select class="requested" ng-model="selectedProp.bookable_items[bookable.url].requested"
+                                            ng-init="selectedProp.bookable_items[bookable.url].requested = 0"
+                                            ng-options="n for n in [] | range:0:(bookable.no_of_instances + 1)">
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <input type="text" name="check-in" placeholder="Check In [dd/mm/yyyy]"
+                                                ng-model='date.date_from' id="check-in" required
+                                                readonly="true">
+
+                                        <input type="text" name="check-out" placeholder="Check Out [dd/mm/yyyy]"
+                                                ng-model="date.date_until" id="check-out" required
+                                                ng-hide="packageSelected">
+                                    </div>
+                                    <div>
+                                        <input type="checkbox" ng-model="selectedProp.customPricing" />
+                                        <span>Set Custom Price for Guest</span>
+                                    </div>
+                                    <div ng-show="selectedProp.customPricing">
+                                        <input type="number" name="cost" placeholder="Custom Price"
+                                        ng-model="selectedProp.customPrice" min="0" />
+                                        <input type="number" name="selectedProp.customDownpayment"
+                                        placeholder="Custom Downpayment" ng-model="selectedProp.customDownpayment"
+                                        min="0" />
+                                    </div>
+                                    <hr />
+
+                                    <div>
+                                        <button class="small hollow secondary button"
+                                                ng-click="order()" ng-if="createOrder">
+                                            Create Order
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <button ng-if='editTrue || changePasswordTrue || createOrder'
+                                    ng-click='cancelUpdate()' class="small hollow secondary button">
+                                Cancel
+                            </button>
+                        </div>
+                        <div>
+                            <button ng-if='!changePasswordTrue && !createOrder' ng-click='saveProfile()' class="small hollow secondary button">
+                                {{editTrue && !changePasswordTrue?'Save':'Edit'}} profile
+                            </button>
+                        </div>
+                        <div>
+                            <button ng-if='!editTrue && !createOrder' ng-click='changePassword()'
+                                    class="small hollow secondary button">
+                                {{changePasswordTrue?'Save':'Change'}} password
+                            </button>
+                        </div>
+                        <div>
+                            <button ng-if='hostOrderEnabled && userDetails.details.allow_hosting &&
+                                    allowHostOrder && !createOrder && !editTrue && !changePasswordTrue'
+                                    ng-click='createGuestOrder()' class="small hollow secondary button">
+                                Create Order for Guest
+                            </button>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="available-to centered" ng-if='userDetails.groups_joined.length'>
+                        <h5>Your communities</h5>
+                        <div class="avatar-set">
+                            <a class="avatar" ng-repeat="group in userDetails.groups_joined" ng-click='goToCommunity(group)'>
+                                <div class="image">
+                                    <elt-image
+                                        hires="{{allGroups[group].images[0].image}}"
+                                        alt="{{allGroups[group].images[0].caption}}"
+                                        class="elt-image"
+                                    />
+                                </div>
+                                <span class="name">{{group}}</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="main-body">
+            <section class="widget">
+                <h2>Pending requests</h2>
+                <div class="row">
+                    <div class="no-property-list" ng-show='listings.length == 0'>
+                        No pending request
+                    </div>
+                    <ul class="simple-property-list">
+                        <li class="spl-item" ng-repeat='property in listings'>
+                            <div class="spl-image" ng-click='goToPropertyDetail(property.property_details.code)'>
+                                <elt-image
+                                    hires="{{property.property_details.images[0].image}}"
+                                    alt=""
+                                    class="elt-image"
+                                />
+                                <div class="summary">
+                                    <div class="place">{{property.property_details.city}}
+                                        <span class="property-state">{{property.showState}}</span>
+                                    </div>
+                                    <div class="dates" ng-if='property.date_from'>{{property.date_from | date : 'dd'}}<sup>{{property.date_from | dateSuffix }}</sup> {{property.date_from | date : 'MMMM'}} <span ng-if='property.date_from != property.date_until'> to {{property.date_until | date : 'dd'}}<sup>{{property.date_until | dateSuffix }}</sup> {{property.date_until | date : 'MMMM'}}</span>, {{property.date_until | date : 'yyyy'}}</div>
+                                </div>
+                            </div>
+                            <div class="details">
+                                <div class="title">{{property.property_details.caption}}</div>
+                                <a href="" class="tiny hollow button" ng-click='deleteLove(property.url)'>Cancel request</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+            <section class="widget">
+                <h2 ng-if="bookingType == 2" class="widget-heading"><a>History </a>/ <span ng-click='changeBookingType(3)' ng-if='showOnGoingTab'>Ongoing /</span> <span ng-click='changeBookingType(1)'>Upcoming Bookings</span></h2>
+
+                <h2 ng-if="bookingType == 1" class="widget-heading"><span ng-click='changeBookingType(2)'>History</span> / <span ng-click='changeBookingType(3)' ng-if='showOnGoingTab'>Ongoing /</span> <a>Upcoming Bookings</a></h2>
+
+                <h2 ng-if="bookingType == 3" class="widget-heading"><span ng-click='changeBookingType(2)'>History</span> / <a>Ongoing</a> / <span ng-click='changeBookingType(1)'>Upcoming Bookings</span></h2>
+
+
+                <div class="row">
+                    <div class="no-property-list" ng-show='showBookings.length == 0 && !showLoadingIcon'>
+                        No Booking
+                    </div>
+                    <ul class="property-list">
+                        <li class="pl-item pl-item-small" ng-repeat='booking in showBookings'>
+                            <a href="listing/{{booking.bookings[0].property.code}}" ng-click='goToPropertyDetail(booking.bookings[0].property.code)' class="images">
+                                <elt-image
+                                    check-image
+                                    hires="{{booking.bookings[0].property.images[0].image}}"
+                                    alt="Room in a place"
+                                    class="elt-image"
+                                />
+                                <elt-image
+                                    check-image
+                                    hires="{{booking.bookings[0].property.bookable_items[0].images[0].image ||
+                                           booking.bookings[0].property.images[1].image}}"
+                                    alt="Room in a place"
+                                    class="elt-image"
+                                />
+                                <elt-image
+                                    check-image
+                                    hires="{{booking.bookings[0].property.bookable_items[1].images[0].image ||
+                                           booking.bookings[0].property.bookable_items[0].images[1].image ||
+                                           booking.bookings[0].property.images[2].image}}"
+                                    alt="Room in a place"
+                                    class="elt-image"
+                                />
+                            </a>
+
+                            <div class="information">
+                                <a href="listing/{{booking.bookings[0].property.code}}" ng-click='goToPropertyDetail(booking.bookings[0].property.code)'><h5 class="title">{{booking.bookings[0].property.caption}}</h5></a>
+                                <div class="location">{{booking.bookings[0].property.city}}, {{booking.bookings[0].property.state}}</div>
+
+                                <div ng-if="booking.paymentRemaining">
+                                    <p>
+                                        <span class="tooltip"><img src="images/info-icon.png">
+                                            <span class="tooltiptext">You have payed the down payment for this booking and can pay remaining amount now.</span>
+                                        </span>
+                                        Payment Remaining ₹ {{booking.remainingAmount}}
+                                    </p>
+                                    <button type="button" class="tiny hollow button" ng-click="sendOrder(booking)">
+                                        Pay Now
+                                    </button>
+                                </div>
+
+                                <hr ng-if='bookingType == 1 || bookingType == 3'>
+                                <ul class="feature-bullets" ng-if='bookingType == 1 || bookingType == 3'>
+                                    <li>{{booking.date_from | date : 'dd'}}<sup>{{booking.date_from | dateSuffix }}</sup> <span ng-if='booking.date_from != booking.date_until'> to {{booking.date_until | date : 'dd'}}<sup>{{booking.date_until | dateSuffix }}</sup></span>{{booking.date_until | date : 'MMMM'}}, {{booking.date_until | date : 'yyyy'}}</li>
+                                    <li><span ng-if='booking.guests'>{{booking.guests}} guests,</span><span ng-if='booking.rooms'> {{booking.rooms}} rooms</span>
+                                    </li>
+                                    <li><span class="currency">₹</span>{{booking.amount_paid}} paid</li>
+                                    <a ng-if='bookingType == 1' class="tiny hollow button" ng-click='cancelBooking(booking.url)'>Cancel booking</a>
+                                </ul>
+                                <p ng-if='bookingType == 2'>Stayed {{booking.date_until | dateDiff:booking.date_from}} nights with {{allUsers[booking.bookings[0].property.owner].full_name}}</p>
+
+                                <form action="" ng-if='bookingType == 2 && TotalReviews[booking.url]'>
+                                    <label ng-hide='booking.editReview'>{{TotalReviews[booking.url].review}}</label>
+                                    <button ng-hide='booking.editReview' type="button" class="tiny button" ng-click='editReview(booking,TotalReviews[booking.url].review)'>Edit review</button>
+
+                                    <textarea ng-if='booking.editReview' rows="3" placeholder="Leave a review" ng-model='booking.reviewData'></textarea>
+                                    <button ng-if='booking.editReview' type="button" class="tiny button" ng-click='submitReview(booking.bookings[0].property.url,booking.url,booking.reviewData,TotalReviews[booking.url].url)'>Save review</button>
+                                </form>
+                                <form action="" ng-if='bookingType == 2 && !TotalReviews[booking.url]'>
+                                    <textarea rows="3" placeholder="Leave a review" ng-model='booking.reviewData'></textarea>
+                                    <button type="button" class="tiny button" ng-click='submitReview(booking.bookings[0].property.url,booking.url,booking.reviewData)'>Add review</button>
+                                </form>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="row loading-search" ng-show='showLoadingIcon'>
+                        <svg width="70px" height="70px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" class="uil-ring-alt">
+                            <rect x="0" y="0" width="100" height="100" fill="none" class="bk"></rect>
+                            <circle cx="50" cy="50" r="40" stroke="#afafb7" fill="none" stroke-width="10" stroke-linecap="round"></circle>
+                            <circle cx="50" cy="50" r="40" stroke="#fe5459" fill="none" stroke-width="6" stroke-linecap="round">
+                                <animate attributeName="stroke-dashoffset" dur="3s" repeatCount="indefinite" from="0" to="502"></animate>
+                                <animate attributeName="stroke-dasharray" dur="3s" repeatCount="indefinite" values="150.6 100.4;1 250;150.6 100.4"></animate>
+                            </circle>
+                        </svg>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</section>
+
+<div class="modal" id="policy-modal">
+    <div class="window">
+        <div class="title">
+            <h1>Cancellation policy</h1>
+        </div>
+        <div class="body">
+            <form action="">
+                <fieldset>
+                    <label class="input-group">{{policy.details}}</label>
+                </fieldset>
+                <div class="button-group">
+                    <button type="button" class="button" ng-click='closePopUp()'>Cancel</button>
+                    <button type="button" class="button" ng-click='deleteOrder(); closePopUp()'>Confirm</button>
+                </div>
+            </form>
+        </div>
+        <button class="close-button show-for-small-only">&times;</button>
+    </div>
+</div>
+
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+<div app-footer></div>

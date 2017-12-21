@@ -1,0 +1,20 @@
+@import '../../../../scss/_settings.scss';
+
+.Step__li {
+    width: 6px;
+    height: 6px;
+    border-radius: 100%;
+
+    display: inline-block;
+    margin: 0 0.25rem;
+    background-color: $medium-gray
+}
+
+.Step__current {
+    background-color: $primary-color;
+
+    transition: all .2s ease-in-out;
+    &:hover {
+        transform: scale(2);
+    }
+}

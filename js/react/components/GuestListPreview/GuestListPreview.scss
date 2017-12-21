@@ -1,0 +1,40 @@
+@import '../../../../scss/_settings.scss';
+
+.GuestListPreview__avatar {
+    margin: 0 0.5rem 0.5rem 0;
+}
+
+.GuestListPreview__link__container {
+    position: relative;
+}
+
+
+.GuestListPreview__overlay {
+    position: absolute;
+    top: 0; right: 0; bottom: 0; left: 0;
+    background: rgba(darken($body-background, 10), 0.8);
+    border-radius: 100%;
+    border: 3px solid $white;
+    width: avatarSize(medium);
+    height: avatarSize(medium);
+}
+
+.GuestListPreview__overlay__span {
+    display: block;
+    position: absolute;
+    line-height: 1;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 1.1rem;
+    font-weight: $global-weight-bold;
+    color: $body-font-color;
+}
+
+.GuestListPreview {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}

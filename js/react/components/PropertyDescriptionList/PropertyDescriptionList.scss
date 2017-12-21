@@ -1,0 +1,41 @@
+@import '../../../../scss/_settings.scss';
+
+.PropertyDescriptionList__list {
+    display: block;
+    @include breakpoint(medium) {
+        column-count: 2;
+        column-gap: $global-padding;
+    }
+}
+
+.PropertyDescriptionList__list-more {
+    display: none;
+    @include breakpoint(medium) {
+        display: block;
+    }
+}
+
+.PropertyDescription {
+    break-inside: avoid;
+    margin-bottom: $global-margin;
+}
+
+.PropertyDescriptionList__show {
+    color: $primary-color;
+    @include breakpoint(medium) {
+        display: none;
+    }
+}
+
+.PropertyDescription__heading {
+    font-size: 1rem;
+    text-transform: uppercase;
+    font-family: $body-font-family;
+    font-weight: $global-weight-bold;
+    margin-bottom: 0.2*$global-margin;
+}
+
+.PropertyDescription__text {
+    color: $icon-color;
+    margin-bottom: 0.2rem;
+}

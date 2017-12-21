@@ -1,0 +1,20 @@
+@import '../../../../scss/_settings.scss';
+
+.DotList__entry {
+    font-family: $header-font-family;
+    font-size: 0.8rem;
+    display: inline;
+    color: $icon-color;
+    &:after {
+        display: inline-block;
+        content: '•';
+        margin: 0 0.5rem;
+    }
+    &:last-child:after {
+        content: none;
+    }
+}
+
+.DotList__entry--italic {
+    font-style: italic;
+}

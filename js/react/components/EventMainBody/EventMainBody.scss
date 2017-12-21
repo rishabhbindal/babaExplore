@@ -1,0 +1,43 @@
+@import '../../../../scss/_settings.scss';
+
+.EventBody__section {
+    padding: $global-padding/2 0 $global-padding;
+    @include clearfix;
+}
+
+.EventBody__section--separator {
+    border-bottom: $hr-border;
+    &:last-child {
+        border-bottom: none;
+    }
+}
+
+.EventMainBody {
+    @include grid-col(12);
+
+    @include breakpoint(medium) {
+        @include grid-col(8);
+    }
+}
+
+.EventMainBody__side-bar {
+    display: none;
+    @include breakpoint(medium) {
+        display: block;
+        @include grid-col(4);
+    }
+}
+
+.EventMainBody__map {
+    padding: 2em 1em;
+}
+
+.EventMainBody__guestList__heading {
+    color: $body-font-color;
+}
+
+.EventMainBody__character {
+    @include breakpoint(medium) {
+        font-size: 1.2rem;
+    }
+}

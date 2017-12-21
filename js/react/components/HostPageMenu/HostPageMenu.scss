@@ -1,0 +1,77 @@
+@import '../../../../scss/_settings.scss';
+
+.host__panel {
+    margin: 1rem 0;
+    border-radius: 4px;
+    min-height: 50px;
+}
+
+.host__panel__left {
+    @include grid-col(3);
+    float: left;
+}
+
+.host__panel__right {
+    @include grid-col(9);
+    @include grid-col-end;
+    float: right;
+    background: white;
+    min-height: 300px;
+    background: $white;
+    border: 1px solid $light-gray;
+    padding: 1rem;
+}
+
+@include breakpoint(small only) {
+    .host__panel__left {
+        @include grid-col(12);
+        @include grid-col-end;
+        padding: 0;
+        margin-bottom: 0;
+    }
+
+    .host__panel__right {
+        @include grid-col(12);
+        @include grid-col-end;
+        margin-top: 0;
+    }
+}
+
+.host__menu__link {
+    display: block;
+    font-size: .8rem;
+    padding: .8rem;
+	color: $body-font-color;
+	text-transform: none;
+}
+
+.host__menu__label--warn {
+	padding: .1rem .6rem;
+    background: $primary-color;
+    color: $white;
+	float: right;
+    font-weight: bold;
+	text-align: center;
+}
+
+ul.host__menu {
+    box-shadow: 0px 0px 8px 3px rgba(0, 0, 0, 0.27);
+    margin-bottom: 10px;
+
+    li:first-child {
+	    border-radius: .28571429rem .28571429rem 0 0;
+    }
+
+    li {
+	    list-style: none;
+	    border-bottom: 1px solid $light-gray;
+        background: $white;
+    }
+
+    li:hover, li:active, li.active {
+		background-color: rgba(0,0,0,.05);
+		a {
+		    color: rgba(0,0,0,.95);
+		}
+	}
+}

@@ -1,0 +1,36 @@
+@import '../../../../scss/_settings.scss';
+
+.UserInfo {
+    float: left;
+    padding-right: .625rem;
+
+    @include grid-col(12);
+
+    @include breakpoint(small only) {
+        padding-left: 0;
+    }
+}
+
+.UserInfo__avatar {
+    float: left;
+}
+
+@media screen and (min-width: 40em) {
+    .UserInfo {
+        padding-left: .45rem;
+        padding-right: .45rem;
+    }
+}
+
+.UserInfo_quote {
+    padding-left: avatarSize(small) + $global-padding/3;
+}
+
+.UserInfo__fullWidth {
+    width: 100%;
+}
+
+.UserInfo__center {
+    float: none;
+    margin: 0 auto;
+}

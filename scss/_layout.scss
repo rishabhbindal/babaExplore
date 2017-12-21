@@ -1,0 +1,312 @@
+.row
+{
+  @include grid-row;
+  //padding: 0 $global-margin;
+
+  .row
+  {
+    @include grid-row-nest;
+  }
+
+  &.bigger
+  {
+    max-width: rem-calc(1300);
+  }
+
+  &.full-size
+  {
+    max-width: none;
+  }
+
+  &.full-grid, &.medium-grid, &.small-grid, &.one-two-grid, &.large-one-two-grid, &.one-three-grid
+  {
+    &>*
+    {
+      @include grid-col(12);
+    }
+  }
+
+  @include breakpoint(medium)
+  {
+    &.one-two-grid
+    {
+      &>*
+      {
+        @include grid-col-size(6);
+      }
+    }
+
+    &.one-three-grid
+    {
+      &>*
+      {
+        @include grid-col-size(4);
+      }
+    }
+
+    &.small-grid
+    {
+      &>*
+      {
+        @include clearfix;
+        @include grid-col-size(10);
+        @include grid-column-position(center);
+      }
+    }
+  }
+
+  @include breakpoint(landscape)
+  {
+    &.large-one-two-grid
+    {
+      &>*
+      {
+        @include grid-col-size(6);
+      }
+    }
+  }
+
+  @include breakpoint(mediumlarge)
+  {
+    &.medium-grid
+    {
+      &>*
+      {
+        @include clearfix;
+        @include grid-col-size(10);
+        @include grid-column-position(center);
+      }
+    }
+
+    &.small-grid
+    {
+      &>*
+      {
+        @include clearfix;
+        @include grid-col-size(8);
+        @include grid-column-position(center);
+      }
+    }
+  }
+}
+
+.two-grid, .two-four-grid
+{
+  &>*
+  {
+    @include grid-col(6);
+  }
+}
+
+.three-grid, .three-four-grid, .three-five-grid
+{
+  &>*
+  {
+    @include grid-col(4);
+  }
+}
+
+.four-grid
+{
+  &>*
+  {
+    @include grid-col(3);
+  }
+}
+
+@include breakpoint(medium)
+{
+  .three-grid
+  {
+    &>*
+    {
+      @include grid-col-size(4);
+    }
+  }
+
+  .two-four-grid, .three-four-grid
+  {
+    &>*
+    {
+      @include grid-col-size(3);
+    }
+  }
+
+  .three-five-grid
+  {
+    &>*
+    {
+      @include grid-col(12/5);
+    }
+  }
+}
+
+body>hr, section+hr
+{
+  width: 80%;
+  padding: 0;
+  margin: $global-padding auto;
+
+  @include breakpoint(medium)
+  {
+    width: 50%;
+    margin: $global-padding*2 auto;
+  }
+}
+
+.avatar-set
+{
+  margin: 0 0 -0.5rem;
+  list-style: none;
+
+  .avatar
+  {
+    display: inline-block;
+    width: 4rem;
+    height: 4rem;
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+    border-width: 1px;
+  }
+}
+
+.full-panel
+{
+  @include grid-col(12);
+  padding: $global-padding/2;
+
+  @include breakpoint(medium)
+  {
+    padding: $global-padding $global-padding/2;
+  }
+}
+
+.full-column
+{
+  @include grid-col(12);
+}
+
+.title-bar, .main__body, .side__bar
+{
+  @include grid-col(12);
+}
+
+.title-bar
+{
+  margin-bottom: $global-margin;
+}
+
+.side__bar
+{
+  margin: $global-margin 0;
+}
+
+@include breakpoint(medium)
+{
+  .title-bar, .side__bar
+  {
+    @include grid-col-size(4);
+
+    &:first-of-type
+    {
+      padding-top: $global-padding/2;
+    }
+  }
+
+  .side__bar__small
+  {
+    @include grid-col-size(3);
+  }
+
+  .side__bar__right
+  {
+    float: right;
+  }
+
+  .side__bar
+  {
+    margin: $global-margin 0;
+  }
+
+  .main__body
+  {
+    @include grid-col-size(8);
+  }
+
+  .main__body__large
+  {
+    @include grid-col-size(10);
+  }
+}
+
+section>.row, footer, .search__header, .divider
+{
+  margin-top: $global-margin;
+
+  &.no-title
+  {
+    margin-top: $global-margin + 2rem;
+  }
+
+  &.flush
+  {
+    margin-top: 0;
+    @include clearfix;
+  }
+
+  @include breakpoint(medium)
+  {
+    margin-top: $global-margin * 2;
+
+    &.no-title
+    {
+      margin-top: $global-margin*2 + 2rem;
+    }
+  }
+
+  @include breakpoint(large)
+  {
+    margin-top: $global-margin * 3;
+
+    &.no-title
+    {
+      margin-top: $global-margin*3 + 2rem;
+    }
+  }
+
+  &+.row
+  {
+    margin-top: $global-margin;
+  }
+}
+
+.l-columned>.row
+{
+  margin-top: 0;
+
+  &>*
+  {
+    @include grid-col(12);
+    margin-top: $global-margin;
+
+    &:first-child
+    {
+      margin-top: 0;
+    }
+
+    @include breakpoint(medium)
+    {
+      @include grid-col-size(6);
+      margin-top: 0;
+    }
+  }
+}
+
+@media screen and (min-width: 40em) {
+    .section-title, .section__title {
+  h2 {
+      font-size: 1.3125rem;
+    }
+
+}
+}
