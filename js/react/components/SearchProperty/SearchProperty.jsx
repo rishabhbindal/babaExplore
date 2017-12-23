@@ -7,10 +7,11 @@ import TruncatedText from '../TruncatedText/TruncatedText.jsx';
 import UserInfo from '../UserInfo/UserInfo.jsx';
 import PropertyTag from '../PropertyTag/PropertyTag.jsx';
 import PropertyImagesCollage from '../PropertyImagesCollage/PropertyImagesCollage.jsx';
-
+import PropertyImagesModal from '../PropertyImagesModal/PropertyImagesModal.jsx';
+import PropertyImagesModalContainer from '../../containers/PropertyImagesModalContainer.jsx';
 import './SearchProperty.scss';
 
-const SearchProperty = ({ property, owner }) => {
+const SearchProperty = ({ property, owner, showPropertyImageModal, tiggerPropertyImageModal }) => {
     const { code, listingType, location, caption, availableTo, icons, dailyPrice, images } = property;
 
     let aminitiesEl;
@@ -59,11 +60,16 @@ const SearchProperty = ({ property, owner }) => {
             </div>
         );
     }
-
+    
     return (
         <li className="pl-item">
+            {
+                showPropertyImageModal && (
+                    <PropertyImagesModalContainer property={property}/>
+                )   
+            }
             <div className="search-result-card">
-                <PropertyImagesCollage property={property} />
+                <PropertyImagesCollage property={property} tiggerPropertyImageModal={tiggerPropertyImageModal}/>
                 <div className="card-details">
                     <div class="search-result-card">
                         <div className="display-flex-between">

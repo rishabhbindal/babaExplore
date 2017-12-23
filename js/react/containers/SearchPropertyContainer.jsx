@@ -20,6 +20,14 @@ class SearchPropertyContainer extends React.Component {
         owner: userPropType
     }
 
+    constructor(props) {
+        super(props);
+        this.tiggerPropertyImageModal = this.tiggerPropertyImageModal.bind(this);
+        this.state = {
+            showPropertyImageModal: false
+        };
+    }
+
     componentDidMount() {
         this.fetch(this.props.ownerUrl);
     }
@@ -28,10 +36,19 @@ class SearchPropertyContainer extends React.Component {
         this.props.fetchPropertyOwner(ownerUrl);
     }
 
+    tiggerPropertyImageModal () {
+        this.setState({
+            showPropertyImageModal: true
+        });
+    }
+
     render() {
         const { owner, property } = this.props;
         return (
-            <SearchProperty property={property} owner={owner} />
+            <SearchProperty property={property}
+                owner={owner}
+                showPropertyImageModal={this.state.showPropertyImageModal}
+                tiggerPropertyImageModal={this.tiggerPropertyImageModal} />
         );
     }
 }

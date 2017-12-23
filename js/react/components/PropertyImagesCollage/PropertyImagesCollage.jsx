@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import './PropertyImagesCollage.scss';
 
-const PropertyImagesCollage = ({ property }) => {
+const PropertyImagesCollage = ({ property, tiggerPropertyImageModal}) => {
     const images = (
         property.images.length < 3 ?
         [
@@ -14,7 +14,7 @@ const PropertyImagesCollage = ({ property }) => {
     const currentImageIndex = 0;
 
     return (
-        <div>
+        <div onClick={tiggerPropertyImageModal}>
             {
                 images.length > 0 &&
                 images.slice(0, 1).map(({ medium, small }, index) =>
@@ -37,7 +37,8 @@ const PropertyImagesCollage = ({ property }) => {
 };
 
 PropertyImagesCollage.propTypes = {
-    property: PropTypes.object
+    property: PropTypes.object,
+    tiggerPropertyImageModal: PropTypes.func
 };
 
 export default PropertyImagesCollage;
