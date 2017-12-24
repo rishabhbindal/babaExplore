@@ -39,6 +39,7 @@ import '../../css/explore.css';
 import Loader from './components/Loader/Loader.jsx';
 import 'react-select/dist/react-select.css';
 import 'rc-collapse/assets/index.css';
+import 'react-dates/initialize';
 import 'react-dates/lib/css/_datepicker.css';
 
 class NoMatch extends React.Component {

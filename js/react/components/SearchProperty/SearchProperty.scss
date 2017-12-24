@@ -358,7 +358,7 @@
     .search-block-border {
         border: solid 1px rgba(82, 80, 87, 0.2);
         padding: 5px 12px;
-        width: 220px;
+        width: 330px;
         display: flex;
         align-items: center;
     }
@@ -368,11 +368,12 @@
         margin: 0;
     }
     .search-input-field {
-        border: none;
-        outline: none;
-        font-size: 14px;
+        border: none !important;
+        outline: none !important;
+        font-size: 14px !important;
         font-weight: bold;
         width: 100%;
+        margin-bottom: 0 !important;
     }
     .width-100 {
         width: 100%;

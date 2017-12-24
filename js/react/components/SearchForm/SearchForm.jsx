@@ -6,16 +6,15 @@ import {
     reduxForm
 } from 'redux-form';
 
-import DatePicker from 'react-datepicker';
 import moment from 'moment';
 
 import 'react-datepicker/dist/react-datepicker.css';
 
 import CityLocalityOptionsContainer from '../../containers/CityLocalityOptionsContainer.jsx';
-
 import pick from '../../lib/pick.js';
 import './SearchForm.scss';
-
+import { DateRangePicker } from 'react-dates';
+import DateRangePickerWrapper from '../../containers/DateRangePickerWrapper.jsx'
 class SearchForm extends React.Component {
     static defaultProps = {
         forceCategory: undefined
@@ -38,6 +37,7 @@ class SearchForm extends React.Component {
 
         this.isHomePage = (this.props.page === 'HOME_PAGE');
         this.isSearchPage = this.props.page === 'SEARCH_RESULTS';
+        this.onDatesChange = this.onDatesChange.bind(this);
     }
 
     formSubmit(event) {
@@ -45,7 +45,17 @@ class SearchForm extends React.Component {
         this.props.updateUrl();
     }
 
+    onDatesChange(startDate, endDate) {
+        console.log(startDate);
+    }
+
+    onFocusChange(focusedInput) {
+        console.log(focusedInput);
+    }
+
     render() {
+        let startDate = moment('2017-dec-11');
+        let endDate = moment('2017-dec-30');
         const { locationOptions, searchFilter, hideSubmit, groups } = this.props;
         const { checkIn, checkOut, guest, location, showMap } = searchFilter;
         const { checkInChange, checkOutChange, guestChange, categoryChange, localityChange, locationChange } = this.props;
@@ -68,28 +78,38 @@ class SearchForm extends React.Component {
 
         return (
             <div style={{ width: '100%' }}>
-                <form className="search__filter" onSubmit={this.formSubmit}>
-
-                    <div className="SearchForm__top-row city__select">
-                        <div className="show-for-medium">
-                            {this.isHomePage && <button className="floating__button button" type="submit">Explore</button>}
-                            {this.isHomePage && <span className="floating__label">WHERE ARE WE GOING TO</span>}
-                            <input type="text" placeholder={this.isSearchPage ? 'Where are we going to?' : null} className={this.isHomePage ? 'search__box city-name' : 'city-name'} value={location} />
-
-                            <div className={`big-city-selector full-size ${displayMode}`}>
-                                <ul>{supportedCitiesEle}</ul>
+                <div className="search-header show-for-medium">
+                    <p>Explore</p>
+                    <div className="search-block">
+                        <div className="city-search-block search-block-border">
+                            <div className="width-100">
+                                <p className="font-size-10">WHERE ARE WE GOING TO</p>
+                                <input type="text" name="city" className={this.isHomePage ? 'search__box city-name search-input-field' : 'city-name search-input-field'} value={location}/>
                             </div>
+                            <img src="file:///Users/rishabhbindal/Downloads/rectangle-2-copy-3.svg"/>
                         </div>
-                        {this.isSearchPage &&
-                            <CityLocalityOptionsContainer
-                              className="show-for-medium"
-                              city={searchFilter.city}
-                              state={searchFilter.state}
-                              locality={searchFilter.locality}
-                              onChange={localityChange}
-                              withoutLabel
-                            />
-                        }
+                        <div className="locality-search-block search-block-border">
+                            <div className="width-100">
+                                <p className="font-size-10">LOCALITY</p>
+                                <input className="search-input-field" type="text" name="locality"/>
+                            </div>
+                            <div className="down-triangle"></div>
+                        </div>
+                        <div className="search-button">
+                            <img src="file:///Users/rishabhbindal/Downloads/rectangle-146.svg"/>
+                        </div>
+                    </div>
+                    <div className="login-button">
+                        <a href="">Login / Sign up</a>
+                    </div>
+                </div>
+                <form className="search__filter" onSubmit={this.formSubmit}>
+                    <div className="SearchForm__top-row city__select">
+                        <div>
+                            <DateRangePickerWrapper 
+                                initialStartDate={startDate}
+                                initialEndDate={endDate}/>
+                        </div>
                         {this.isSearchPage && !forceCategory && <div className="show-for-medium">
                             <select
                               value={searchFilter.category}
@@ -108,61 +128,7 @@ class SearchForm extends React.Component {
                         { this.isSearchPage && showMap && <div>
                             <button className="button" type="submit"><i className="icon-search" /></button>
                         </div> }
-
-                <select className="hide-for-medium" value={location || ''} onChange={(e) => {
-                    const loc = locationOptions.find(i => i.location === e.target.value);
-                    locationChange(loc, forceCategory);
-                }}
-                >
-                    <option value="">Where are we going?</option>
-                    {
-                        locationOptions.map((city, id) =>
-                            (<option value={city.location} key={id}>{ city.location }</option>)
-                        )
-                    }
-                </select>
                     </div>
-
-                    {!(this.isSearchPage && showMap) && !this.isHomePage && <div className="options-select">
-
-                        <fieldset className="check-in-out" data-init="check-in-out">
-                            <div className="SearchForm__datepicker__container">
-                                <DatePicker
-                                  selected={checkIn || null}
-                                  dateFormat="DD/MM/YYYY"
-                                  placeholderText="Check In"
-                                  minDate={moment()}
-                                  maxDate={checkOut}
-                                  onChange={checkInChange}
-                                />
-                                <span className="SearchForm__cancel__date" onClick={() => { checkInChange(); }}>X</span>
-                            </div>
-                            <div className="SearchForm__datepicker__container">
-                                <DatePicker
-                                  selected={checkOut || null}
-                                  dateFormat="DD/MM/YYYY"
-                                  placeholderText="Check Out"
-                                  disabled={!checkIn}
-                                  minDate={checkIn}
-                                  onChange={checkOutChange}
-                                />
-                                <span className="SearchForm__cancel__date" onClick={() => { checkOutChange(); }}>X</span>
-                            </div>
-                            <div className={hideSubmit ? '' : 'half'}>
-                                <select className="guest-select" value={guest || 1} onChange={guestChange}>
-                                    {
-                                        Array(7).fill().map((_, _id) => {
-                                            const value = _id + 1;
-                                            return <option key={_id}>{ value === 7 ? '7+' : value }</option>;
-                                        })
-                                    }
-                                </select>
-                            </div>
-                            <div className={hideSubmit ? 'hide' : 'half'}>
-                                <button className="button" type="submit"><i className="icon-search" /></button>
-                            </div>
-                        </fieldset>
-                    </div> }
                 </form>
             </div>
         );

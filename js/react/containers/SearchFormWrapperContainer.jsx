@@ -104,6 +104,7 @@ class SearchFormWrapper extends React.Component {
 
     render() {
         const { updateUrl, checkInChange, checkOutChange, guestChange, categoryChange, localityChange, locationChange } = this;
+        console.log(this.props.children);
         return (
             <div style={{ width: '100%' }}>
                 { React.Children.map(this.props.children, elem => React.cloneElement(elem, {
