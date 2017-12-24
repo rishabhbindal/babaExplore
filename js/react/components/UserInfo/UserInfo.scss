@@ -3,6 +3,7 @@
 .UserInfo {
     float: left;
     padding-right: .625rem;
+    margin-top: .625rem;
 
     @include grid-col(12);
 
@@ -23,11 +24,13 @@
 }
 
 .UserInfo_quote {
-    padding-left: avatarSize(small) + $global-padding/3;
+    // padding-left: avatarSize(small) + $global-padding/3;
 }
 
 .UserInfo__fullWidth {
     width: 100%;
+    display: flex;
+    align-items: center;
 }
 
 .UserInfo__center {

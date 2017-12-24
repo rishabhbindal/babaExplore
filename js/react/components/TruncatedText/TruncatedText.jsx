@@ -8,7 +8,7 @@ const truncateText = (text = '', limit = 80) => {
     const ttxt = text.replace(/<[^>]+>/gm, '')
         .replace(/\r?\n|\r/g, '')
         .replace(new RegExp(trex), '$1');
-    return `${ttxt} ...`;
+    return `${ttxt} `;
 };
 
 
@@ -45,12 +45,12 @@ class TruncatedText extends React.Component {
 
         return (
             <span>
-                {text.length && quoted && showTxt ? <q dangerouslySetInnerHTML={showTxt} /> : <span  dangerouslySetInnerHTML={showTxt} />}
+                {text.length && quoted && showTxt ? <q dangerouslySetInnerHTML={showTxt} ></q> : <span  dangerouslySetInnerHTML={showTxt} ></span>}
                 <a
                   onClick={this.showAll}
-                  style={{ display: dontTruncate ? 'none' : 'block' }}
+                  style={{ display: dontTruncate ? 'none' : 'inline', fontWeight: 'bold' }}
                 >
-                    + show more
+                    read more
                 </a>
             </span>
         );

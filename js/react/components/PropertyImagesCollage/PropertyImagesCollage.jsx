@@ -14,7 +14,7 @@ const PropertyImagesCollage = ({ property, tiggerPropertyImageModal}) => {
     const currentImageIndex = 0;
 
     return (
-        <div onClick={tiggerPropertyImageModal}>
+        <div onClick={tiggerPropertyImageModal} className="property-image-conatiner">
             {
                 images.length > 0 &&
                 images.slice(0, 1).map(({ medium, small }, index) =>

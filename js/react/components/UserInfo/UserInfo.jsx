@@ -16,7 +16,6 @@ const UserInfo = ({ img = '/images/user.jpg', name, quote, fullWidth, center } =
             <div className="UserInfo_quote">
                 <UserQuote name={name.split(' ')[0]} quote={quote} />
             </div>
-            <div className="clearfix" />
         </div>
     );
 };

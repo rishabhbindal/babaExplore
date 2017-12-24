@@ -12,57 +12,47 @@ import PropertyImagesModalContainer from '../../containers/PropertyImagesModalCo
 import './SearchProperty.scss';
 
 const SearchProperty = ({ property, owner, showPropertyImageModal, tiggerPropertyImageModal }) => {
-    const { code, listingType, location, caption, availableTo, icons, dailyPrice, images } = property;
+    const { code, listingType, location, caption, availableTo, icons, dailyPrice, images, amenities } = property;
+    console.log('property');
+    console.log(property);
+    let amenitiesEl;
+    if (amenities.length) {
+        // amenitiesEl = (
+        //     <div className="known-for-block">
+        //         <div className="font-size-10">KNOWN FOR</div>
+        //         <hr />
+        //         <ul className="feature__bullets">
+        //             {amenities.splice(0, 3).map((icon) => (<span className="font-size-12">{icon}, </span>))} 
+        //         </ul>
+        //     </div>
+        // );
 
-    let aminitiesEl;
-    if (icons.length) {
-        aminitiesEl = (
+        amenitiesEl = (
             <div className="known-for-block">
                 <div className="font-size-10">KNOWN FOR</div>
-                <ul>
-                    {
-                        icons.splice(0, 3).map((icon, id) =>
-                            <span className="font-size-12">{icon.name}, </span>
-                        )
-                    }
-                </ul>
                 <hr />
+                <ul className="feature__bullets">
+                    <span className="font-size-12">Excellent Food </span> 
+                    <span className="font-size-12">Medical Firedly </span> 
+                </ul>
             </div>
         );
+
+
     }
 
     let priceEl = <div className="price">Free</div>;
     if (dailyPrice) {
         priceEl = (
-            <div className="property-price-block">
+            <div className="property-price-block text-right">
                 <div className="property-price">₹{dailyPrice}</div>
-                <div className="font-size-10">onwards</div>
+                <div className="property-price-tag">onwards</div>
             </div>
         );
     }
 
-    let userInfoEl;
-    if (owner) {
-        userInfoEl = (
-            <div className="host-details">
-                <div className="primary-details">
-                    <div>
-                        <img className="host-image" src={owner.profilePic} />
-                    </div>
-                    <div className="name-block">
-                        <div className="font-size-14">{owner.name}</div>
-                        <div className="font-size-11">Local host</div>
-                    </div>
-                </div>
-                <div className="host-description">
-                    {owner.ownerPropertyIntro}
-                </div>
-            </div>
-        );
-    }
-    
     return (
-        <li className="pl-item">
+        <li className="search-result-row">
             {
                 showPropertyImageModal && (
                     <PropertyImagesModalContainer property={property}/>
@@ -71,21 +61,33 @@ const SearchProperty = ({ property, owner, showPropertyImageModal, tiggerPropert
             <div className="search-result-card">
                 <PropertyImagesCollage property={property} tiggerPropertyImageModal={tiggerPropertyImageModal}/>
                 <div className="card-details">
-                    <div class="search-result-card">
-                        <div className="display-flex-between">
-                            <div className="display-flex">
-                                <p className="font-size-20">{caption}</p>
-                                <span className="property-type">HOME STAY</span>
+                    <div className="display-flex-column">
+                        <div className="display-flex-between property-details">
+                            <div className="display-flex-column">
+                                <div className="display-flex">
+                                    <p className="font-size-20">{caption}</p>
+                                    <span className="property-type">HOME STAY</span>
+                                </div>
+                                <p className="property-location">
+                                    { location } &nbsp;
+                                    <img src="images/ic-next-cheveron.svg" />
+                                </p>
                             </div>
                             {priceEl}
                         </div>
-                        <p className="property-location">{ location }</p>
-                        <div className="display-flex-between margin-top-20">
-                            {aminitiesEl}
+                        <div className="display-flex-between check-details">
+                            {amenitiesEl}
                             <div className="details-button">Check details</div>
                         </div>
-                        {userInfoEl}
                     </div>
+                    {owner && 
+                        <UserInfo
+                          img={owner.profilePic}
+                          name={owner.name}
+                          quote={<TruncatedText text={owner.ownerPropertyIntro} limit={160} />}
+                          fullWidth
+                        />
+                    }
                 </div>
             </div>
         </li>

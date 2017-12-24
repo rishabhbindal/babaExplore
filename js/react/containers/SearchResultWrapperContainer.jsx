@@ -180,6 +180,19 @@ class SearchResultWrapperContainer extends React.Component {
             <div>
                 { !searchFilter.showMap && <div>
                     <section>
+                        <div className="row center-column">
+                            <div className="show-for-medium">
+                                <SearchFormContainer
+                                  onSubmit={this.onNewSearch}
+                                  page={'SEARCH_RESULTS'}
+                                  forceCategory={forceCategory || params.forceCategory}
+                                  redirectTo={redirectTo}
+                                />
+                            </div>
+                            { mobileFilter }
+                        </div>
+                    </section>
+                    <section>
                         <div className="row bigger">
                             <div
                               className="main__body main__body__large"
@@ -187,6 +200,7 @@ class SearchResultWrapperContainer extends React.Component {
                             >
                                 <section className="search-results">
                                     <div className="row flush">
+                                        <SearchHeaderContainer params={searchFilter} />
                                         <PropertiesListViewContainer />
                                     </div>
                                 </section>
@@ -194,6 +208,21 @@ class SearchResultWrapperContainer extends React.Component {
                             </div>
                         </div>
                     </section> </div> }
+                {searchFilter.showMap && <div>
+                    <div>
+                        <div style={{ padding: '.5rem' }}>
+                            { mobileFilter }
+                        </div>
+                        <SearchHeaderContainer
+                          onSubmit={this.onNewSearch}
+                          params={searchFilter}
+                          redirectTo={redirectTo}
+                          forceCategory={forceCategory}
+                        />
+                    </div>
+                    <SearchResultsMapViewContainer searchResult={mapViewProperties} />
+                    </div> 
+                }
             </div>
         );
     }

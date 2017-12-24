@@ -18,12 +18,21 @@
     }
 }
 
+.search-results {
+  font-family: ProximaNova;
+  color: #38363c;
+}
+
 .property__list
 {
   list-style: none;
   margin: $global-margin 0 0;
   background: #fff;
   @include clearfix;
+
+  .search-result-row {
+    padding-right: 0;
+  }
 
   &>li, .pl-item
   {
@@ -72,7 +81,8 @@
 
     .title
     {
-      font-family: $body-font-family;
+      // font-family: $body-font-family;
+      font-family: ProximaNova;
       padding: 0;
       font-weight: $global-weight-normal;
       line-height: 1.1;
@@ -87,7 +97,8 @@
 
     .location
     {
-      font-family: $header-font-family;
+      // font-family: $header-font-family;
+      font-family: ProximaNova;
       color: $dark-gray;
       line-height: 1.1;
       margin: 0 0 0.3em;
@@ -182,7 +193,7 @@
     &>li, .pl-item
     {
       @include grid-row-nest;
-      margin-bottom: $global-padding*2;
+      margin-bottom: $global-padding;
       margin-top: -2px;
     }
 
@@ -407,24 +418,48 @@
         margin: 0;
     }
     .card-details {
-        padding: 0 20px;
+        padding: 0 0 0 20px;
         width: 100%;
+        display: flex;
+        flex-flow: column;
+        justify-content: space-between;
+
     }
     .property-location {
-        font-size: 11px;
-        color: #a8a7ab;
         margin: 0;
-        margin-top: -9px;
+        font-size: 11px;
+        text-align: left;
+        color: #a8a7ab;
+
+        img {
+          width: 8px;
+          height: 8px;
+          object-fit: contain;
+        }
     }
+
+    .property-details {
+      div {
+        align-items: flex-end;
+      }
+    }
+
+    .check-details {
+        margin-top: 12px;
+    }
+
     .property-type {
         background-color: #525057;
         border: solid 1px #ffffff;
+        font-family: ProximaNova;
         color: #fff;
         font-size: 9px;
+        font-weight: bold;
         margin-left: 10px;
-        padding: 5px 10px;
+        margin-bottom: 8px;
+        padding: 3px 10px;
         opacity: .5;
-        height: fit-content;
+        height: 18px;
     }
     .display-flex {
         display: flex;
@@ -433,6 +468,14 @@
         font-size: 20px;
         font-weight: bold;
         color: #38363c;
+    }
+
+    .property-price-tag {
+        margin: 0;
+        font-size: 11px;
+        text-align: right;
+        color: #a8a7ab;
+
     }
     .display-flex-between {
         display: flex;
@@ -451,10 +494,6 @@
         color: #e9486f;
         font-size: 12px;
     }
-    .host-details {
-        display: flex;
-        margin-top: 30px;
-    }
     .primary-details {
         width: 19%;
         display: flex;
@@ -463,12 +502,6 @@
         padding-left: 0;
         min-width: fit-content;
         max-height: fit-content;
-    }
-    .host-image {
-        width: 32px;
-        height: 32px;
-        border-radius: 50%;
-        background: #e7e7e7;
     }
     .font-size-14 {
         font-size: 14px;
@@ -484,9 +517,6 @@
         padding: 7px 10px;
     }
     .property-image {
-      width: 450px;
+      width: 310px;
       height: 210px;
-    }
-    .name-block {
-      padding-left: 15px;
     }

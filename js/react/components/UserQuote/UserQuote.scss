@@ -2,10 +2,22 @@
 
 .UserQuote {
     font-size: 0.8rem;
+    font-family: ProximaNova;
     text-align: left;
+    display: flex;
+    align-items: center;
     p, q {
         margin-bottom: 0.2rem;
     }
+    div.block {
+      padding: 15px; 
+    }
+
+    .quote-block {
+        border-left: 1px solid #dcdcdd;
+    }
+
+
 
 }
 

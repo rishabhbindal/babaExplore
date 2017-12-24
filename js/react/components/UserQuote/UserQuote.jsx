@@ -4,9 +4,19 @@ import './UserQuote.scss';
 
 const UserQuote = ({ name, quote }) => (
     <div className="UserQuote">
-        <div className="UserQuote_name">{name}</div>
-        {quote}
+        <div className="block">
+            <div className="font-size-14">{name}</div>
+            <div className="font-size-11">Local Host</div>
+        </div>
+        <div className="divider"></div>
+        <div className="block quote-block">
+          {quote}
+        </div>
     </div>
+
+            
+
+
 );
 UserQuote.propTypes = {
     name: PropTypes.string,
